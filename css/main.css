@@ -1,0 +1,130 @@
+@charset "utf-8";
+body{
+  font-family: "AvenirNext-Regular","ヒラギノ丸ゴ Pro W4";
+  width: 100%;
+  padding: 5% 7%;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+.ue{
+  width: 90%;
+  height: 100%;
+  margin-bottom: 5rem;
+  margin-left: 2%;
+}
+.ue1{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 6%;
+}
+.ue1 > p{
+  border-bottom: 3.5px solid #B0DEEC;
+}
+h2{
+  width: 8%;
+  text-align: center;
+}
+.ue2>ul{
+  height: 25rem;
+}
+ul>li{
+  display: block;
+  height: 4vh;
+}
+.ue2 >ul> li{
+  display: block;
+  height: 5rem;
+}
+.shitumon{
+  display: grid;
+  grid-gap: 5vw;
+  grid-template-columns: repeat(3,1fr);
+  margin-bottom: 2.2rem;
+}
+textarea {
+  border: 3.5px solid #B0DEEC;
+  border-radius: 10px;
+}
+.shitumon{
+  text-align: center;
+}
+.menu{
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 3%;
+}
+.menu > a{
+  display: block;
+}
+/*報告の返信要・不要*/
+.henshin{
+  width: 100%;
+  text-align: center;
+}
+@media (max-width: 600px)
+{
+  /*全体*/
+  body{
+    width: 100vw;
+  }
+  /*ヘッダー*/
+  .ue1{
+    display: flex;
+    justify-content: center;
+    height: 15vh;
+    line-height: 2;
+  }
+  h2{
+    width: 18vw;
+  }
+  .ue1>p{
+    width: 55vw;
+    text-align: center;
+    margin-bottom: 5vh;
+  }
+  .ue2{
+    padding: 1.5vh 2.5vh 1.5vh 2vh;
+    height: auto;
+  }
+  .ue2>ul{
+    height: auto;
+  }
+  li{
+    display: inline-block;
+    margin-bottom: 1rem;
+    height: 4rem;
+    width: 100%;
+    padding-top: 1rem;
+    line-height: 1.5;
+  }
+  ul{
+    width: 100%;
+    list-style-type: disc;
+    list-style-position: outside;
+  }
+  .shitumon{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5vh;
+  }
+  textarea{
+    width: 80%;
+    height: 100px;
+  }
+  .menu{
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 1rem;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  .menu>a{
+    display: block;
+    width: 20%;
+    margin-left: 1rem;
+  }
+}

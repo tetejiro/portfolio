@@ -1,0 +1,95 @@
+@charset "utf-8";
+body{
+  font-family: "AvenirNext-Regular","ヒラギノ丸ゴ Pro W4";
+  height: 100vh;
+  width: 100vw;
+}
+main{
+  display: flex;
+}
+.hidari{
+  width: 75%;
+  background: #B0DEEC;
+  position: relative;
+}
+.img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
+}
+.migi{
+  background: white;
+  width: 25%;
+  height: 100vh;
+  position: relative;
+}
+.naiyo{
+  width: 60%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
+}
+.waku{
+  border: solid 1px #2b2b2b;
+}
+.botan{
+  display: flex;
+  justify-content: space-between;
+  width: 65%;
+}
+.botan1 , .botan > a{
+  display: block;
+  text-align: left;
+  width: 50%;
+  color: #2b2b2b;
+  text-decoration:none;
+}
+.naiyo > a{
+  color: #2b2b2b;
+  text-decoration: none;
+}
+@media (max-width: 600px)
+{
+  main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative !important;
+  }
+  main > .hidari {
+    width: 100vw;
+    height: 20vh;
+    order: 1;
+  }
+  img {
+    position: absolute !important;
+    top: 4.5rem !important;
+    left: 8.5rem !important;
+  }
+  .hidari > img::after {
+    display: block;
+    width: 50vw;
+    content: "しつもん。";
+    color: black ;
+  }
+  main > .migi {
+    width: 100vw;
+    height: 80vh;
+    order: 2;
+  }
+  .waku {
+    height: 3rem;
+    width: 80%;
+  }
+  .naiyo > a {
+    width: 50vw;
+  }
+  .botan{
+    width: auto;
+  }
+}

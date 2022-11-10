@@ -1,0 +1,56 @@
+<?php
+require_once('../sanitize.php');
+
+$post = sanitize($_POST);
+$name = $post['name'];
+$name = str_replace(" ", "", $name);
+$name = str_replace("　", "", $name);
+$pass = $post['pass'];
+//次からはhash()を使う。
+$pass = md5($pass);
+
+try {
+  require_once '../new-db/new-select.php';
+  $SelectDb = new SelectDb();
+  $rec = $SelectDb->selectDb2($name, $pass);
+
+  if ($rec == true) {
+    session_start();
+    $_SESSION['login'] = 1;
+    $_SESSION['name'] = $rec['name'];
+    $_SESSION['code'] = $rec['code'];
+    header('Location:../mypage/mypage.php');
+    exit();
+  } else {
+?>
+    <!DOCTYPE html>
+    <html lang="ja">
+
+    <head>
+      <meta charset="utf-8">
+      <meta title="しつもん">
+
+      <!-- css -->
+      <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+      <link rel="stylesheet" href="../css/mylist.css">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP">
+      <link rel="icon" type="image/png" href="../p-favicon.png">
+    </head>
+
+    <body>
+  <?php
+    print '<div class="mi">';
+    print '<form action="login.html" method="post">';
+    print '<p>登録されていないものです。</p><br>';
+    print '<input type="submit" value="もどる">';
+    print '</form>';
+    print '</div>';
+  }
+} catch (Exception $e) {
+  exit('障害発生中');
+  var_dump($e);
+}
+  ?>
+    </body>
+
+    </html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>しつもん</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <!-- css -->
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP">
+    <link rel="icon" type="image/png" href="../favicon/p-favicon.png">
+  </head>
+<body>
+<main>
+  <div class="hidari">
+    <img class="img" src="../favicon/p-favicon2.png" alt="しつもん">
+  </div>
+  <div class="migi">
+    <div class="naiyo">
+      <h1>Log - </h1>
+      <h1>in</h1><br><br>
+
+      <form action="login-check.php" method="post">
+        お名前<br><br>
+        <input class="waku" type="text" name="name" required><br><br><br>
+        password <br><br>
+        <input class="waku" type="password" name="pass" required><br><br><br>
+        <input type="submit" name="start" value="はじめる">
+      </form><br>
+      <a href="./index.php">ホームへもどる</a>
+    </div>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,27 @@
+@charset "utf-8";
+
+body{
+  font-family: "AvenirNext-Regular","ヒラギノ丸ゴ Pro W4";
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  text-align: center;
+}
+.zentai{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform : translate(-50%,-50%);
+  transform : translate(-50%,-50%);
+}
+@media (max-width: 600px)
+{
+  body{
+    width: 100vw;
+  }
+  .zentai{
+    width: 100vw;
+    line-height: 2;
+  }
+}

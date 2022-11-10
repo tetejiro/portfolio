@@ -1,0 +1,94 @@
+@charset "utf-8";
+
+body {
+  font-family: "AvenirNext-Regular", "ヒラギノ丸ゴ Pro W4";
+  width: 100%;
+  height: 100%;
+  padding: 0 10%;
+}
+h3 {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3rem;
+  width: 30%;
+  text-align: center;
+  margin-top: 3rem;
+  border-bottom: #b0deec solid 4px;
+}
+img {
+  vertical-align: bottom;
+}
+.zentai2 {
+  display: flex;
+  justify-content: center;
+}
+.zentai2 > p {
+  margin-right: 3rem;
+  margin-top: 5%;
+}
+th {
+  text-align: left;
+  padding-right: 3rem;
+  width: auto;
+  display: inline-block;
+}
+td {
+  border-bottom: #e2ecee solid 2.5px;
+  text-align: left;
+}
+.zentai {
+  text-align: center;
+}
+.modoru > a {
+  display: inline-block;
+  background: #b0deec;
+  width: 100px;
+  height: 14vh;
+  border-radius: 50%;
+  line-height: 14vh;
+  position: fixed;
+  bottom: 10%;
+  right: 5%;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+}
+
+/* 未入力の場合 */
+.mi {
+  width: 20%;
+  height: 10%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.mi > p {
+  height: 5rem;
+}
+@media (max-width: 600px) {
+  h3 {
+    width: 60vw;
+  }
+  /*打消し*/
+  body {
+    width: 100vw;
+    padding: 0%;
+  }
+  th {
+    padding-right: 0%;
+  }
+  .zentai2 > p {
+    margin-right: 0.5rem;
+  }
+  .modoru > a {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    bottom: 5%;
+    right: 5%;
+  }
+}

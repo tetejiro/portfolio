@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>しつもん</title>
+  <meta name="description" content="しつもんするための便利なツール。しつもん上手になって安心して業務に取り組もう。">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!--css-->
+  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+  <link rel="stylesheet" href="../css/login.css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+  <link rel="icon" type="image/png" href="../favicon/p-favicon.png">
+</head>
+
+<body>
+  <main>
+    <div class="hidari">
+      <img class="img" src="../favicon/p-favicon2.png" alt="しつもん">
+    </div>
+    <div class="migi">
+      <div class="naiyo">
+        <p>登録を</p>
+        <p>完了させよう。</p>
+
+        <form action="reg-check.php" method="post"><br>
+          お名前<br>
+          <input class="waku" type="text" name="name" placeholder="質問　よしこ" required><br>※半角カタカナ・全角英字・全角数字は使用できません。<br><br>
+          第
+          <select name="year">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">シニア</option>
+          </select>
+          期 <br><br>
+          mail <br>
+          <input class="waku" type="email" name="mail" placeholder="sample@email.com" required><br><br>
+          password <br>
+          <input class="waku" type="password" name="pass" required><br><br>
+          password(確認用) <br>
+          <input class="waku" type="password" name="pass2" required><br><br>
+          <div class="botan">
+            <input class="botan1" type="submit" value="登録する">
+            <a href="index.php">Homeへ</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

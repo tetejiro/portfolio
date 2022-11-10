@@ -1,0 +1,83 @@
+@charset "utf-8";
+main{
+  font-family: "AvenirNext-Regular","ヒラギノ丸ゴ Pro W4";
+  padding-top: 10vh ;
+  padding-left: 10vw;
+}
+.header{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 7%;
+}
+.waku{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 50%;
+  width: 85%;
+}
+.name{
+  color: #2b2b2b;
+  text-decoration:none;
+}
+fieldset{
+  width: 100%;
+  color: #B0DEEC;
+  text-align: center;
+  border: none;
+}
+.kotoba{
+  width: 40%;
+  position: relative;
+}
+.kotoba1{
+  width: 75%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 0px;
+  margin-left: 7%;
+  padding-right: 0px;
+}
+.namae{
+  color: #2b2b2b;
+}
+a{
+  text-decoration: none;
+  color: #2b2b2b;
+}
+@media (max-width: 600px)
+{
+  /*全体*/
+  main{
+    width: 100vw;
+    padding-left: 5vw;
+    padding-bottom: 10vh;
+    height: auto;
+  }
+/*ヘッダー*/
+  .header{
+    width: 100%;
+    margin-bottom: 0%;
+  }
+  .kotoba{
+    width: 50%;
+  }
+/*リスト*/
+  .waku{
+    display: flex;
+    flex-wrap: wrap;
+    width: 90vw;
+  }
+  legend{
+    color: #38b9e0;
+    padding-top: 5.25vh;
+  }
+  fieldset{
+    width: 30vw;
+  }
+  fieldset>a{
+    display: inline-block;
+    padding-top: 0.75rem;
+  }
+}

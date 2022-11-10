@@ -1,0 +1,118 @@
+@charset "utf-8";
+main{
+  font-family: "AvenirNext-Regular","ヒラギノ丸ゴ Pro W4";
+  padding-top: 10vh ;
+  padding-bottom: 5vh;
+  padding-left: 10vw;
+  margin-bottom: 5vh;
+  height: auto;
+}
+.header{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5%;
+}
+.waku{
+  display: flex;
+  height: 50%;
+  width: 85%;
+}
+.name{
+  color: #2b2b2b;
+  text-decoration:none;
+}
+fieldset{
+  width: 100%;
+  color: #B0DEEC;
+  text-align: center;
+  border: none;
+}
+.kotoba{
+  width: 40%;
+  position: relative;
+}
+.kotoba1{
+  width: 75%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 0px;
+  margin-left: 7%;
+  padding-right: 0px;
+}
+.namae{
+  color: #2b2b2b;
+}
+a{
+  text-decoration: none;
+  color: #2b2b2b;
+}
+.menu *{
+  display: inline-block;
+  width: 5vw;
+}
+.menu{
+  width: 80vw;
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: space-around;
+}
+.menu>input, .menu>a{
+  display: inline-block;
+  text-align: center;
+  width: auto;
+}
+.menu>input:hover, .menu>a:hover{
+  background: #dee8eb;
+  border-radius: 15px;
+  display: inline-block;
+  text-align: center;
+  padding: 0.25em 0.5em;
+  width: auto;
+}
+@media (max-width: 600px)
+{
+  /*全体*/
+  main{
+    padding: 10% 5%;
+  }
+  /*ヘッダー*/
+  .header{
+    width: 90vw;
+  }
+  .kotoba{
+    width: 60%;
+  }
+  .kotoba1{
+    width: 100%;
+  }
+  /*リスト*/
+  .waku{
+    display: flex;
+    flex-wrap: wrap;
+    width: 90vw;
+  }
+  legend{
+    color: #38b9e0;
+  }
+  fieldset{
+    width: 30vw;
+    margin-top: 2.5rem;
+  }
+  .menu{
+    width: 90vw;
+  }
+  .menu *{
+    width: 20%;
+    margin-top: 1rem;
+  }
+  /*メニュー上書き*/
+  .menu>input, .menu>a{
+    width: 30%;
+    height: auto;
+  }
+  .menu>input:hover, .menu>a:hover{
+    width: 30%;
+    height: auto;
+  }
+}
