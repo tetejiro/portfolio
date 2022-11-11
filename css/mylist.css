@@ -6,6 +6,7 @@ body {
   height: 100%;
   padding: 0 10%;
 }
+
 h3 {
   margin-left: auto;
   margin-right: auto;
@@ -15,31 +16,38 @@ h3 {
   margin-top: 3rem;
   border-bottom: #b0deec solid 4px;
 }
+
 img {
   vertical-align: bottom;
 }
+
 .zentai2 {
   display: flex;
   justify-content: center;
 }
-.zentai2 > p {
+
+.zentai2>p {
   margin-right: 3rem;
   margin-top: 5%;
 }
+
 th {
   text-align: left;
   padding-right: 3rem;
   width: auto;
   display: inline-block;
 }
+
 td {
   border-bottom: #e2ecee solid 2.5px;
   text-align: left;
 }
+
 .zentai {
   text-align: center;
 }
-.modoru > a {
+
+.modoru>a {
   display: inline-block;
   background: #b0deec;
   width: 100px;
@@ -52,6 +60,11 @@ td {
   text-decoration: none;
   color: white;
   text-align: center;
+  font-weight: 700;
+}
+
+.modoru>a:hover {
+  background: #a2bcc4;
 }
 
 /* 未入力の場合 */
@@ -65,25 +78,31 @@ td {
   transform: translate(-50%, -50%);
   text-align: center;
 }
-.mi > p {
+
+.mi>p {
   height: 5rem;
 }
+
 @media (max-width: 600px) {
   h3 {
     width: 60vw;
   }
+
   /*打消し*/
   body {
     width: 100vw;
     padding: 0%;
   }
+
   th {
     padding-right: 0%;
   }
-  .zentai2 > p {
+
+  .zentai2>p {
     margin-right: 0.5rem;
   }
-  .modoru > a {
+
+  .modoru>a {
     display: inline-block;
     width: 100px;
     height: 100px;

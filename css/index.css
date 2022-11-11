@@ -1,19 +1,26 @@
 @charset "utf-8";
+
 /*共通部分*/
 body {
   font-family: "AvenirNext-Regular", "ヒラギノ丸ゴ Pro W4";
   height: 100vh;
 }
+
 main {
   display: flex;
   justify-content: space-between;
   border: solid 1px #ffffff;
   height: 100vh;
 }
+
 li,
 a {
   list-style-type: none;
   text-decoration: none;
+}
+
+a {
+  font-weight: 700;
 }
 
 /*左側*/
@@ -22,6 +29,7 @@ a {
   line-height: 2.5em;
   position: relative;
 }
+
 .hidariwaku {
   border: solid 0.8rem #b0deec;
   width: 45%;
@@ -31,6 +39,7 @@ a {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 span {
   font-weight: bolder;
 }
@@ -42,32 +51,38 @@ span {
   flex-direction: column;
   height: 100%;
 }
+
 /*右上*/
 nav {
   margin-top: 8vh;
 }
-nav > ul {
+
+nav>ul {
   display: flex;
   justify-content: space-around;
 }
-nav > ul > li {
+
+nav>ul>li {
   width: 30%;
   text-align: center;
   list-style-type: none;
   border-radius: 10px;
 }
-nav > ul > li > a {
+
+nav>ul>li>a {
   width: 100%;
   height: 100%;
   display: block;
   color: white;
 }
-nav > ul > li > a:hover {
+
+nav>ul>li>a:hover {
   color: black;
   background: #cddade;
   border-radius: 15px;
   padding: 0.25em 0.5em;
 }
+
 /*右中*/
 h1 {
   color: #ffffff;
@@ -77,6 +92,7 @@ h1 {
   top: 40%;
   width: 50%;
 }
+
 /*右下*/
 .bottom {
   width: 50%;
@@ -85,11 +101,13 @@ h1 {
   padding: 0 5%;
   height: auto;
 }
-.right > p {
+
+.right>p {
   background-color: #ffffff;
   border-radius: 10px;
   padding: 4px 5px 2px 5px;
 }
+
 .announce {
   height: auto;
   padding: 0.5rem 1rem;
@@ -99,46 +117,57 @@ h1 {
   justify-content: space-between;
   align-items: flex-end;
 }
-.announce > li {
+
+.announce>li {
   color: #6e6e6e;
 }
-.content > ul > li:nth-child(even) {
+
+.content>ul>li:nth-child(even) {
   border-bottom: 1px solid #bdbdbd;
 }
-.announce > a {
+
+.announce>a {
   display: inline-block;
   width: 10%;
 }
+
 @keyframes animation {
   0% {
     width: 45%;
     opacity: 0;
   }
+
   100% {
     width: 45%;
     opacity: 1;
   }
 }
+
 .hidariwaku {
   animation-name: animation;
   animation-duration: 5s;
   animation-iteration-count: 1;
 }
+
 @media (max-width: 600px) {
+
   /*全体*/
   .left {
     display: none;
   }
+
   main,
   body {
     width: 100vw;
     height: 100%;
   }
+
   .right {
     width: 100vw;
     height: 100%;
     background-color: #ffffff;
   }
+
   /*ナビ（上）*/
   nav {
     height: 30%;
@@ -146,58 +175,70 @@ h1 {
     margin: 0;
     border: solid 0.8rem #b0deec;
   }
-  #right > nav > ul {
+
+  #right>nav>ul {
     display: flex;
     flex-direction: column;
     /*上書き*/
     margin-top: 0px;
   }
-  #right > nav > ul > li {
+
+  #right>nav>ul>li {
     display: inline-block;
     height: auto;
     margin-top: 2%;
     margin-left: 0.5%;
     border: solid 0.6em #b0deec;
   }
-  #right > nav > ul > li > a {
+
+  #right>nav>ul>li>a {
     color: black;
   }
-  #right > nav > ul > li:first-child {
+
+  #right>nav>ul>li:first-child {
     width: 50%;
   }
-  #right > nav > ul > li:nth-child(2) {
+
+  #right>nav>ul>li:nth-child(2) {
     width: 50%;
     position: relative;
     left: 25%;
     margin: 2.5% 0%;
   }
-  #right > nav > ul > li:last-child {
+
+  #right>nav>ul>li:last-child {
     width: 50%;
     position: relative;
     left: 49%;
     margin-top: 0%;
     margin-bottom: 2%;
   }
-  nav > a {
+
+  nav>a {
     display: inline-block;
     width: 100%;
     height: 10vh;
   }
-  nav > a:hover {
+
+  nav>a:hover {
     background-color: white;
   }
+
   h1 {
     width: 100%;
     color: black;
   }
+
   /*周知事項（下）*/
   .bottom {
     width: 100%;
     bottom: 5%;
   }
+
   p {
     padding-left: 2%;
   }
+
   .announce {
     width: 100%;
   }

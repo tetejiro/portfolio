@@ -1,4 +1,5 @@
 @charset "utf-8";
+
 body {
   font-family: "AvenirNext-Regular", "ヒラギノ丸ゴ Pro W4";
   height: 100vh;
@@ -6,6 +7,7 @@ body {
   text-align: center;
   position: relative;
 }
+
 .box {
   display: block;
   position: absolute;
@@ -15,44 +17,53 @@ body {
   transform: translate(-50%, -50%);
   padding-top: 1rem;
 }
+
 .title {
   display: flex;
   justify-content: space-between;
   width: 50%;
   padding-left: 1vw;
 }
+
 textarea {
   border: solid 5px #b0deec;
   border-radius: 10px;
   margin: 1rem;
 }
+
 .button {
   display: flex;
   justify-content: center;
 }
+
 a {
   text-decoration: none;
   color: black;
   margin-left: 5vw;
 }
+
 @media (max-width: 600px) {
   body {
     width: 100vw;
     height: 100vh;
   }
+
   .title {
     width: 100vw;
     display: flex;
     justify-content: center;
   }
-  .title > p:nth-child(2) {
+
+  .title>p:nth-child(2) {
     margin-left: 1rem;
   }
+
   textarea {
     width: 80vw;
     height: 20vh;
   }
-  .button > a {
+
+  .button>a {
     display: block;
     margin-left: 15vw;
   }

@@ -1,37 +1,44 @@
 @charset "utf-8";
-main{
-  font-family: "AvenirNext-Regular","ヒラギノ丸ゴ Pro W4";
-  padding-top: 10vh ;
+
+main {
+  font-family: "AvenirNext-Regular", "ヒラギノ丸ゴ Pro W4";
+  padding-top: 10vh;
   padding-bottom: 5vh;
   padding-left: 10vw;
   margin-bottom: 5vh;
   height: auto;
 }
-.header{
+
+.header {
   display: flex;
   justify-content: center;
   margin-bottom: 5%;
 }
-.waku{
+
+.waku {
   display: flex;
   height: 50%;
   width: 85%;
 }
-.name{
+
+.name {
   color: #2b2b2b;
-  text-decoration:none;
+  text-decoration: none;
 }
-fieldset{
+
+fieldset {
   width: 100%;
   color: #B0DEEC;
   text-align: center;
   border: none;
 }
-.kotoba{
+
+.kotoba {
   width: 40%;
   position: relative;
 }
-.kotoba1{
+
+.kotoba1 {
   width: 75%;
   position: absolute;
   top: 50%;
@@ -40,78 +47,110 @@ fieldset{
   margin-left: 7%;
   padding-right: 0px;
 }
-.namae{
+
+.namae {
   color: #2b2b2b;
 }
-a{
+
+a {
   text-decoration: none;
   color: #2b2b2b;
 }
-.menu *{
+
+.menu * {
   display: inline-block;
   width: 5vw;
 }
-.menu{
+
+.menu {
+  height: 2.5rem;
   width: 80vw;
   margin-top: 2.5rem;
   display: flex;
   justify-content: space-around;
+  font-weight: 600;
 }
-.menu>input, .menu>a{
+
+.menu>input,
+.menu>a {
   display: inline-block;
   text-align: center;
-  width: auto;
+  width: 20%;
 }
-.menu>input:hover, .menu>a:hover{
+
+.menu>a {
+  padding: 0.5rem;
+}
+
+.menu>input:hover,
+.menu>a:hover {
   background: #dee8eb;
   border-radius: 15px;
   display: inline-block;
   text-align: center;
-  padding: 0.25em 0.5em;
-  width: auto;
+  width: 20%;
+  height: 2.5rem;
+  margin-top: 1%;
 }
-@media (max-width: 600px)
-{
+
+@media (max-width: 600px) {
+
   /*全体*/
-  main{
+  main {
     padding: 10% 5%;
   }
+
   /*ヘッダー*/
-  .header{
+  .header {
     width: 90vw;
   }
-  .kotoba{
+
+  .kotoba {
     width: 60%;
   }
-  .kotoba1{
+
+  .kotoba1 {
     width: 100%;
   }
+
   /*リスト*/
-  .waku{
+  .waku {
     display: flex;
     flex-wrap: wrap;
     width: 90vw;
   }
-  legend{
+
+  legend {
     color: #38b9e0;
   }
-  fieldset{
+
+  fieldset {
     width: 30vw;
     margin-top: 2.5rem;
   }
-  .menu{
+
+  .menu {
     width: 90vw;
   }
-  .menu *{
+
+  .menu * {
     width: 20%;
     margin-top: 1rem;
   }
+
   /*メニュー上書き*/
-  .menu>input, .menu>a{
+  .menu>input,
+  .menu>a {
     width: 30%;
     height: auto;
   }
-  .menu>input:hover, .menu>a:hover{
+
+  .menu>a {
+    padding: 0rem;
+  }
+
+  .menu>input:hover,
+  .menu>a:hover {
     width: 30%;
     height: auto;
   }

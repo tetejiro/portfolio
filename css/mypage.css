@@ -1,16 +1,19 @@
 @charset "utf-8";
+
 body {
   font-family: "AvenirNext-Regular", "ヒラギノ丸ゴ Pro W4";
   width: 98.5vw;
   padding: 5%;
 }
+
 .area {
   border: solid 3.5px #b0deec;
   width: 40vw;
   height: 90%;
   border-radius: 10px;
 }
-.hidari > a {
+
+.hidari>a {
   display: inline-block;
   display: flex;
   justify-content: space-between;
@@ -26,11 +29,13 @@ body {
   padding-bottom: 15px;
   padding-right: 4%;
 }
-.hidari > img,
-.hidari > h1 {
+
+.hidari>img,
+.hidari>h1 {
   display: block;
   padding-top: 10px;
 }
+
 .hidari {
   display: flex;
   justify-content: space-between;
@@ -38,48 +43,58 @@ body {
   height: 10vh;
   letter-spacing: 20px;
 }
-.hidari > a > h1 {
+
+.hidari>a>h1 {
   width: 18vw;
 }
-.hidari > img {
+
+.hidari>img {
   width: 1vw;
 }
+
 a {
   text-decoration: none;
   color: #2b2b2b;
 }
+
 input[type="number"] {
   width: 20%;
   text-align: center;
 }
+
 .migi {
   line-height: 200%;
 }
+
 /*ナビ*/
 nav {
   display: flex;
   justify-content: flex-end;
   text-align: center;
 }
-nav > p > label {
+
+nav>p>label {
   display: block;
   width: 100%;
   height: 100%;
 }
-nav > a,
-nav > p {
+
+nav>a,
+nav>p {
   display: inline-block;
   margin-top: 2.5vh;
   height: 5vh;
   width: 15%;
 }
-nav > a:hover,
-nav > p:hover {
+
+nav>a:hover,
+nav>p:hover {
   height: 5vh;
   padding: 0.25em 0.5em;
   background: #f3f3f3;
   border-radius: 15px;
 }
+
 /*1番目*/
 .kibun {
   margin-left: 23%;
@@ -89,22 +104,27 @@ nav > p:hover {
   border: solid #b0deec 4px;
   border-radius: 10px;
 }
+
 .zenhan {
   padding: 5%;
   border-bottom: solid 4px #2b2b2b;
 }
+
 .zenhan1 {
   display: flex;
   justify-content: space-between;
   margin-bottom: 5vh;
 }
+
 .time {
   width: 40%;
 }
+
 .emotion {
   text-align: center;
   padding-top: 10%;
 }
+
 /*真ん中*/
 .kohan1 {
   height: 50vh;
@@ -112,9 +132,11 @@ nav > p:hover {
   display: flex;
   justify-content: space-around;
 }
+
 .zikan {
   width: 40%;
 }
+
 /*一番下*/
 .a,
 .b,
@@ -125,6 +147,7 @@ nav > p:hover {
   border: solid #b0deec 3.5px;
   border-radius: 10px;
 }
+
 .makasete {
   margin-top: 5vh;
   margin-bottom: 10vh;
@@ -132,53 +155,64 @@ nav > p:hover {
   border-bottom: solid 4px #2b2b2b;
   padding: 13vh 0;
 }
+
 .makasete1 {
   display: flex;
   justify-content: space-around;
 }
+
 /*下のナビ*/
 .nav2 {
   display: flex;
   justify-content: flex-start;
 }
-.nav2 > p > a {
+
+.nav2>p>a {
   display: block;
   width: 100%;
   height: 100%;
 }
-.nav2 > p > input {
+
+.nav2>p>input {
   display: inline-block;
   width: 100%;
 }
-.nav2 > a,
-.nav2 > p {
+
+.nav2>a,
+.nav2>p {
   display: inline-block;
   text-align: center;
   margin-top: 2.5vh;
   height: 5vh;
   width: 12%;
 }
-.nav2 > p:hover {
+
+.nav2>p:hover {
   vertical-align: top;
   height: 5vh;
   padding: 0.25em 0.5em;
   background: #f3f3f3;
   border-radius: 15px;
 }
+
 @media (max-width: 600px) {
+
   /*共通*/
   body {
     width: 100vw;
     padding: 5%;
     margin: 0%;
   }
+
   .area {
     width: 80%;
     height: 15vh;
   }
+
   input {
     margin-top: 5%;
   }
+
   /*ヘッダー*/
   .header {
     border-bottom: none;
@@ -188,18 +222,22 @@ nav > p:hover {
     margin-bottom: 0%;
     padding-right: 0%;
   }
-  .hidari > img {
+
+  .hidari>img {
     width: 1.5vw;
     margin-bottom: 0.25rem;
   }
-  .hidari > a > h1 {
+
+  .hidari>a>h1 {
     display: none;
   }
-  .header > .migi {
+
+  .header>.migi {
     text-align: center;
     width: 75%;
     order: 2;
   }
+
   .hidari {
     order: 1;
   }
@@ -210,61 +248,75 @@ nav > p:hover {
     justify-content: space-evenly;
     padding-bottom: 5%;
   }
-  nav > a,
-  nav > p {
+
+  nav>a,
+  nav>p {
     display: block;
     width: 20%;
   }
-  nav > a:hover,
-  nav > p:hover {
+
+  nav>a:hover,
+  nav>p:hover {
     display: block;
     background: #f3f3f3;
   }
+
   /*1ブロック目*/
   .zenhan {
     margin-bottom: 0;
     padding: 0%;
   }
+
   .zenhan1 {
     display: flex;
     flex-direction: column;
     padding-top: 10%;
   }
+
   .now {
     order: 1;
   }
+
   .time {
     order: 2;
     margin-bottom: 0;
     height: 10vh;
     width: 100%;
   }
+
   .emotion {
     padding-bottom: 10%;
   }
-  .emotion > p {
+
+  .emotion>p {
     margin-left: 0%;
   }
+
   .kibun {
     width: 100%;
     margin-left: 0vw;
   }
-  .zenhan > p {
+
+  .zenhan>p {
     margin-left: 0px;
     padding-left: 0px;
   }
-  .emotion > p:first-child {
+
+  .emotion>p:first-child {
     text-align: left;
   }
+
   /*真ん中*/
   .zikan {
     padding-top: 14%;
     width: 100%;
   }
+
   .kohan {
     border-bottom: none;
     width: 90%;
   }
+
   .kohan1 {
     width: 90vw;
     display: flex;
@@ -273,17 +325,20 @@ nav > p:hover {
     padding-bottom: 5%;
     margin-bottom: 0%;
   }
+
   /*１番下*/
   .makasete {
     margin-bottom: 0vh;
     padding: 5vh;
     border-bottom: none;
   }
+
   .makasete1 {
     display: flex;
     flex-direction: column;
   }
-  .makasete1 > textarea {
+
+  .makasete1>textarea {
     width: 100%;
   }
 
@@ -296,14 +351,15 @@ nav > p:hover {
     padding-top: 3vh;
     margin-bottom: 10%;
   }
-  .nav2 > p {
+
+  .nav2>p {
     display: inline-block;
     margin-top: 2.5vh;
     width: 20%;
     height: 5vh;
   }
 
-  .nav2 > p:hover {
+  .nav2>p:hover {
     padding: 0.25em 0.5em;
     width: 20%;
     background-color: #f3f3f3;

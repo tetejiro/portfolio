@@ -1,36 +1,43 @@
 @charset "utf-8";
-main{
-  font-family: "AvenirNext-Regular","ヒラギノ丸ゴ Pro W4";
-  padding-top: 10vh ;
+
+main {
+  font-family: "AvenirNext-Regular", "ヒラギノ丸ゴ Pro W4";
+  padding-top: 10vh;
   padding-left: 10vw;
 }
-.header{
+
+.header {
   display: flex;
   justify-content: center;
   margin-bottom: 7%;
 }
-.waku{
+
+.waku {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   height: 50%;
   width: 85%;
 }
-.name{
+
+.name {
   color: #2b2b2b;
-  text-decoration:none;
+  text-decoration: none;
 }
-fieldset{
+
+fieldset {
   width: 100%;
   color: #B0DEEC;
   text-align: center;
   border: none;
 }
-.kotoba{
+
+.kotoba {
   width: 40%;
   position: relative;
 }
-.kotoba1{
+
+.kotoba1 {
   width: 75%;
   position: absolute;
   top: 50%;
@@ -39,44 +46,53 @@ fieldset{
   margin-left: 7%;
   padding-right: 0px;
 }
-.namae{
+
+.namae {
   color: #2b2b2b;
 }
-a{
+
+a {
   text-decoration: none;
   color: #2b2b2b;
 }
-@media (max-width: 600px)
-{
+
+@media (max-width: 600px) {
+
   /*全体*/
-  main{
+  main {
     width: 100vw;
     padding-left: 5vw;
     padding-bottom: 10vh;
     height: auto;
   }
-/*ヘッダー*/
-  .header{
+
+  /*ヘッダー*/
+  .header {
     width: 100%;
     margin-bottom: 0%;
   }
-  .kotoba{
+
+  .kotoba {
     width: 50%;
   }
-/*リスト*/
-  .waku{
+
+  /*リスト*/
+  .waku {
     display: flex;
     flex-wrap: wrap;
     width: 90vw;
   }
-  legend{
+
+  legend {
     color: #38b9e0;
     padding-top: 5.25vh;
   }
-  fieldset{
+
+  fieldset {
     width: 30vw;
   }
-  fieldset>a{
+
+  fieldset>a {
     display: inline-block;
     padding-top: 0.75rem;
   }
