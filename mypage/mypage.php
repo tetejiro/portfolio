@@ -140,8 +140,7 @@ if (isset($_SESSION['login']) == false) {
       <?php
       if (empty($code) == true) {
         print '<p><label for="kousin">更新</label></p>';
-        print '<a href="../mypage/
-        record.php">記録</a>';
+        print '<a href="../mypage/record.php">記録</a>';
       }
       if (empty($code) == false) {
         if ($code == $honnin) {
@@ -396,11 +395,17 @@ if (isset($_SESSION['login']) == false) {
           document.querySelector('.button-info').classList.remove('block');
         })
       } else if (event.target.classList.contains('button-info-button')) {
-        // ボタン押下
+        // 説明ボタン押下
         document.querySelector('.button-info').classList.toggle('block');
       } else {
         // モーダル外
         document.querySelector('.button-info').classList.remove('block');
+      }
+      // 背景色
+      if (document.querySelector('.button-info').classList.contains('block')) {
+        document.querySelector('.all').style.background = 'rgba(0,0,0,0.7)';
+      } else {
+        document.querySelector('.all').style.background = 'white';
       }
     })
   </script>
