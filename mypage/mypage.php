@@ -24,7 +24,7 @@ if (isset($_SESSION['login']) == false) {
     </script>
   </head>
 
-  <body>
+  <body class="all">
     <?php
     $rec = null;
     //自分のコード
@@ -79,65 +79,69 @@ if (isset($_SESSION['login']) == false) {
         </a>
       </div>
       <!--hidari-->
-      <!--登録orログインから。-->
-      <?php if (empty($code) == true) {
-        print '<div class="migi">';
-        print '<span>' . $_SESSION['name'] . 'さん</span> のマイページ<br>今日も頑張ろう。';
-        print '</div>';
-      ?>
-        <script>
-          'use strict';
-          document.querySelector('span').style.borderBottom = "thick solid #B0DEEC";
-        </script>
-        <?php
-      }
-      //member-listから。
-      else {
-        try {
-          //member-listから自分のマイページへ。
-          if ($code == $honnin) {
-            print '<div class="migi">';
-            print '<span>' . $_SESSION['name'] . 'さん</span> のマイページ<br>今日も頑張ろう。';
-            print '</div>';
-            //$rec = $SelectDb->selectDb13($honnin);
-        ?>
-            <script>
-              'use strict';
-              document.querySelector('span').style.borderBottom = "thick solid #B0DEEC";
-            </script>
-          <?php
-          }
-          //member-listから他の人のマイページへ。
-          else {
-            $rec = $SelectDb->selectDb52($code);
-            print '<div class="migi">';
-            print '<span>' . $rec['name'] . 'さん</span> のページ<br>注意書きによく目を通してしつもんしましょう。';
-            print '</div>';
-          ?>
-            <script>
-              'use strict';
-              let names = '<?php print $rec['name']; ?>';
-              let message = names + 'さんのページ。\nよく読んで質問しましょう。';
-              window.alert(message);
-              document.querySelector('span').style.borderBottom = "thick solid #5fa5ba";
-            </script>
-      <?php
-          }
-        } catch (Exception $e) {
+      <div class="header-right">
+        <div class="button-info-button">ボタン説明</div>
+        <!--登録orログインから。-->
+        <?php if (empty($code) == true) {
           print '<div class="migi">';
-          print '誰のマイページかわかりません。ログインしなおしてください。';
+          print '<span>' . $_SESSION['name'] . 'さん</span> のマイページ<br>今日も頑張ろう。';
           print '</div>';
-          var_dump($e);
+        ?>
+          <script>
+            'use strict';
+            document.querySelector('span').style.borderBottom = "thick solid #B0DEEC";
+          </script>
+          <?php
         }
-      }
-      ?>
+        //member-listから。
+        else {
+          try {
+            //member-listから自分のマイページへ。
+            if ($code == $honnin) {
+              print '<div class="migi">';
+              print '<span>' . $_SESSION['name'] . 'さん</span> のマイページ<br>今日も頑張ろう。';
+              print '</div>';
+              //$rec = $SelectDb->selectDb13($honnin);
+          ?>
+              <script>
+                'use strict';
+                document.querySelector('span').style.borderBottom = "thick solid #B0DEEC";
+              </script>
+            <?php
+            }
+            //member-listから他の人のマイページへ。
+            else {
+              $rec = $SelectDb->selectDb52($code);
+              print '<div class="migi">';
+              print '<span>' . $rec['name'] . 'さん</span> のページ<br>注意書きによく目を通してしつもんしましょう。';
+              print '</div>';
+            ?>
+              <script>
+                'use strict';
+                let names = '<?php print $rec['name']; ?>';
+                let message = names + 'さんのページ。\nよく読んで質問しましょう。';
+                window.alert(message);
+                document.querySelector('span').style.borderBottom = "thick solid #5fa5ba";
+              </script>
+        <?php
+            }
+          } catch (Exception $e) {
+            print '<div class="migi">';
+            print '誰のマイページかわかりません。ログインしなおしてください。';
+            print '</div>';
+            var_dump($e);
+          }
+        }
+        ?>
+      </div>
     </div>
     <!--.header-->
     <nav>
       <?php
       if (empty($code) == true) {
         print '<p><label for="kousin">更新</label></p>';
-        print '<a href="../mypage/record.php">記録</a>';
+        print '<a href="../mypage/
+        record.php">記録</a>';
       }
       if (empty($code) == false) {
         if ($code == $honnin) {
@@ -156,16 +160,30 @@ if (isset($_SESSION['login']) == false) {
       }
       ?>
     </nav>
+    <!-- モーダル -->
+    <div style="display: none;" class="button-info">
+      <p>ボタン説明内容</p>
+      <div class="content">
+        <p>更新</p>
+        <div>下の記入欄を更新するためのボタンです。</div>
+        <p>記録</p>
+        <div>記入した内容を記録した一覧を見られます。</div>
+        <p>質問リスト</p>
+        <div>他の人に質問した内容の一覧を見られます。</div>
+        <p>メンバーリスト</p>
+        <div>他の人の記録を見に行くことができます。</div>
+      </div>
+    </div>
     <!--  本文  -->
     <form action="mypage-branch.php" method="post">
       <div class="zenhan">
         <div class="zenhan1">
           <div class="now">
             今は何をしていますか？ <br><br>
-            <textarea class="area" name="task" placeholder="※自分が今していることを周りの人にも共有しましょう。" required><?php
-                                                                                                  if (empty($task) == false) {
-                                                                                                    print $task;
-                                                                                                  } ?></textarea><br><br><br>
+            <textarea class="area" name="task" placeholder="※自分が今していることを周りの人にも共有しましょう。"><?php
+                                                                                        if (empty($task) == false) {
+                                                                                          print $task;
+                                                                                        } ?></textarea><br><br><br>
           </div>
           <!--now-->
           <div class="time">
@@ -174,23 +192,23 @@ if (isset($_SESSION['login']) == false) {
                                                                             print $bytime1_1;
                                                                           } else {
                                                                             print '00';
-                                                                          } ?>" maxlength="2" required>:
+                                                                          } ?>" maxlength="2">:
             <input type="number" name="bytime1_2" max="59" min="0" value="<?php if (empty($bytime1_2) == false) {
                                                                             print $bytime1_2;
                                                                           } else {
                                                                             print '00';
-                                                                          } ?>" maxlength="2" required>
+                                                                          } ?>" maxlength="2">
             ～
             <input type="number" name="bytime2_1" max="24" min="0" value="<?php if (empty($bytime2_1) == false) {
                                                                             print $bytime2_1;
                                                                           } else {
                                                                             print '00';
-                                                                          } ?>" maxlength="2" required>:
+                                                                          } ?>" maxlength="2">:
             <input type="number" name="bytime2_2" max="59" min="0" value="<?php if (empty($bytime2_2) == false) {
                                                                             print $bytime2_2;
                                                                           } else {
                                                                             print '00';
-                                                                          } ?>" maxlength="2" required>
+                                                                          } ?>" maxlength="2">
             <br><br><br>
           </div>
           <!--time-->
@@ -296,9 +314,9 @@ if (isset($_SESSION['login']) == false) {
           ここは私に任せて！ <br><br><br>
           <div class="makasete1">
             1<br>
-            <textarea class="a" type="text" name="strong1" placeholder="※あなたの得意分野を教えてください。&#13;&#10;誰に質問するべきか、お互いに把握できるようになります。" required><?php if (empty($strong1) == false) {
-                                                                                                                                            print $strong1;
-                                                                                                                                          } ?></textarea>
+            <textarea class="a" type="text" name="strong1" placeholder="※あなたの得意分野を教えてください。&#13;&#10;誰に質問するべきか、お互いに把握できるようになります。"><?php if (empty($strong1) == false) {
+                                                                                                                                    print $strong1;
+                                                                                                                                  } ?></textarea>
             2<br>
             <textarea class="b" type="text" name="strong2"><?php if (empty($strong2) == false) {
                                                               print $strong2;
@@ -356,18 +374,30 @@ if (isset($_SESSION['login']) == false) {
                     }
                     print '<p><a href="../mypage/mylist.php">質問リスト</a></p>';
                     print '<p><a href="member-list.php">メンバーリスト</a></p>';
-
                     if (empty($code) == false) {
                       if ($code !== $honnin) {
               ?> <p><a id="shitu" href="select.php?code=<?php print $code; ?>">しつもんする</a></p>
-          <?php             }
+          <?php }
                     }
           ?>
         </div>
         <!--nav2-->
+
       </div>
       <!--navzentai-->
   </body>
+  <script>
+    // モーダル開閉処理
+    document.addEventListener('click', function(event) {
+      if (event.target.classList.contains('button-info') || event.target.closest('.button-info')) {
+        console.log('');
+      } else if (event.target.classList.contains('button-info-button')) {
+        document.querySelector('.button-info').classList.add('block');
+      } else {
+        document.querySelector('.button-info').classList.remove('block');
+      }
+    })
+  </script>
 
   </html>
 <?php

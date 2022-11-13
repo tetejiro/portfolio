@@ -52,6 +52,24 @@ body {
   width: 1vw;
 }
 
+.header-right {
+  display: flex;
+}
+
+.button-info-button {
+  font-weight: 600;
+  margin-right: 5%;
+  background: #b0deec;
+  text-align: center;
+  padding-top: 3.5%;
+  border-radius: 5px;
+}
+
+.migi {
+  line-height: 200%;
+  width: 100%;
+}
+
 a {
   text-decoration: none;
   color: #2b2b2b;
@@ -62,8 +80,37 @@ input[type="number"] {
   text-align: center;
 }
 
-.migi {
+/* モーダル */
+.button-info {
+  border: #67a3b5 dashed 5px;
+  background: white;
+  width: 45vw;
+  height: 65vh;
+  position: fixed;
+  margin-left: 20%;
+  margin-top: -5%;
+  text-align: center;
+  padding: 5%;
   line-height: 200%;
+}
+
+.button-info > .content {
+  text-align: left;
+}
+
+.button-info > p {
+  font-weight: 700;
+  border-bottom: #158db2 solid 3px;
+  width: 40%;
+  margin-bottom: 10%;
+}
+
+.button-info > .content > p {
+  font-weight: 700;
+}
+
+.block {
+  display: block !important;
 }
 
 /*ナビ*/
