@@ -173,6 +173,7 @@ if (isset($_SESSION['login']) == false) {
         <p>メンバーリスト</p>
         <div>他の人の記録を見に行くことができます。</div>
       </div>
+      <p class="close">とじる</p>
     </div>
     <!--  本文  -->
     <form action="mypage-branch.php" method="post">
@@ -390,10 +391,15 @@ if (isset($_SESSION['login']) == false) {
     // モーダル開閉処理
     document.addEventListener('click', function(event) {
       if (event.target.classList.contains('button-info') || event.target.closest('.button-info')) {
-        console.log('');
+        document.querySelector('.close').addEventListener('click', function() {
+          // モーダル内・とじるボタン
+          document.querySelector('.button-info').classList.remove('block');
+        })
       } else if (event.target.classList.contains('button-info-button')) {
-        document.querySelector('.button-info').classList.add('block');
+        // ボタン押下
+        document.querySelector('.button-info').classList.toggle('block');
       } else {
+        // モーダル外
         document.querySelector('.button-info').classList.remove('block');
       }
     })

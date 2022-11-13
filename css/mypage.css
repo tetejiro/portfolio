@@ -85,7 +85,7 @@ input[type="number"] {
   border: #67a3b5 dashed 5px;
   background: white;
   width: 45vw;
-  height: 65vh;
+  height: 75vh;
   position: fixed;
   margin-left: 20%;
   margin-top: -5%;
@@ -107,6 +107,12 @@ input[type="number"] {
 
 .button-info > .content > p {
   font-weight: 700;
+}
+
+.button-info > p:last-child {
+  border: none;
+  background: gainsboro;
+  margin: 5% 0 0 30%;
 }
 
 .block {
@@ -411,5 +417,24 @@ nav>p:hover {
     width: 20%;
     background-color: #f3f3f3;
     height: 2rem;
+  }
+
+  /* モーダル */
+  .button-info {
+    width: 80vw;
+    margin-left: 5.5%;
+    top: 15%;
+    height: 80%;
+  }
+
+  .button-info > p {
+    width: 100%;
+  }
+
+  .button-info > p:last-child {
+    width: fit-content;
+    margin-left: 40%;
+    border: none;
+    background: gainsboro;
   }
 }
