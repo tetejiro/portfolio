@@ -57,6 +57,12 @@ main {
   width: 50%;
   color: #2b2b2b;
   text-decoration: none;
+  border-bottom: solid white 1px;
+}
+
+.botan1:hover,
+.botan>a:hover {
+  border-bottom: #1b6c84 1px solid;
 }
 
 .naiyo>a {

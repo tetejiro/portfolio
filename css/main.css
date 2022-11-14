@@ -71,6 +71,16 @@ textarea {
   padding-top: 3%;
 }
 
+.menu>input,
+.menu>a {
+  border: 3px solid white;
+}
+
+.menu>input:hover,
+.menu>a:hover {
+  border-bottom: #1b6c84 3px solid;;
+}
+
 .menu>a {
   display: block;
 }

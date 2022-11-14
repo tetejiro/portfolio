@@ -27,7 +27,6 @@ body {
   border-bottom: 4px solid;
   margin-bottom: 15px;
   padding-bottom: 15px;
-  padding-right: 4%;
 }
 
 .hidari>img,
@@ -67,7 +66,7 @@ body {
 
 .migi {
   line-height: 200%;
-  width: 100%;
+  width: 120%;
 }
 
 a {
@@ -273,7 +272,6 @@ nav>p:hover {
     display: flex;
     flex-direction: column;
     margin-bottom: 0%;
-    padding-right: 0%;
   }
 
   .hidari>img {
@@ -293,6 +291,10 @@ nav>p:hover {
 
   .hidari {
     order: 1;
+  }
+
+  .button-info-button {
+    padding-top: 6%;
   }
 
   /*ナビ*/
