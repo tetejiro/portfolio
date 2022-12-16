@@ -7,20 +7,10 @@ if (isset($_SESSION['login']) == false) {
   print '<a href="../registration/login.html">ログインへ</a>';
   exit();
 } else {
-  ?>
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="utf-8">
-  <title>しつもん</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-
-  <!-- css -->
-  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-  <link rel="stylesheet" href="../css/mylist.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP">
-  <link rel="icon" type="image/png" href="../favicon/p-favicon.png">
-</head>
+    require_once('../common.php');
+    $cmn = new Common();
+    $cmn->printHead('../css/mylist.css');
+?>
 <body>
   <h3><img src="../favicon/p-favicon.png">過去の仕事の記録</h3><br>
   <?php

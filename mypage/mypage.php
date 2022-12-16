@@ -7,22 +7,10 @@ if (isset($_SESSION['login']) == false) {
   print '<a href="../registration/login.html">ログインへ</a>';
   exit();
 } else {
+  require_once('../common.php');
+  $cmn = new Common();
+  $cmn->printHead('../css/mypage.css');
 ?>
-  <!DOCTYPE html>
-  <html lang="ja">
-
-  <head>
-    <meta charset="utf-8">
-    <title>しつもん</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-
-    <!-- css -->
-    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link rel="stylesheet" href="../css/mypage.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP">
-    <link rel="icon" type="image/png" href="../favicon/p-favicon.png">
-    </script>
-  </head>
 
   <body class="all">
     <?php
@@ -180,35 +168,40 @@ if (isset($_SESSION['login']) == false) {
         <div class="zenhan1">
           <div class="now">
             今は何をしていますか？ <br><br>
-            <textarea class="area" name="task" placeholder="※自分が今していることを周りの人にも共有しましょう。"><?php
-                                                                                        if (empty($task) == false) {
-                                                                                          print $task;
-                                                                                        } ?></textarea><br><br><br>
+            <textarea class="area" name="task" placeholder="※自分が今していることを周りの人にも共有しましょう。" required>
+              <?php
+                if (empty($task) == false) {
+                  print $task;
+                }
+              ?>
+            </textarea><br><br><br>
           </div>
           <!--now-->
           <div class="time">
             どれくらいかかりそうですか？ <br><br>
-            <input type="number" name="bytime1_1" max="24" min="0" value="<?php if (empty($bytime1_1) == false) {
-                                                                            print $bytime1_1;
-                                                                          } else {
-                                                                            print '00';
-                                                                          } ?>" maxlength="2">:
+            <input type="number" name="bytime1_1" max="24" min="0" value="
+              <?php if (empty($bytime1_1) == false) {
+                  print $bytime1_1;
+                } else {
+                  print '00';
+                }
+              ?>" maxlength="2" required>:
             <input type="number" name="bytime1_2" max="59" min="0" value="<?php if (empty($bytime1_2) == false) {
                                                                             print $bytime1_2;
                                                                           } else {
                                                                             print '00';
-                                                                          } ?>" maxlength="2">
+                                                                          } ?>" maxlength="2" required>
             ～
             <input type="number" name="bytime2_1" max="24" min="0" value="<?php if (empty($bytime2_1) == false) {
                                                                             print $bytime2_1;
                                                                           } else {
                                                                             print '00';
-                                                                          } ?>" maxlength="2">:
+                                                                          } ?>" maxlength="2" required>:
             <input type="number" name="bytime2_2" max="59" min="0" value="<?php if (empty($bytime2_2) == false) {
                                                                             print $bytime2_2;
                                                                           } else {
                                                                             print '00';
-                                                                          } ?>" maxlength="2">
+                                                                          } ?>" maxlength="2" required>
             <br><br><br>
           </div>
           <!--time-->
@@ -314,7 +307,7 @@ if (isset($_SESSION['login']) == false) {
           ここは私に任せて！ <br><br><br>
           <div class="makasete1">
             1<br>
-            <textarea class="a" type="text" name="strong1" placeholder="※あなたの得意分野を教えてください。&#13;&#10;誰に質問するべきか、お互いに把握できるようになります。"><?php if (empty($strong1) == false) {
+            <textarea class="a" type="text" name="strong1" placeholder="※あなたの得意分野を教えてください。&#13;&#10;誰に質問するべきか、お互いに把握できるようになります。" required><?php if (empty($strong1) == false) {
                                                                                                                                     print $strong1;
                                                                                                                                   } ?></textarea>
             2<br>

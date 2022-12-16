@@ -4,21 +4,11 @@ session_regenerate_id(true);
 if (isset($_SESSION['login']) == false) {
   print 'ログインできていません。<br><br>';
   print '<a href="../registration/login.html">ログインへ</a>';
-} else { ?>
-  <!DOCTYPE html>
-  <html lang="ja">
-
-  <head>
-    <meta charset="utf-8">
-    <title>しつもん</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-
-    <!-- css -->
-    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link rel="stylesheet" href="../css/mylist.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP">
-    <link rel="icon" type="image/png" href="../favicon/p-favicon.png">
-  </head>
+} else {
+    require_once('../common.php');
+    $cmn = new Common();
+    $cmn->printHead('../css/mylist.css');
+?>
 
   <body>
     <h3><img src="../favicon/p-favicon.png"> 過去のほうれんそう・質問リスト</h3><br>
