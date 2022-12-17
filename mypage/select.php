@@ -5,15 +5,14 @@ if($_SESSION['login']==false)
 {
   print 'ログインしてください。';
   print '<a href="../login.php">ログインページへ</a>';
-}
-else
-{
+} else {
   $code=$_GET['code'];
   require_once '../new-db/new-select.php';
   $SelectDb = new SelectDb();
   $rec = $SelectDb->selectDb9($code);
   $name=$rec['name'];
 
+  // headの記載
   require_once('../common.php');
   $cmn = new Common();
   $cmn->printHead('../css/select.css');

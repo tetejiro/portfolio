@@ -7,9 +7,10 @@ if (isset($_SESSION['login']) == false) {
   print '<a href="../registration/login.html">ログインへ</a>';
   exit();
 } else {
-    require_once('../common.php');
-    $cmn = new Common();
-    $cmn->printHead('../css/mylist.css');
+  // headの記載
+  require_once('../common.php');
+  $cmn = new Common();
+  $cmn->printHead('../css/mylist.css');
 ?>
 <body>
   <h3><img src="../favicon/p-favicon.png">過去の仕事の記録</h3><br>

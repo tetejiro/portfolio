@@ -7,6 +7,7 @@ if (isset($_SESSION['login']) == false) {
   print '<a href="../registration/login.html">ログインへ</a>';
   exit();
 } else {
+  // headの記載
   require_once('../common.php');
   $cmn = new Common();
   $cmn->printHead('../css/mypage.css');

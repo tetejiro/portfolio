@@ -5,9 +5,10 @@ if (isset($_SESSION['login']) == false) {
   print 'ログインできていません。<br><br>';
   print '<a href="../registration/login.html">ログインへ</a>';
 } else {
-    require_once('../common.php');
-    $cmn = new Common();
-    $cmn->printHead('../css/mylist.css');
+  // headの記載
+  require_once('../common.php');
+  $cmn = new Common();
+  $cmn->printHead('../css/mylist.css');
 ?>
 
   <body>
