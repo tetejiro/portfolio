@@ -56,7 +56,7 @@ if (isset($_SESSION['login']) == false) {
         }
       }
     } catch (Exception $e) {
-      print 'ただいま障害中です。<br>前回のデータを読み取れませんでした。<br>';
+      print 'ただいま障害中です。前回のデータを読み取れませんでした。';
       exit('<a href="../registration/index.php">もどる</a>');
     }
     ?>
@@ -73,7 +73,7 @@ if (isset($_SESSION['login']) == false) {
         <!--登録orログインから。-->
         <?php if (empty($code) == true) {
           print '<div class="migi">';
-          print '<span>' . $_SESSION['name'] . 'さん</span> のマイページ<br>今日も頑張ろう。';
+          print '<span>' . $_SESSION['name'] . 'さん</span> のマイページ<p>今日も頑張ろう。</p>';
           print '</div>';
         ?>
           <script>
@@ -86,9 +86,10 @@ if (isset($_SESSION['login']) == false) {
         else {
           try {
             //member-listから自分のマイページへ。
+            //🌟🌟🌟🌟🌟🌟　3項演算子に修正予定　🌟🌟🌟🌟🌟🌟
             if ($code == $honnin) {
               print '<div class="migi">';
-              print '<span>' . $_SESSION['name'] . 'さん</span> のマイページ<br>今日も頑張ろう。';
+              print '<span>' . $_SESSION['name'] . 'さん</span> のマイページ<p>今日も頑張ろう。</p>';
               print '</div>';
               //$rec = $SelectDb->selectDb13($honnin);
           ?>
@@ -102,7 +103,7 @@ if (isset($_SESSION['login']) == false) {
             else {
               $rec = $SelectDb->selectDb52($code);
               print '<div class="migi">';
-              print '<span>' . $rec['name'] . 'さん</span> のページ<br>注意書きによく目を通してしつもんしましょう。';
+              print '<span>' . $rec['name'] . 'さん</span> のページ<p>注意書きによく目を通してしつもんしましょう。</p>';
               print '</div>';
             ?>
               <script>
@@ -143,7 +144,7 @@ if (isset($_SESSION['login']) == false) {
 
       <?php if (empty($code) == false) {
         if ($code !== $honnin) {
-          print '<a href="select.php?code=' . $code . '">しつもんする</a><br><br>';
+          print '<a href="select.php?code=' . $code . '">しつもんする</a>';
         }
       }
       ?>
@@ -168,50 +169,31 @@ if (isset($_SESSION['login']) == false) {
       <div class="zenhan">
         <div class="zenhan1">
           <div class="now">
-            今は何をしていますか？ <br><br>
+            今は何をしていますか？
             <textarea class="area" name="task" placeholder="※自分が今していることを周りの人にも共有しましょう。" required>
-              <?php
-                if (empty($task) == false) {
-                  print $task;
-                }
-              ?>
-            </textarea><br><br><br>
+              <?php empty($task) == false ? print $task : print '※自分が今していることを周りの人にも共有しましょう。';?>
+            </textarea>
           </div>
           <!--now-->
           <div class="time">
-            どれくらいかかりそうですか？ <br><br>
+            <div>どれくらいかかりそうですか？</div>
             <input type="number" name="bytime1_1" max="24" min="0" value="
-              <?php if (empty($bytime1_1) == false) {
-                  print $bytime1_1;
-                } else {
-                  print '00';
-                }
-              ?>" maxlength="2" required>:
-            <input type="number" name="bytime1_2" max="59" min="0" value="<?php if (empty($bytime1_2) == false) {
-                                                                            print $bytime1_2;
-                                                                          } else {
-                                                                            print '00';
-                                                                          } ?>" maxlength="2" required>
-            ～
-            <input type="number" name="bytime2_1" max="24" min="0" value="<?php if (empty($bytime2_1) == false) {
-                                                                            print $bytime2_1;
-                                                                          } else {
-                                                                            print '00';
-                                                                          } ?>" maxlength="2" required>:
-            <input type="number" name="bytime2_2" max="59" min="0" value="<?php if (empty($bytime2_2) == false) {
-                                                                            print $bytime2_2;
-                                                                          } else {
-                                                                            print '00';
-                                                                          } ?>" maxlength="2" required>
-            <br><br><br>
+              <?php empty($bytime1_1) == false ? print $bytime1_1 : print '00';?>" maxlength="2" required>:
+            <input type="number" name="bytime1_2" max="59" min="0"
+              value="<?php empty($bytime1_2) == false ? print $bytime1_2 : print '00';?>" maxlength="2" required>～
+            <input type="number" name="bytime2_1" max="24" min="0"
+              value="<?php empty($bytime2_1) == false ? print $bytime2_1 : print '00';?>" maxlength="2" required>:
+            <input type="number" name="bytime2_2" max="59" min="0"
+              value="<?php empty($bytime2_2) == false ? print $bytime2_2 : print '00';?>" maxlength="2" required>
           </div>
           <!--time-->
         </div>
         <!--zenhan1-->
         <div class="emotion">
-          <p>今日の気分は？</p><br>
+          <p>今日の気分は？</p>
           <div class="kibun">
-            <label><img src="../favicon/kao1.png"><br>
+            <label>
+              <div><img src="../favicon/kao1.png"></div>
               <input type="radio" name="emotion" value="余裕" required <?php
                                                                       if (isset($emotion) == true) {
                                                                         if ($emotion == '余裕') {
@@ -221,7 +203,8 @@ if (isset($_SESSION['login']) == false) {
                                                                       ?>>余裕
             </label>
 
-            <label><img src="../favicon/kao2.png"><br>
+            <label>
+              <div><img src="../favicon/kao2.png"></div>
               <input type="radio" name="emotion" value="普通" <?php
                                                             if (isset($emotion) == true) {
                                                               if ($emotion == '普通') {
@@ -231,7 +214,8 @@ if (isset($_SESSION['login']) == false) {
                                                             ?>>普通
             </label>
 
-            <label><img src="../favicon/kao3.png"><br>
+            <label>
+              <div><img src="../favicon/kao3.png"></div>
               <input type="radio" name="emotion" value="余裕がない" <?php
                                                                 if (isset($emotion) == true) {
                                                                   if ($emotion == '余裕がない') {
@@ -241,7 +225,8 @@ if (isset($_SESSION['login']) == false) {
                                                                 ?>>余裕がない
             </label>
 
-            <label><img src="../favicon/kao4.png"><br>
+            <label>
+              <div><img src="../favicon/kao4.png"></div>
               <input type="radio" name="emotion" value="忙しい" <?php
                                                               if (isset($emotion) == true) {
                                                                 if ($emotion == '忙しい') {
@@ -251,7 +236,8 @@ if (isset($_SESSION['login']) == false) {
                                                               ?>>忙しい
             </label>
 
-            <label><img src="../favicon/kao5.png"><br>
+            <label>
+              <div><img src="../favicon/kao5.png"></div>
               <input type="radio" name="emotion" value="手伝ってほしい" <?php
                                                                   if (isset($emotion) == true) {
                                                                     if ($emotion == '手伝ってほしい') {
@@ -269,56 +255,41 @@ if (isset($_SESSION['login']) == false) {
       <div class="kouhan">
         <div class="kohan1">
           <div class="zikan">
-            都合がいい時間 <br><br>
-            <input type="number" name="time1_1" v max="24" min="0" value="<?php if (empty($time1_1) == false) {
-                                                                            print $time1_1;
-                                                                          } else {
-                                                                            print '00';
-                                                                          } ?>" maxlength="2" required>:
-            <input type="number" name="time1_2" v max="59" min="0" value="<?php if (empty($time1_2) == false) {
-                                                                            print $time1_2;
-                                                                          } else {
-                                                                            print '00';
-                                                                          } ?>" maxlength="2" required>
-            ～
-            <input type="number" name="time2_1" v max="24" min="0" value="<?php if (empty($time2_1) == false) {
-                                                                            print $time2_1;
-                                                                          } else {
-                                                                            print '00';
-                                                                          } ?>" maxlength="2" required>:
-            <input type="number" name="time2_2" v max="59" min="0" value="<?php if (empty($time2_2) == false) {
-                                                                            print $time2_2;
-                                                                          } else {
-                                                                            print '00';
-                                                                          } ?>" maxlength="2" required>
-            <br><br><br>
+            <div>都合がいい時間</div>
+            <input type="number" name="time1_1" v max="24" min="0"
+              value="<?php empty($time1_1) == false ? print $time1_1 : print '00';?>" maxlength="2" required>:
+            <input type="number" name="time1_2" v max="59" min="0"
+              value="<?php empty($time1_2) == false ? print $time1_2 : print '00';?>" maxlength="2" required>～
+            <input type="number" name="time2_1" v max="24" min="0"
+              value="<?php empty($time2_1) == false ? print $time2_1 : print '00';?>" maxlength="2" required>:
+            <input type="number" name="time2_2" v max="59" min="0"
+              value="<?php empty($time2_2) == false ? print $time2_2 : print '00';?>" maxlength="2" required>
           </div>
           <!--zikan-->
           <div class="tyui">
-            質問時の注意事項 <br><br>
-            <textarea class="area" name="attention" placeholder="※質問する前に見ておいてほしいことを書いてください。" required><?php
-                                                                                                      if (isset($attention) == true) {
-                                                                                                        print $attention;
-                                                                                                      } ?></textarea><br><br>
+            質問時の注意事項
+            <textarea class="area" name="attention" placeholder="※質問する前に見ておいてほしいことを書いてください。" required>
+              <?php isset($attention) == true ? print $attention : print '※質問する前に見ておいてほしいことを書いてください。';?>
+            </textarea>
           </div>
           <!--tyui-->
         </div>
         <!--kohan1-->
         <div class="makasete">
-          ここは私に任せて！ <br><br><br>
+          ここは私に任せて！
           <div class="makasete1">
-            1<br>
-            <textarea class="a" type="text" name="strong1" placeholder="※あなたの得意分野を教えてください。&#13;&#10;誰に質問するべきか、お互いに把握できるようになります。" required><?php if (empty($strong1) == false) {
-                                                                                                                                    print $strong1;
-                                                                                                                                  } ?></textarea>
-            2<br>
-            <textarea class="b" type="text" name="strong2"><?php if (empty($strong2) == false) {
-                                                              print $strong2;
-                                                            } ?></textarea>
-            3<br>
-            <textarea class="c" type="text" name="strong3"><?php if (empty($strong3) == false) {
-                                                              print $strong3;
-                                                            } ?></textarea>
+            <p>1</p>
+            <textarea class="a" type="text" name="strong1" placeholder="※あなたの得意分野を教えてください。&#13;&#10;誰に質問するべきか、お互いに把握できるようになります。" required>
+              <?php empty($strong1) == false ? print $strong1 : print '';?>
+            </textarea>
+            <p>2</p>
+            <textarea class="b" type="text" name="strong2">
+              <?php empty($strong2) == false ? print $strong2 : print '';?>
+            </textarea>
+            <p>3</p>
+            <textarea class="c" type="text" name="strong3">
+              <?php empty($strong3) == false ? print $strong3 : print '';?>
+            </textarea>
             <input type="hidden" name="code" value="<?php print $code; ?>">
           </div>
           <!--makasete1-->
