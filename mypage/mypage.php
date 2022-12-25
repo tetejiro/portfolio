@@ -173,8 +173,8 @@ if (isset($_SESSION['login']) == false) {
           <!--now-->
           <div class="time">
             <div>どれくらいかかりそうですか？</div>
-            <input type="number" name="bytime1_1" max="24" min="0" value="
-              <?php empty($bytime1_1) == false ? print $bytime1_1 : print '00';?>" maxlength="2" required>:
+            <input type="number" name="bytime1_1" max="24" min="0"
+              value="<?php empty($bytime1_1) == false ? print $bytime1_1 : print '00';?>" maxlength="2" required>:
             <input type="number" name="bytime1_2" max="59" min="0"
               value="<?php empty($bytime1_2) == false ? print $bytime1_2 : print '00';?>" maxlength="2" required>～
             <input type="number" name="bytime2_1" max="24" min="0"
