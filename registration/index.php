@@ -38,7 +38,7 @@
       try {
         require_once '../new-db/new-select.php';
         $SelectDb = new SelectDb();
-        $rec = $SelectDb->selectDb1();
+        $rec = $SelectDb->selectFromAnnownce();
       } catch (Exception $e) {
         print '周知事項が読み取れません。';
         var_dump($e);
