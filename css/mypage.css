@@ -6,6 +6,10 @@ body {
   padding: 5%;
 }
 
+.title {
+  margin-bottom: 2rem;
+}
+
 .area {
   border: solid 3.5px #b0deec;
   width: 40vw;
@@ -211,6 +215,7 @@ nav>p:hover {
 .makasete1 {
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 /*下のナビ*/

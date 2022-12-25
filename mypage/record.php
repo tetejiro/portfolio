@@ -1,12 +1,5 @@
 <?php
-//require_once('libs/consts/AppConstants.php');
-session_start();
-session_regenerate_id(true);
-if (isset($_SESSION['login']) == false) {
-  print 'ログインしていません。';
-  print '<a href="../registration/login.html">ログインへ</a>';
-  exit();
-} else {
+{
   // headの記載
   require_once('../common.php');
   $cmn = new Common();

@@ -158,14 +158,13 @@
       <div class="zenhan">
         <div class="zenhan1">
           <div class="now">
-            今は何をしていますか？
+            <p class="title">今は何をしていますか？</p>
             <textarea class="area" name="task" placeholder="※自分が今していることを周りの人にも共有しましょう。" required>
               <?php empty($task) == false ? print $task : print '※自分が今していることを周りの人にも共有しましょう。';?>
             </textarea>
           </div>
-          <!--now-->
           <div class="time">
-            <div>どれくらいかかりそうですか？</div>
+            <p class="title">どれくらいかかりそうですか？</p>
             <input type="number" name="bytime1_1" max="24" min="0"
               value="<?php empty($bytime1_1) == false ? print $bytime1_1 : print '00';?>" maxlength="2" required>:
             <input type="number" name="bytime1_2" max="59" min="0"
@@ -175,11 +174,10 @@
             <input type="number" name="bytime2_2" max="59" min="0"
               value="<?php empty($bytime2_2) == false ? print $bytime2_2 : print '00';?>" maxlength="2" required>
           </div>
-          <!--time-->
         </div>
         <!--zenhan1-->
         <div class="emotion">
-          <p>今日の気分は？</p>
+          <p class="title">今日の気分は？</p>
           <div class="kibun">
             <label>
               <div><img src="../favicon/kao1.png"></div>
@@ -211,15 +209,12 @@
                 <?php $emotion == '手伝ってほしい' ? print 'checked' : print ''; ?>>手伝ってほしい
             </label>
           </div>
-          <!--kibun-->
         </div>
-        <!--emotion-->
       </div>
-      <!--zenhan-->
       <div class="kouhan">
         <div class="kohan1">
           <div class="zikan">
-            <div>都合がいい時間</div>
+            <p class="title">都合がいい時間</p>
             <input type="number" name="time1_1" v max="24" min="0"
               value="<?php empty($time1_1) == false ? print $time1_1 : print '00';?>" maxlength="2" required>:
             <input type="number" name="time1_2" v max="59" min="0"
@@ -231,7 +226,7 @@
           </div>
           <!--zikan-->
           <div class="tyui">
-            質問時の注意事項
+            <p class="title">質問時の注意事項</p>
             <textarea class="area" name="attention" placeholder="※質問する前に見ておいてほしいことを書いてください。" required>
               <?php isset($attention) == true ? print $attention : print '※質問する前に見ておいてほしいことを書いてください。';?>
             </textarea>
@@ -240,7 +235,7 @@
         </div>
         <!--kohan1-->
         <div class="makasete">
-          ここは私に任せて！
+          <p class="title">ここは私に任せて！</p>
           <div class="makasete1">
             <p>1</p>
             <textarea class="a" type="text" name="strong1" placeholder="※あなたの得意分野を教えてください。&#13;&#10;誰に質問するべきか、お互いに把握できるようになります。" required>

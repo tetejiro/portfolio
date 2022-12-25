@@ -1,11 +1,5 @@
 <?php
-session_start();
-session_regenerate_id(true);
-if($_SESSION['login']==false)
 {
-  print 'ログインしてください。';
-  print '<a href="../login.php">ログインページへ</a>';
-} else {
   $code=$_GET['code'];
   require_once '../new-db/new-select.php';
   $SelectDb = new SelectDb();

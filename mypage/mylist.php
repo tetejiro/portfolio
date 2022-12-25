@@ -1,10 +1,5 @@
 <?php
-session_start();
-session_regenerate_id(true);
-if (isset($_SESSION['login']) == false) {
-  print 'ログインできていません。<br><br>';
-  print '<a href="../registration/login.html">ログインへ</a>';
-} else {
+{
   // headの記載
   require_once('../common.php');
   $cmn = new Common();

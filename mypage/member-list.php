@@ -1,10 +1,5 @@
 <?php
-session_start();
-session_regenerate_id(true);
-if (isset($_SESSION['login']) == false) {
-  print 'ログインしてください。';
-  print '<a href="../registration/login.html">ログインページへ</a>';
-} else {
+{
   // headの記載
   require_once('../common.php');
   $cmn = new Common();
@@ -49,8 +44,7 @@ if (isset($_SESSION['login']) == false) {
               $code = $year_member['code'];
               $name = $year_member['name'];
               print '<a class="name" href="mypage.php?code=' . $code . '">';
-              print $name;
-              print 'さん';
+              print $name . 'さん';
               print '</a>';
               print '<br>';
             }
