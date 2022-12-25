@@ -19,11 +19,7 @@ if (isset($_SESSION['login']) == false) {
     //自分のコード
     $honnin = $_SESSION['code'];
     //相手のコード
-    if (isset($_GET['code']) == true) {
-      $code = $_GET['code'];
-    } else {
-      $code = 0;
-    }
+    isset($_GET['code']) == true ? $code = $_GET['code'] : $code = 0;
     try {
       require_once '../new-db/new-select.php';
       $SelectDb = new SelectDb();
@@ -194,57 +190,32 @@ if (isset($_SESSION['login']) == false) {
           <div class="kibun">
             <label>
               <div><img src="../favicon/kao1.png"></div>
-              <input type="radio" name="emotion" value="余裕" required <?php
-                                                                      if (isset($emotion) == true) {
-                                                                        if ($emotion == '余裕') {
-                                                                          print 'checked';
-                                                                        }
-                                                                      }
-                                                                      ?>>余裕
+              <input type="radio" name="emotion" value="余裕" required
+                <?php $emotion == '余裕' ? print 'checked' : print '';?>>余裕
             </label>
 
             <label>
               <div><img src="../favicon/kao2.png"></div>
-              <input type="radio" name="emotion" value="普通" <?php
-                                                            if (isset($emotion) == true) {
-                                                              if ($emotion == '普通') {
-                                                                print 'checked';
-                                                              }
-                                                            }
-                                                            ?>>普通
+              <input type="radio" name="emotion" value="普通"
+                <?php $emotion == '普通' ? print 'checked' : print ''; ?>>普通
             </label>
 
             <label>
               <div><img src="../favicon/kao3.png"></div>
-              <input type="radio" name="emotion" value="余裕がない" <?php
-                                                                if (isset($emotion) == true) {
-                                                                  if ($emotion == '余裕がない') {
-                                                                    print 'checked';
-                                                                  }
-                                                                }
-                                                                ?>>余裕がない
+              <input type="radio" name="emotion" value="余裕がない"
+                <?php $emotion == '余裕がない' ? print 'checked' : print ''; ?>>余裕がない
             </label>
 
             <label>
               <div><img src="../favicon/kao4.png"></div>
-              <input type="radio" name="emotion" value="忙しい" <?php
-                                                              if (isset($emotion) == true) {
-                                                                if ($emotion == '忙しい') {
-                                                                  print 'checked';
-                                                                }
-                                                              }
-                                                              ?>>忙しい
+              <input type="radio" name="emotion" value="忙しい"
+                <?php $emotion == '忙しい' ? print 'checked' : print ''; ?>>忙しい
             </label>
 
             <label>
               <div><img src="../favicon/kao5.png"></div>
-              <input type="radio" name="emotion" value="手伝ってほしい" <?php
-                                                                  if (isset($emotion) == true) {
-                                                                    if ($emotion == '手伝ってほしい') {
-                                                                      print 'checked';
-                                                                    }
-                                                                  }
-                                                                  ?>>手伝ってほしい
+              <input type="radio" name="emotion" value="手伝ってほしい"
+                <?php $emotion == '手伝ってほしい' ? print 'checked' : print ''; ?>>手伝ってほしい
             </label>
           </div>
           <!--kibun-->
