@@ -19,7 +19,8 @@
 
       //ログインか登録から。
       if (empty($_GET['code']) == true) {
-        $rec = $SelectDb->selectDb4($honnin);
+        $condition = 'where whose ='.$honnin;
+        $rec = $SelectDb->selectQuery('now', '*', $condition, '');
         $count = count($rec);
         if ($count > 0) {
           $rec = $rec[$count - 1];
@@ -28,7 +29,8 @@
       } else {
         if ($code == $honnin) {
           //リストから自分のマイページ
-          $rec = $SelectDb->selectDb4($honnin);
+          $condition = 'where whose ='.$honnin;
+          $rec = $SelectDb->selectQuery('now', '*', $condition, '');
           $count = count($rec);
           if ($count > 0) {
             $rec = $rec[$count - 1];
@@ -36,7 +38,8 @@
           require_once './hozyo.php';
         } else {
           //リストから他の人のマイページ
-          $rec = $SelectDb->selectDb5($code);
+          $condition = 'where whose ='.$code;
+          $rec = $SelectDb->selectQuery('now', '*', $condition, '');
           $count = count($rec);
           if ($count > 0) {
             $rec = $rec[$count - 1];
@@ -80,7 +83,6 @@
               print '<div class="migi">';
               print '<span>' . $_SESSION['name'] . 'さん</span> のマイページ<p>今日も頑張ろう。</p>';
               print '</div>';
-              //$rec = $SelectDb->selectDb13($honnin);
           ?>
               <script>
                 'use strict';
@@ -90,9 +92,10 @@
             }
             //member-listから他の人のマイページへ。
             else {
-              $rec = $SelectDb->selectDb52($code);
+              $condition = 'WHERE code = '.$code;
+              $rec = $SelectDb->selectQuery('member', 'name', $condition, '');
               print '<div class="migi">';
-              print '<span>' . $rec['name'] . 'さん</span> のページ<p>注意書きによく目を通してしつもんしましょう。</p>';
+              print '<span>' . $rec[0]['name'] . 'さん</span> のページ<p>注意書きによく目を通してしつもんしましょう。</p>';
               print '</div>';
             ?>
               <script>
@@ -102,7 +105,7 @@
                 window.alert(message);
                 document.querySelector('span').style.borderBottom = "thick solid #5fa5ba";
               </script>
-        <?php
+            <?php
             }
           } catch (Exception $e) {
             print '<div class="migi">';
@@ -255,7 +258,6 @@
         </div>
         <!--makasete-->
       </div>
-      <!--zenhan-->
       <div class="navzentai">
 
         <!--  下ナビ  -->
@@ -305,10 +307,7 @@
                     }
           ?>
         </div>
-        <!--nav2-->
-
       </div>
-      <!--navzentai-->
   </body>
   <script>
     // モーダル開閉処理

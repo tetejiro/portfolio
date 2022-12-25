@@ -20,7 +20,8 @@
       <?php
       require_once '../new-db/new-select.php';
       $SelectDb = new SelectDb();
-      $rec = $SelectDb->selectDb6();
+      $selectField = 'year, code, name';
+      $rec = $SelectDb->selectFetchAll('member', $selectField, '', '');
 
       ksort($rec);
       // ↑ https://kinocolog.com/pdo_fetch_pattern/ の下の方参照

@@ -8,14 +8,38 @@ require_once 'new-const.php';
 class SelectDb
 {
     /*ここにnewした後に、
-$dsn = ConstDb::dsn;
-$user = ConstDb::user;
-$password = ConstDb::password;
-って書いたらエラーになるのはなぜ？？？？
-*/
+    $dsn = ConstDb::dsn;
+    $user = ConstDb::user;
+    $password = ConstDb::password;
+    って書いたらエラーになるのはなぜ？？？？
+    */
 
-    //１.registration/index.phpのセレクト文
-    function selectDb1()
+// ここから
+    // 使用箇所 index.php
+
+    // 使用箇所 reg-check.php
+    // function selectFromNow($honnin)
+    // {
+    //     $ConstDb = new ConstDb();
+    //     $dsn = ConstDb::dsn;
+    //     $user = ConstDb::user;
+    //     $password = ConstDb::password;
+    //     try {
+    //         $dbh = $ConstDb->ConnectDb($dsn, $user, $password);
+    //         $sql = 'SELECT * FROM now WHERE whose = :honnin';
+    //         $stmt = $dbh->prepare($sql);
+    //         $stmt->bindValue(':honnin', $honnin, PDO::PARAM_INT);
+    //         $stmt->execute();
+    //         $rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    //         $dbh = null;
+    //     } catch (Exception $e) {
+    //         var_dump($e);
+    //         exit('セレクトできませんでした。<a href="../registration/index.php">もどる</a>');
+    //     }
+    //     return $rec;
+    // }
+
+    function selectDb13($honnin)
     {
         $ConstDb = new ConstDb();
         $dsn = ConstDb::dsn;
@@ -23,9 +47,31 @@ $password = ConstDb::password;
         $password = ConstDb::password;
         try {
             $dbh = $ConstDb->ConnectDb($dsn, $user, $password);
-
-            $sql = 'SELECT data,content FROM announce ORDER BY data DESC LIMIT 3';
+            $sql = 'SELECT date, whom FROM latest WHERE code = :honnin';
             $stmt = $dbh->prepare($sql);
+            $stmt->bindValue(':honnin', $honnin, PDO::PARAM_INT);
+            $stmt->execute();
+            $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+            $dbh = null;
+        } catch (Exception $e) {
+            var_dump($e);
+            exit('セレクトできませんでした。');
+        }
+        return $rec;
+    }
+
+    //7.reg-check.phpのセレクト文(2)
+    function selectFromQuestion($honnin) {
+        $ConstDb = new ConstDb();
+        $dsn = ConstDb::dsn;
+        $user = ConstDb::user;
+        $password = ConstDb::password;
+        try {
+            $dbh = $ConstDb->ConnectDb($dsn, $user, $password);
+            $sql = 'SELECT nitizi, whose, whom, situation, goal, what, why, try0
+                    FROM question WHERE whose = :honnin';
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindValue(':honnin', $honnin, PDO::PARAM_INT);
             $stmt->execute();
             $rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $dbh = null;
@@ -36,6 +82,9 @@ $password = ConstDb::password;
         return $rec;
     }
 
+
+// ここまで
+
     //2.login-check.phpのセレクト文
     function selectDb2($name, $pass)
     {
@@ -45,7 +94,6 @@ $password = ConstDb::password;
         $password = ConstDb::password;
         try {
             $dbh = $ConstDb->ConnectDb($dsn, $user, $password);
-
             $sql = 'SELECT name,code FROM member WHERE name=:name AND pass=:pass';
             $stmt = $dbh->prepare($sql);
             $stmt->bindValue(':name', $name, PDO::PARAM_STR);
@@ -82,117 +130,29 @@ $password = ConstDb::password;
         return $rec;
     }
 
-    //4.reg-check.phpのセレクト文(1)
-    function selectDb4($honnin)
-    {
-        $ConstDb = new ConstDb();
-        $dsn = ConstDb::dsn;
-        $user = ConstDb::user;
-        $password = ConstDb::password;
-        try {
-            $dbh = $ConstDb->ConnectDb($dsn, $user, $password);
-            $sql = 'SELECT * FROM now WHERE whose = :honnin';
-            $stmt = $dbh->prepare($sql);
-            $stmt->bindValue(':honnin', $honnin, PDO::PARAM_INT);
-            $stmt->execute();
-            $rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $dbh = null;
-        } catch (Exception $e) {
-            var_dump($e);
-            exit('セレクトできませんでした。<a href="../registration/index.php">もどる</a>');
-        }
-        return $rec;
-    }
-
-    //5.reg-check.phpとmypage.phpのセレクト文(2)
-    function selectDb5($code)
-    {
-        $ConstDb = new ConstDb();
-        $dsn = ConstDb::dsn;
-        $user = ConstDb::user;
-        $password = ConstDb::password;
-        try {
-            $dbh = $ConstDb->ConnectDb($dsn, $user, $password);
-            $sql = 'SELECT * FROM now WHERE whose = :code';
-            $stmt = $dbh->prepare($sql);
-            $stmt->bindValue(':code', $code, PDO::PARAM_INT);
-            $stmt->execute();
-            $rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $dbh = null;
-        } catch (Exception $e) {
-            var_dump($e);
-            exit('セレクトできませんでした。<a href="../registration/index.php">もどる</a>');
-        }
-        return $rec;
-    }
-
     //5-2.reg-check.phpとmypage.phpのセレクト文(2)
     //！！！注意！！！　この52という数字は合ってるから、変えなくて大丈夫！
-    function selectDb52($code)
-    {
-        $ConstDb = new ConstDb();
-        $dsn = ConstDb::dsn;
-        $user = ConstDb::user;
-        $password = ConstDb::password;
-        try {
-            $dbh = $ConstDb->ConnectDb($dsn, $user, $password);
-            $sql = 'SELECT name FROM member WHERE code = :code';
-            $stmt = $dbh->prepare($sql);
-            $stmt->bindValue(':code', $code, PDO::PARAM_INT);
-            $stmt->execute();
-            $rec = $stmt->fetch(PDO::FETCH_ASSOC);
-            $dbh = null;
-        } catch (Exception $e) {
-            var_dump($e);
-            exit('セレクトできませんでした。<a href="../registration/index.php">もどる</a>');
-        }
-        return $rec;
-    }
+    // function selectDb52($code) {
+    //     $ConstDb = new ConstDb();
+    //     $dsn = ConstDb::dsn;
+    //     $user = ConstDb::user;
+    //     $password = ConstDb::password;
+    //     try {
+    //         $dbh = $ConstDb->ConnectDb($dsn, $user, $password);
+    //         $sql = 'SELECT name FROM member WHERE code = :code';
+    //         $stmt = $dbh->prepare($sql);
+    //         $stmt->bindValue(':code', $code, PDO::PARAM_INT);
+    //         $stmt->execute();
+    //         $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+    //         $dbh = null;
+    //     } catch (Exception $e) {
+    //         var_dump($e);
+    //         exit('セレクトできませんでした。<a href="../registration/index.php">もどる</a>');
+    //     }
+    //     return $rec;
+    // }
 
     //6.reg-check.phpのセレクト文(2)
-    function selectDb6()
-    {
-        $ConstDb = new ConstDb();
-        $dsn = ConstDb::dsn;
-        $user = ConstDb::user;
-        $password = ConstDb::password;
-        try {
-            $dbh = $ConstDb->ConnectDb($dsn, $user, $password);
-            $sql = 'SELECT year, member. code, name FROM member';
-            $stmt = $dbh->prepare($sql);
-            $stmt->execute();
-            $rec = $stmt->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_GROUP);
-            $dbh = null;
-        } catch (Exception $e) {
-            var_dump($e);
-            exit('セレクトできませんでした。<a href="../registration/index.php">もどる</a>');
-        }
-        return $rec;
-    }
-
-    //7.reg-check.phpのセレクト文(2)
-    function selectDb7($honnin)
-    {
-        $ConstDb = new ConstDb();
-        $dsn = ConstDb::dsn;
-        $user = ConstDb::user;
-        $password = ConstDb::password;
-        try {
-            $dbh = $ConstDb->ConnectDb($dsn, $user, $password);
-            $sql = 'SELECT nitizi, whose, whom, situation, goal, what, why, try0
-                    FROM question WHERE whose = :honnin';
-            $stmt = $dbh->prepare($sql);
-            $stmt->bindValue(':honnin', $honnin, PDO::PARAM_INT);
-            $stmt->execute();
-            $rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $dbh = null;
-        } catch (Exception $e) {
-            var_dump($e);
-            exit('セレクトできませんでした。<a href="../registration/index.php">もどる</a>');
-        }
-        return $rec;
-    }
-
     //8.reg-check.phpのセレクト文(2)
     function selectDb8($name)
     {
@@ -308,27 +268,6 @@ $password = ConstDb::password;
         return $rec;
     }
 
-    function selectDb13($honnin)
-    {
-        $ConstDb = new ConstDb();
-        $dsn = ConstDb::dsn;
-        $user = ConstDb::user;
-        $password = ConstDb::password;
-        try {
-            $dbh = $ConstDb->ConnectDb($dsn, $user, $password);
-            $sql = 'SELECT date, whom FROM latest WHERE code = :honnin';
-            $stmt = $dbh->prepare($sql);
-            $stmt->bindValue(':honnin', $honnin, PDO::PARAM_INT);
-            $stmt->execute();
-            $rec = $stmt->fetch(PDO::FETCH_ASSOC);
-            $dbh = null;
-        } catch (Exception $e) {
-            var_dump($e);
-            exit('セレクトできませんでした。');
-        }
-        return $rec;
-    }
-
     function selectDb14($pass)
     {
         $ConstDb = new ConstDb();
@@ -379,5 +318,50 @@ $password = ConstDb::password;
             $dbh = null;
         }
     }
-*/
+    */
+
+
+
+
+
+    // FETCH_ASSOC
+    function selectQuery($selectedObject, $selectField, $condition, $sortTx) {
+        $ConstDb = new ConstDb();
+        $dsn = ConstDb::dsn;
+        $user = ConstDb::user;
+        $password = ConstDb::password;
+        try {
+            $dbh = $ConstDb->ConnectDb($dsn, $user, $password);
+            $sql = 'SELECT '.$selectField.' FROM '.$selectedObject.' '.$condition.' '.$sortTx;
+            $stmt = $dbh->prepare($sql);
+            $stmt->execute();
+            $rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $dbh = null;
+        } catch (Exception $e) {
+            var_dump($e);
+            exit($sql);//'セレクトできませんでした。<a href="../registration/index.php">もどる</a>'
+        }
+        return $rec;
+    }
+
+    // fetch_group
+    function selectFetchAll($selectObject, $selectField, $condition, $sortTx) {
+        $ConstDb = new ConstDb();
+        $dsn = ConstDb::dsn;
+        $user = ConstDb::user;
+        $password = ConstDb::password;
+        try {
+            $dbh = $ConstDb->ConnectDb($dsn, $user, $password);
+            $sql = 'SELECT '.$selectField.' FROM '. $selectObject.' '.$condition.' '.$sortTx;
+            $stmt = $dbh->prepare($sql);
+            $stmt->execute();
+            $rec = $stmt->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_GROUP);
+            $dbh = null;
+        } catch (Exception $e) {
+            var_dump($e);
+            exit($sql);//'セレクトできませんでした。<a href="../registration/index.php">もどる</a>'
+        }
+        return $rec;
+    }
+
 }
