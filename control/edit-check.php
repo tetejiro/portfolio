@@ -57,8 +57,9 @@
     //名前・学年かぶりがないか。
     require_once '../new-db/new-select.php';
     $SelectDb = new SelectDb();
-    $rec = $SelectDb->selectDb12($name, $year);
-    if ($name == $rec['name'] && $year === $rec['year']) {
+    $condition = 'where name =' .$name .'year = '.$year;
+    $rec = $SelectDb->selectQuery('member', 'name', $condition, '');
+    if ($name == $rec[0]['name'] && $year === $rec[0]['year']) {
       print '同期に同じ名前で登録している人がいます。<br>';
       print '他の人が分からなくなってしまうので、区別できる名前に変更してください。<br>';
       print 'ご協力よろしくお願いします。<br>';
@@ -66,7 +67,8 @@
     }
 
     //パスワードかぶり
-    $rec = $SelectDb->selectDb14(md5($pass));
+    $condition = 'where pass = '.md5($pass);
+    $rec = $SelectDb->selectQuery('member', 'name', $condition , '');
     if (empty($rec) == false) {
       print 'そのパスワードは使用されています。<br>';
       print '別のパスワードに変更してください。<br>';
