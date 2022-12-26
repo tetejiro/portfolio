@@ -22,7 +22,7 @@
       $SelectDb = new SelectDb();
       $selectField = 'nitizi, whose, whom, situation, goal, what, why, try0';
       $condition = 'WHERE whose ='.$honnin;
-      $rec = $SelectDb->selectQuery('member', $selectField, $condition, '');
+      $rec = $SelectDb->selectQuery('question', $selectField, $condition, '');
 
       if (isset($rec) == false) {
         print '<link rel="stylesheet" href="../css/mannaka.css">';

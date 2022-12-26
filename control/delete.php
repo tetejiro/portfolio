@@ -20,11 +20,11 @@
 
     try {
       $code = $_GET['code'];
-
       require_once '../new-db/new-select.php';
       $SelectDb = new SelectDb();
-      $rec = $SelectDb->selectDb10($code);
-      $name = $rec['name'];
+      $condition = 'where code = '.$code;
+      $rec = $SelectDb->selectQuery('member', 'name', $condition, '');
+      $name = $rec[0]['name'];
     } catch (Exception $e) {
       exit('ただいま障害により大変ご迷惑をおかけしております。');
     }
