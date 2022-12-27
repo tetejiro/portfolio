@@ -12,7 +12,8 @@
       $honnin = $_SESSION['code'];
       require_once '../new-db/new-select.php';
       $SelectDb = new SelectDb();
-      $rec = $SelectDb->selectDb4($honnin);
+      $condition = 'where whose = '.$honnin;
+      $rec = $SelectDb->selectQuery('now', '*', $condition, '');
       $count = count($rec);
       for ($i = $count-1; 0<=$i; $i--) {
         ?>

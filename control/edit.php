@@ -22,9 +22,10 @@
 
     require_once '../new-db/new-select.php';
     $SelectDb = new SelectDb();
-    $rec = $SelectDb->selectDb11($code);
-    $name = $rec['name'];
-    $mail = $rec['mail'];
+    $condition = 'WHERE code = ' .$code;
+    $rec = $SelectDb->selectQuery('member', 'name, mail', $condition, '');
+    $name = $rec[0]['name'];
+    $mail = $rec[0]['mail'];
   } catch (Exception $e) {
     print 'ただいま障害により大変ご迷惑をおかけしております。';
     exit('<a href="../registration/login.html">ログイン</a>し直してください。');

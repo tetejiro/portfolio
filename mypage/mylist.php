@@ -20,7 +20,9 @@
 
       require_once '../new-db/new-select.php';
       $SelectDb = new SelectDb();
-      $rec = $SelectDb->selectDb7($honnin);
+      $selectField = 'nitizi, whose, whom, situation, goal, what, why, try0';
+      $condition = 'WHERE whose ='.$honnin;
+      $rec = $SelectDb->selectQuery('question', $selectField, $condition, '');
 
       if (isset($rec) == false) {
         print '<link rel="stylesheet" href="../css/mannaka.css">';
@@ -44,9 +46,9 @@
               <td><?php print $rec[$i]['nitizi']; ?></td>
             </tr>
             <?php
-            $name = $rec[$i]['whom'];
             $SelectDb = new SelectDb();
-            $aite = $SelectDb->selectDb8($name); ?>
+            $condition = 'where code = '.$rec[$i]['whom'];
+            $aite = $SelectDb->selectQuery('member', 'name', $condition, ''); ?>
             <tr>
               <th>質問相手</th>
               <td><?php print $aite; ?>さん</td>

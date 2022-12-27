@@ -38,7 +38,9 @@
       try {
         require_once '../new-db/new-select.php';
         $SelectDb = new SelectDb();
-        $rec = $SelectDb->selectFromAnnownce();
+        $selectField = 'data, content';
+        $sortTx = 'ORDER BY data DESC LIMIT 3';
+        $rec = $SelectDb->selectQuery('announce', $selectField, '', $sortTx);
       } catch (Exception $e) {
         print '周知事項が読み取れません。';
         var_dump($e);
