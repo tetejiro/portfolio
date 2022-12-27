@@ -70,9 +70,11 @@ if(empty($_POST['why'])==true)
             print '<form><input type="button" onclick="history.back()" value="戻る"></form>';
         }
         try {
-            require_once '../new-db/new-insert.php';
-            $InsertDb = new InsertDb();
-            $InsertDb->insertDb4($honnin, $code, $situation, $goal, $what, $why, $try, $return1);
+            require_once '../new-db/new-select.php';
+            $DBQuery = new DBQuery();
+            $fieldName = 'whose, whom, situation, goal, what, why, try0, return1';
+            $val = '\''.$honnin.'\',\''.$code.'\',\''.$situation.'\',\''.$goal.'\',\''.$what.'\',\''.$why.'\',\''.$try.'\',\''.$return1.'\'';
+            $DBQuery->dbQuery('insert', 'question', $fieldName, $val, '');
             //セッションはconstでしなきゃいけないのかも。
             $_SESSION['whose'] = $honnin;
             $_SESSION['whom'] = $code;

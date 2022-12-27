@@ -21,9 +21,9 @@
     $code = $_GET['code'];
 
     require_once '../new-db/new-select.php';
-    $SelectDb = new SelectDb();
-    $condition = 'WHERE code = ' .$code;
-    $rec = $SelectDb->selectQuery('member', 'name, mail', $condition, '');
+    $DbQuery = new DbQuery();
+    $condition = 'WHERE code = \'' .$code.'\'';
+    $rec = $DbQuery->dbQuery('select', 'member', 'name, mail', $condition, '');
     $name = $rec[0]['name'];
     $mail = $rec[0]['mail'];
   } catch (Exception $e) {

@@ -27,10 +27,11 @@ if (isset($_SESSION['login']) == false) {
   $strong3 = $_SESSION[ConstDb::strong3];
 
   try {
-    require_once '../new-db/new-insert.php';
-    $InsertDb = new InsertDb();
-    $InsertDb->insertDb3($whose, $task, $bytime1_1, $bytime1_2, $bytime2_1, $bytime2_2, $emotion, $time1_1, $time1_2, $time2_1, $time2_2, $attention, $strong1, $strong2, $strong3);
-
+    require_once '../new-db/new-select.php';
+    $DbQuery = new DbQuery();
+    $insertField = '(whose,task,bytime1_1,bytime1_2,bytime2_1,bytime2_2,emotion,time1_1,time1_2,time2_1,time2_2,attention,strong1,strong2,strong3)';
+    $val = $whose.','. trim($task).','. $bytime1_1.','. $bytime1_2.','. $bytime2_1.','. $bytime2_2.','. $emotion.','. $time1_1.','. $time1_2.','. $time2_1.','. $time2_2.','. trim($attention).','. trim($strong1).','. trim($strong2).','. trim($strong3);
+    $DbQuery->dbQuery('insert', 'now', $insertField, $val, '');
     header('Location:mypage.php');
     exit();
   } catch (Exception $e) {

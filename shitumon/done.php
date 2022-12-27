@@ -17,8 +17,9 @@ if (isset($_SESSION['login']) == false) {
   $url = $_SESSION['url'];
 
   require_once '../new-db/new-select.php';
-  $SelectDb = new SelectDb();
-  $rec = $SelectDb->selectDb11($code);
+  $DbQuery = new DbQuery();
+  $condition = 'WHERE code =\''.$code.'\'';
+  $rec = $DbQuery->dbQuery('select', 'member', 'name, mail', $condition, '');
 
   $name = $rec['name'];
   $mail = $rec['mail'];

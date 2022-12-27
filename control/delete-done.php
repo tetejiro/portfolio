@@ -18,11 +18,12 @@
 
 try
 {
-    $code=$_POST['code'];
+    $code = $_POST['code'];
 
-    require_once '../new-db/new-delete.php';
-    $UpdateDb = new UpdateDb();
-    $UpdateDb->updateDb1($code);
+    require_once '../new-db/new-select.php';
+    $DbQuery = new DbQuery();
+    $condition = 'WHERE code = \''.$code.'\'';
+    $DbQuery->dbQuery('delete', 'member', '', $condition, '');
 }
 catch (Exception $e)
 {
@@ -33,7 +34,7 @@ catch (Exception $e)
 ?>
 
 <div class="mi">
-削除しました。<br>
+  削除しました。<br>
 <br>
 <a href="./control.php">戻る</a>
 </div>

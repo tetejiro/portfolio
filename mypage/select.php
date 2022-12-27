@@ -2,9 +2,10 @@
 {
   $code=$_GET['code'];
   require_once '../new-db/new-select.php';
-  $SelectDb = new SelectDb();
-  $rec = $SelectDb->selectDb9($code);
-  $name=$rec['name'];
+  $DbQuery = new DbQuery();
+  $condition = 'where code = \''.$code.'\'';
+  $rec = $DbQuery->dbQuery('select', 'member', 'name', $condition, '');
+  $name = $rec['name'];
 
   // headの記載
   require_once('../common.php');

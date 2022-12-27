@@ -10,9 +10,9 @@ else
 {
     try
     {
-        require_once '../new-db/new-insert.php';
-        $InsertDb = new InsertDb();
-        $InsertDb->insertDb1($content);
+        require_once '../new-db/new-select.php';
+        $DbQuery = new DbQuery();
+        $DbQuery->dbQuery('insert', 'announce', 'content', $content, '');
         header('Location:announce.php');
     }
     catch(Exception $e)

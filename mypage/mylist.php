@@ -19,10 +19,10 @@
       }
 
       require_once '../new-db/new-select.php';
-      $SelectDb = new SelectDb();
+      $DbQuery = new DbQuery();
       $selectField = 'nitizi, whose, whom, situation, goal, what, why, try0';
-      $condition = 'WHERE whose ='.$honnin;
-      $rec = $SelectDb->selectQuery('question', $selectField, $condition, '');
+      $condition = 'WHERE whose =\''.$honnin.'\'';
+      $rec = $DbQuery->dbQuery('select', 'question', $selectField, $condition, '');
 
       if (isset($rec) == false) {
         print '<link rel="stylesheet" href="../css/mannaka.css">';
@@ -46,9 +46,9 @@
               <td><?php print $rec[$i]['nitizi']; ?></td>
             </tr>
             <?php
-            $SelectDb = new SelectDb();
-            $condition = 'where code = '.$rec[$i]['whom'];
-            $aite = $SelectDb->selectQuery('member', 'name', $condition, ''); ?>
+            $DbQuery = new DbQuery();
+            $condition = 'where code = \''.$rec[$i]['whom'].'\'';
+            $aite = $DbQuery->dbQuery('select', 'member', 'name', $condition, ''); ?>
             <tr>
               <th>質問相手</th>
               <td><?php print $aite; ?>さん</td>

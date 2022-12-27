@@ -17,8 +17,9 @@ else
     $code=$_GET['code'];
 
     require_once '../new-db/new-select.php';
-    $SelectDb = new SelectDb();
-    $rec = $SelectDb->selectDb10($code);
+    $DbQuery = new DbQuery();
+    $condition = 'WHERE code = \''.$code.'\'';
+    $rec = $DbQuery->dbQuery('select', 'member', 'name', $condition, '');
     $name = $rec['name'];
 ?>
 <!DOCTYPE html>
