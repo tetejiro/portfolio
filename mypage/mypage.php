@@ -15,12 +15,12 @@
     isset($_GET['code']) == true ? $code = $_GET['code'] : $code = 0;
     try {
       require_once '../new-db/new-select.php';
-      $SelectDb = new SelectDb();
+      $DbQuery = new DbQuery();
 
       //ログインか登録から。
       if (empty($_GET['code']) == true) {
-        $condition = 'where whose ='.$honnin;
-        $rec = $SelectDb->selectQuery('now', '*', $condition, '');
+        $condition = 'where whose =\''.$honnin.'\'';
+        $rec = $DbQuery->dbQuery('select', 'now', '*', $condition, '');
         $count = count($rec);
         if ($count > 0) {
           $rec = $rec[$count - 1];
@@ -29,8 +29,8 @@
       } else {
         if ($code == $honnin) {
           //リストから自分のマイページ
-          $condition = 'where whose ='.$honnin;
-          $rec = $SelectDb->selectQuery('now', '*', $condition, '');
+          $condition = 'where whose =\''.$honnin.'\'';
+          $rec = $DbQuery->dbQuery('select', 'now', '*', $condition, '');
           $count = count($rec);
           if ($count > 0) {
             $rec = $rec[$count - 1];
@@ -38,8 +38,8 @@
           require_once './hozyo.php';
         } else {
           //リストから他の人のマイページ
-          $condition = 'where whose ='.$code;
-          $rec = $SelectDb->selectQuery('now', '*', $condition, '');
+          $condition = 'where whose =\''.$code.'\'';
+          $rec = $DbQuery->dbQuery('select', 'now', '*', $condition, '');
           $count = count($rec);
           if ($count > 0) {
             $rec = $rec[$count - 1];
@@ -92,8 +92,8 @@
             }
             //member-listから他の人のマイページへ。
             else {
-              $condition = 'WHERE code = '.$code;
-              $rec = $SelectDb->selectQuery('member', 'name', $condition, '');
+              $condition = 'WHERE code = \''.$code.'\'';
+              $rec = $DbQuery->dbQuery('select', 'member', 'name', $condition, '');
               print '<div class="migi">';
               print '<span>' . $rec[0]['name'] . 'さん</span> のページ<p>注意書きによく目を通してしつもんしましょう。</p>';
               print '</div>';

@@ -26,8 +26,8 @@
         </div>
         <?php
         require_once '../new-db/new-select.php';
-        $SelectDb = new SelectDb();
-        $rec = $SelectDb->selectFetchAll('member', 'year, code, name', '', '');
+        $DbQuery = new DbQuery();
+        $rec = $DbQuery->selectFetchAll('member', 'year, code, name', '', '');
 
         ksort($rec);
         // ↑ https://kinocolog.com/pdo_fetch_pattern/ の下の方参照

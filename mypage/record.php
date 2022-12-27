@@ -11,9 +11,9 @@
       //マイページからマイリスト
       $honnin = $_SESSION['code'];
       require_once '../new-db/new-select.php';
-      $SelectDb = new SelectDb();
-      $condition = 'where whose = '.$honnin;
-      $rec = $SelectDb->selectQuery('now', '*', $condition, '');
+      $DbQuery = new DbQuery();
+      $condition = 'where whose = \''.$honnin.'\'';
+      $rec = $DbQuery->dbQuery('select', 'now', '*', $condition, '');
       $count = count($rec);
       for ($i = $count-1; 0<=$i; $i--) {
         ?>

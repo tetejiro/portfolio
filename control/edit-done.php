@@ -26,9 +26,11 @@ try
       $pass=$post['pass'];
       $year=$post['year'];
 
-      require_once '../new-db/new-update.php';
-      $UpdateDb = new UpdateDb();
-      $UpdateDb->updateDb1($name, $year, $pass, $mail, $code);
+      require_once '../new-db/new-select.php';
+      $DbQuery = new DbQuery();
+      $fieldName = 'name =\''.$name.'\',year =\''.$year.'\',pass=\''.$pass.'\',mail=\''.$mail.'\'';
+      $condition = 'code = \''.$code.'\'';
+      $DbQuery->dbQuery('update', 'member', $fieldName, $condition, '');
 }
 catch (Exception $e)
 {

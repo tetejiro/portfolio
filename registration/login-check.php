@@ -11,8 +11,9 @@ $pass = md5($pass);
 
 try {
   require_once '../new-db/new-select.php';
-  $SelectDb = new SelectDb();
-  $rec = $SelectDb->selectDb2($name, $pass);
+  $DbQuery = new DbQuery();
+  $condition = 'where name = \''.$name .'\' AND pass = \''.$pass. '\'';
+  $rec = $DbQuery->dbQuery('select', 'member', 'name, code', $condition, '');
 
   if ($rec == true) {
     session_start();
