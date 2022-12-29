@@ -75,6 +75,15 @@
     $okflg = false;
   }
 
+  //メールアドレスかぶり
+  $condition = 'where mail = \''.$mail.'\'';
+  $mailQuery = $DbQuery->dbQuery('select', 'member', 'mail', $condition, '');
+  if(count($mailQuery) >= 1) {
+    print 'メールアドレスは既に使用されています。';
+    print '他のメールアドレスに変更してください。';
+    $okflg = false;
+  }
+
   //1つでも当てはまったらもどるへ
   if ($okflg == false) {
     print '<form>';
