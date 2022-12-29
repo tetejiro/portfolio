@@ -21,8 +21,8 @@ if (isset($_SESSION['login']) == false) {
   $condition = 'WHERE code =\''.$code.'\'';
   $rec = $DbQuery->dbQuery('select', 'member', 'name, mail', $condition, '');
 
-  $name = $rec['name'];
-  $mail = $rec['mail'];
+  $name = $rec[0]['name'];
+  $mail = $rec[0]['mail'];
 
 ?>
   <!DOCTYPE html>

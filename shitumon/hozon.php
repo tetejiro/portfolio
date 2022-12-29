@@ -73,7 +73,7 @@ if(empty($_POST['why'])==true)
             require_once '../new-db/new-select.php';
             $DBQuery = new DBQuery();
             $fieldName = 'whose, whom, situation, goal, what, why, try0, return1';
-            $val = '\''.$honnin.'\',\''.$code.'\',\''.$situation.'\',\''.$goal.'\',\''.$what.'\',\''.$why.'\',\''.$try.'\',\''.$return1.'\'';
+            $val = $honnin.'\',\''.$code.'\',\''.$situation.'\',\''.$goal.'\',\''.$what.'\',\''.$why.'\',\''.$try.'\',\''.$return1;
             $DBQuery->dbQuery('insert', 'question', $fieldName, $val, '');
             //セッションはconstでしなきゃいけないのかも。
             $_SESSION['whose'] = $honnin;

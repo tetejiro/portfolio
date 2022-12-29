@@ -53,7 +53,7 @@
             empty($aite) == true ? $aite = '退会済みユーザ' : '';?>
             <tr>
               <th>質問相手</th>
-              <td><?php print $aite; ?>さん</td>
+              <td><?php print $aite[0]['name']; ?>さん</td>
             </tr>
             <tr>
               <th>件名</th>

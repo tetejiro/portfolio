@@ -20,7 +20,7 @@ else
     $DbQuery = new DbQuery();
     $condition = 'WHERE code = \''.$code.'\'';
     $rec = $DbQuery->dbQuery('select', 'member', 'name', $condition, '');
-    $name = $rec['name'];
+    $name = $rec[0]['name'];
 ?>
 <!DOCTYPE html>
 <html lang="ja">
