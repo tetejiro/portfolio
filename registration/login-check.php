@@ -18,8 +18,8 @@ try {
   if ($rec == true) {
     session_start();
     $_SESSION['login'] = 1;
-    $_SESSION['name'] = $rec['name'];
-    $_SESSION['code'] = $rec['code'];
+    $_SESSION['name'] = $rec[0]['name'];
+    $_SESSION['code'] = $rec[0]['code'];
     header('Location:../mypage/mypage.php');
     exit();
   } else {
