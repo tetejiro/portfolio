@@ -13,40 +13,22 @@
     $honnin = $_SESSION['code'];
     //相手のコード
     isset($_GET['code']) == true ? $code = $_GET['code'] : $code = 0;
+    // 自分フラグTRUE：自分のマイページ、自分フラグFALSE：他の人のマイページ
+    empty($_GET['code']) == false ?
+      // メンバーリストからマイページ
+      $_GET['code'] == $honnin ? $zibunflg = true : $zibunflg = false :
+      // ログイン・登録からマイページ
+      $zibunflg = true;
+
     try {
       require_once '../new-db/new-select.php';
       $DbQuery = new DbQuery();
-
-      //ログインか登録から。
-      if (empty($_GET['code']) == true) {
-        $condition = 'where whose =\''.$honnin.'\'';
-        $rec = $DbQuery->dbQuery('select', 'now', '*', $condition, '');
-        $count = count($rec);
-        if ($count > 0) {
-          $rec = $rec[$count - 1];
-        }
-        require_once './hozyo.php';
-      } else {
-        if ($code == $honnin) {
-          //リストから自分のマイページ
-          $condition = 'where whose =\''.$honnin.'\'';
-          $rec = $DbQuery->dbQuery('select', 'now', '*', $condition, '');
-          $count = count($rec);
-          if ($count > 0) {
-            $rec = $rec[$count - 1];
-          }
-          require_once './hozyo.php';
-        } else {
-          //リストから他の人のマイページ
-          $condition = 'where whose =\''.$code.'\'';
-          $rec = $DbQuery->dbQuery('select', 'now', '*', $condition, '');
-          $count = count($rec);
-          if ($count > 0) {
-            $rec = $rec[$count - 1];
-          }
-          require_once './hozyo.php';
-        }
+      $zibunflg ? $condition = 'where whose =\''.$code.'\'' : $condition = 'where whose =\''.$honnin.'\'';
+      $rec = $DbQuery->dbQuery('select', 'now', '*', $condition, '');
+      if(count($rec) > 0) {
+        $rec = $rec[count($rec) - 1];
       }
+      require_once './hozyo.php';
     } catch (Exception $e) {
       print 'ただいま障害中です。前回のデータを読み取れませんでした。';
       exit('<a href="../registration/index.php">もどる</a>');
@@ -63,7 +45,8 @@
       <div class="header-right">
         <div class="button-info-button">ボタン説明</div>
         <!--登録orログインから。-->
-        <?php if (empty($code) == true) {
+      <?php
+        if ($zibunflg) {
           print '<div class="migi">';
           print '<span>' . $_SESSION['name'] . 'さん</span> のマイページ<p>今日も頑張ろう。</p>';
           print '</div>';
@@ -73,46 +56,21 @@
             document.querySelector('span').style.borderBottom = "thick solid #B0DEEC";
           </script>
           <?php
-        }
-        //member-listから。
-        else {
-          try {
-            //member-listから自分のマイページへ。
-            //🌟🌟🌟🌟🌟🌟　3項演算子に修正予定　🌟🌟🌟🌟🌟🌟
-            if ($code == $honnin) {
-              print '<div class="migi">';
-              print '<span>' . $_SESSION['name'] . 'さん</span> のマイページ<p>今日も頑張ろう。</p>';
-              print '</div>';
+        } else {
+          $condition = 'WHERE code = \''.$code.'\'';
+          $rec = $DbQuery->dbQuery('select', 'member', 'name', $condition, '');
+          print '<div class="migi">';
+          print '<span>' . $rec[0]['name'] . 'さん</span> のページ<p>注意書きによく目を通してしつもんしましょう。</p>';
+          print '</div>';
           ?>
-              <script>
-                'use strict';
-                document.querySelector('span').style.borderBottom = "thick solid #B0DEEC";
-              </script>
-            <?php
-            }
-            //member-listから他の人のマイページへ。
-            else {
-              $condition = 'WHERE code = \''.$code.'\'';
-              $rec = $DbQuery->dbQuery('select', 'member', 'name', $condition, '');
-              print '<div class="migi">';
-              print '<span>' . $rec[0]['name'] . 'さん</span> のページ<p>注意書きによく目を通してしつもんしましょう。</p>';
-              print '</div>';
-            ?>
-              <script>
-                'use strict';
-                let names = '<?php print $rec['name']; ?>';
-                let message = names + 'さんのページ。\nよく読んで質問しましょう。';
-                window.alert(message);
-                document.querySelector('span').style.borderBottom = "thick solid #5fa5ba";
-              </script>
-            <?php
-            }
-          } catch (Exception $e) {
-            print '<div class="migi">';
-            print '誰のマイページかわかりません。ログインしなおしてください。';
-            print '</div>';
-            var_dump($e);
-          }
+          <script>
+            'use strict';
+            let names = '<?php print $rec[0]['name']?>';
+            let message = names + 'さんのページ。\nよく読んで質問しましょう。';
+            window.alert(message);
+            document.querySelector('span').style.borderBottom = "thick solid #5fa5ba";
+          </script>
+        <?php
         }
         ?>
       </div>
@@ -120,10 +78,12 @@
     <!--.header-->
     <nav>
       <?php
+      // マイページ
       if (empty($code) == true) {
         print '<p><label for="kousin">更新</label></p>';
         print '<a href="../mypage/record.php">記録</a>';
       }
+      // マイページ
       if (empty($code) == false) {
         if ($code == $honnin) {
           print '<p><label for="kousin">更新</label></p>';
@@ -134,6 +94,7 @@
       <a href="../mypage/mylist.php">質問リスト</a>
       <a href="member-list.php">メンバーリスト</a>
 
+      <!-- 他の人のページ -->
       <?php if (empty($code) == false) {
         if ($code !== $honnin) {
           print '<a href="select.php?code=' . $code . '">しつもんする</a>';
@@ -229,7 +190,7 @@
           <div class="tyui">
             <p class="title">質問時の注意事項</p>
             <textarea class="area" name="attention" required><?php
-              isset($attention) == true ? print $attention : print '※質問する前に見ておいてほしいことを書いてください。';?></textarea>
+              isset($attention) == true ? print $attention : print '※質問する前に留意してほしいことを書いてください。';?></textarea>
           </div>
         </div>
         <div class="makasete">
@@ -237,7 +198,7 @@
           <div class="makasete1">
             <p>1</p>
             <textarea class="a" type="text" name="strong1" required><?php
-              empty($strong1) == false ? print $strong1 : print '※あなたの得意分野を教えてください。&#13;&#10;誰に質問するべきか、お互いに把握できるようになります。';?></textarea>
+              empty($strong1) == false ? print $strong1 : print '※あなたの得意分野を教えてください。&#13;&#10;誰に質問するべきか、分かるようになります。';?></textarea>
             <p>2</p>
             <textarea class="b" type="text" name="strong2"><?php
               empty($strong2) == false ? print $strong2 : print '';?></textarea>

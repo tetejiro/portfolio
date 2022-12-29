@@ -198,7 +198,7 @@ nav>p:hover {
 .b,
 .c {
   display: inline-block;
-  width: auto;
+  width: 30%;
   height: 100px;
   border: solid #b0deec 3.5px;
   border-radius: 10px;
