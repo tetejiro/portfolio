@@ -162,9 +162,8 @@
         <div class="zenhan1">
           <div class="now">
             <p class="title">今は何をしていますか？</p>
-            <textarea class="area" name="task" placeholder="※自分が今していることを周りの人にも共有しましょう。" required>
-              <?php empty($task) == false ? print $task : print '※自分が今していることを周りの人にも共有しましょう。';?>
-            </textarea>
+            <textarea class="area" name="task" required><?php
+              empty($task) == false ? print $task : print '※自分が今していることを周りの人にも共有しましょう。';?></textarea>
           </div>
           <div class="time">
             <p class="title">どれくらいかかりそうですか？</p>
@@ -227,36 +226,27 @@
             <input type="number" name="time2_2" v max="59" min="0"
               value="<?php empty($time2_2) == false ? print $time2_2 : print '00';?>" maxlength="2" required>
           </div>
-          <!--zikan-->
           <div class="tyui">
             <p class="title">質問時の注意事項</p>
-            <textarea class="area" name="attention" placeholder="※質問する前に見ておいてほしいことを書いてください。" required>
-              <?php isset($attention) == true ? print $attention : print '※質問する前に見ておいてほしいことを書いてください。';?>
-            </textarea>
+            <textarea class="area" name="attention" required><?php
+              isset($attention) == true ? print $attention : print '※質問する前に見ておいてほしいことを書いてください。';?></textarea>
           </div>
-          <!--tyui-->
         </div>
-        <!--kohan1-->
         <div class="makasete">
           <p class="title">ここは私に任せて！</p>
           <div class="makasete1">
             <p>1</p>
-            <textarea class="a" type="text" name="strong1" placeholder="※あなたの得意分野を教えてください。&#13;&#10;誰に質問するべきか、お互いに把握できるようになります。" required>
-              <?php empty($strong1) == false ? print $strong1 : print '';?>
-            </textarea>
+            <textarea class="a" type="text" name="strong1" required><?php
+              empty($strong1) == false ? print $strong1 : print '※あなたの得意分野を教えてください。&#13;&#10;誰に質問するべきか、お互いに把握できるようになります。';?></textarea>
             <p>2</p>
-            <textarea class="b" type="text" name="strong2">
-              <?php empty($strong2) == false ? print $strong2 : print '';?>
-            </textarea>
+            <textarea class="b" type="text" name="strong2"><?php
+              empty($strong2) == false ? print $strong2 : print '';?></textarea>
             <p>3</p>
-            <textarea class="c" type="text" name="strong3">
-              <?php empty($strong3) == false ? print $strong3 : print '';?>
-            </textarea>
+            <textarea class="c" type="text" name="strong3"><?php
+              empty($strong3) == false ? print $strong3 : print '';?></textarea>
             <input type="hidden" name="code" value="<?php print $code; ?>">
           </div>
-          <!--makasete1-->
         </div>
-        <!--makasete-->
       </div>
       <div class="navzentai">
 
