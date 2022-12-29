@@ -59,7 +59,6 @@
     $DbQuery = new DbQuery();
     $condition = 'where name =\'' .$name .'\' AND year = \''.$year.'\'';
     $sameName = $DbQuery->dbQuery('select', 'member', 'name, year', $condition, '');
-    print_r($sameName);
     if (count($sameName) > 1) {
       $okflag = false;
       print '同期に同じ名前で登録している人がいます。<br>';

@@ -22,9 +22,9 @@
       $DbQuery = new DbQuery();
       $selectField = 'nitizi, whose, whom, situation, goal, what, why, try0';
       $condition = 'WHERE whose =\''.$honnin.'\'';
-      $rec = $DbQuery->dbQuery('select', 'question', $selectField, $condition, '');
+      $selectedQuestion = $DbQuery->dbQuery('select', 'question', $selectField, $condition, '');
 
-      if (isset($rec) == false) {
+      if (isset($selectedQuestion) == false) {
         print '<link rel="stylesheet" href="../css/mannaka.css">';
         print '<div class=mi>';
         print '<br>まだしつもん・ほうれんそうをしていません。<br>';
@@ -34,7 +34,7 @@
     </div>
     <?php
       } else {
-        $count = count($rec);
+        $count = count($selectedQuestion);
 
         for ($i = $count-1; 0<=$i; $i--) { ?>
       <div class="zentai2">
@@ -43,35 +43,37 @@
           <table>
             <tr>
               <th>時間</th>
-              <td><?php print $rec[$i]['nitizi']; ?></td>
+              <td><?php print $selectedQuestion[$i]['nitizi']; ?></td>
             </tr>
             <?php
             $DbQuery = new DbQuery();
-            $condition = 'where code = \''.$rec[$i]['whom'].'\'';
-            $aite = $DbQuery->dbQuery('select', 'member', 'name', $condition, ''); ?>
+            $condition = 'where code = \''.$selectedQuestion[$i]['whom'].'\'';
+            $aite = $DbQuery->dbQuery('select', 'member', 'name', $condition, '');
+            // 退会済みユーザ
+            empty($aite) == true ? $aite = 'deletedUser' : '';?>
             <tr>
               <th>質問相手</th>
               <td><?php print $aite; ?>さん</td>
             </tr>
             <tr>
               <th>件名</th>
-              <td><?php print $rec[$i]['situation']; ?></td>
+              <td><?php print $selectedQuestion[$i]['situation']; ?></td>
             </tr>
             <tr>
               <th>依頼したいこと</th>
-              <td><?php print $rec[$i]['goal']; ?></td>
+              <td><?php print $selectedQuestion[$i]['goal']; ?></td>
             </tr>
             <tr>
               <th>詳細</th>
-              <td><?php print $rec[$i]['what']; ?></td>
+              <td><?php print $selectedQuestion[$i]['what']; ?></td>
             </tr>
             <tr>
               <th>考えられる原因</th>
-              <td><?php print $rec[$i]['why']; ?></td>
+              <td><?php print $selectedQuestion[$i]['why']; ?></td>
             </tr>
             <tr>
               <th>試したこと・その他</th>
-              <td><?php print $rec[$i]['try0']; ?></td>
+              <td><?php print $selectedQuestion[$i]['try0']; ?></td>
             </tr>
           </table><br><br>
         </div>
