@@ -16,8 +16,7 @@
 <div class="mi">
 <?php
 
-try
-{
+try {
       require_once '../sanitize.php';
       $post=sanitize($_POST);
       $code=$post['code'];
@@ -29,17 +28,16 @@ try
       require_once '../new-db/new-select.php';
       $DbQuery = new DbQuery();
       $fieldName = 'name =\''.$name.'\',year =\''.$year.'\',pass=\''.$pass.'\',mail=\''.$mail.'\'';
-      $condition = 'code = \''.$code.'\'';
+      $condition = 'where code = \''.$code.'\'';
       $DbQuery->dbQuery('update', 'member', $fieldName, $condition, '');
 }
-catch (Exception $e)
-{
+catch (Exception $e) {
       print $e;
       exit('ただいま障害により大変ご迷惑をおかけしております。');
 }
 
 ?>
-
+<br>
 修正しました。<br>
 <br>
 <a href="./control.php">戻る</a>

@@ -12,7 +12,7 @@ try
       require_once '../new-db/new-select.php';
       $DbQuery = new DbQuery();
       $fieldName = 'name, year, pass, mail';
-      $val = '(\''.$name.'\',\''.$year.'\',\''.$pass.'\',\''.$mail.'\')';
+      $val = $name.'\',\''.$year.'\',\''.$pass.'\',\''.$mail;
       $DbQuery->DbQuery('insert', 'member', $fieldName, $val, '');
 
       require_once '../new-db/new-select.php';

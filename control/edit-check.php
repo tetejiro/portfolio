@@ -58,26 +58,30 @@
     require_once '../new-db/new-select.php';
     $DbQuery = new DbQuery();
     $condition = 'where name =\'' .$name .'\' AND year = \''.$year.'\'';
-    $rec = $DbQuery->dbQuery('select', 'member', 'name', $condition, '');
-    if ($name == $rec[0]['name'] && $year === $rec[0]['year']) {
+    $sameName = $DbQuery->dbQuery('select', 'member', 'name, year', $condition, '');
+    print_r($sameName);
+    if (count($sameName) > 1) {
+      $okflag = false;
       print '同期に同じ名前で登録している人がいます。<br>';
       print '他の人が分からなくなってしまうので、区別できる名前に変更してください。<br>';
       print 'ご協力よろしくお願いします。<br>';
-      $okflag = false;
     }
 
     //パスワードかぶり
     $condition = 'where pass = \''.md5($pass).'\'';
-    $rec = $DbQuery->dbQuery('select', 'member', 'name', $condition , '');
-    if (empty($rec) == false) {
-      print 'そのパスワードは使用されています。<br>';
-      print '別のパスワードに変更してください。<br>';
+    $samePass = $DbQuery->dbQuery('select', 'member', 'name', $condition , '');
+    if (count($samePass) > 1) {
       $okflg = false;
+      print 'パスワード「'.$pass.'」は使用されています。<br>';
+      print '別のパスワードに変更してください。<br>';
     }
 
     if ($okflag == true) {
-      print 'スタッフ名:<br>';
+      print '<br>変更してもよろしいですか？<br><br>';
+      print 'スタッフ名: ';
       print $name;
+      print '<br>pass: ';
+      print $pass;
       print '<br>';
 
       $pass = md5($pass);
