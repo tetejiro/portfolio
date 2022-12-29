@@ -50,7 +50,7 @@
             $condition = 'where code = \''.$selectedQuestion[$i]['whom'].'\'';
             $aite = $DbQuery->dbQuery('select', 'member', 'name', $condition, '');
             // 退会済みユーザ
-            empty($aite) == true ? $aite = 'deletedUser' : '';?>
+            empty($aite) == true ? $aite = '退会済みユーザ' : '';?>
             <tr>
               <th>質問相手</th>
               <td><?php print $aite; ?>さん</td>

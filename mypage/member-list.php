@@ -21,7 +21,7 @@
       require_once '../new-db/new-select.php';
       $DbQuery = new DbQuery();
       $selectField = 'year, code, name';
-      $rec = $DbQuery->selectFetchAll('select', 'member', $selectField, '', '');
+      $rec = $DbQuery->selectFetchAll('member', $selectField, '', '');
 
       ksort($rec);
       // ↑ https://kinocolog.com/pdo_fetch_pattern/ の下の方参照
