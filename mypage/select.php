@@ -5,7 +5,7 @@
   $DbQuery = new DbQuery();
   $condition = 'where code = \''.$code.'\'';
   $rec = $DbQuery->dbQuery('select', 'member', 'name', $condition, '');
-  $name = $rec['name'];
+  $name = $rec[0]['name'];
 
   // headの記載
   require_once('../common.php');
