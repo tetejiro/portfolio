@@ -30,6 +30,7 @@ if (isset($_SESSION['login']) == false) {
   } else {
     $strong3 = null;
   }
+
   /*
   ?>
   <!DOCTYPE html>

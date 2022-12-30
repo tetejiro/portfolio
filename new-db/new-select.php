@@ -8,7 +8,7 @@ require_once 'new-const.php';
 class DbQuery {
 
     // FETCH_ASSOC
-    function dbQuery($queryKind, $targetObject, $targetField, $condition, $sortTx) {
+    function dbQuery($queryKind, $targetObject, $targetField, $condition, $othere) {
         $ConstDb = new ConstDb();
         $dsn = ConstDb::dsn;
         $user = ConstDb::user;
@@ -16,7 +16,7 @@ class DbQuery {
 
         switch ($queryKind) {
             case 'select':
-                $sql = 'select '.$targetField.' FROM ' .$targetObject.' '.$condition. ' '.$sortTx;
+                $sql = 'select '.$targetField.' FROM ' .$targetObject.' '.$condition. ' '.$othere;
                 break;
             case 'insert':
                 $sql = 'insert into '.$targetObject.' ('.$targetField.') values (\''.$condition.'\')';

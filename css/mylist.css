@@ -47,7 +47,7 @@ td {
   text-align: center;
 }
 
-.modoru>a {
+input {
   display: inline-block;
   background: #b0deec;
   width: 100px;
@@ -63,7 +63,7 @@ td {
   font-weight: 700;
 }
 
-.modoru>a:hover {
+input:hover {
   background: #a2bcc4;
 }
 
