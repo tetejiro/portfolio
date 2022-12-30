@@ -23,9 +23,10 @@
     require_once '../new-db/new-select.php';
     $DbQuery = new DbQuery();
     $condition = 'WHERE code = \'' .$code.'\'';
-    $rec = $DbQuery->dbQuery('select', 'member', 'name, mail', $condition, '');
+    $rec = $DbQuery->dbQuery('select', 'member', 'name, mail, year', $condition, '');
     $name = $rec[0]['name'];
     $mail = $rec[0]['mail'];
+    $year = $rec[0]['year'];
   } catch (Exception $e) {
     print 'ただいま障害により大変ご迷惑をおかけしております。';
     exit('<a href="../registration/login.html">ログイン</a>し直してください。');
@@ -44,12 +45,12 @@
       <div>
         第
         <select name="year">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">シニア</option>
+          <option value="1" <?php $year == 1 ? print 'selected' : '';?>>1</option>
+          <option value="2" <?php $year == 2 ? print 'selected' : '';?>>2</option>
+          <option value="3" <?php $year == 3 ? print 'selected' : '';?>>3</option>
+          <option value="4" <?php $year == 4 ? print 'selected' : '';?>>4</option>
+          <option value="5" <?php $year == 5 ? print 'selected' : '';?>>5</option>
+          <option value="6" <?php $year == 6 ? print 'selected' : '';?>>シニア</option>
         </select>
         期
       </div>
