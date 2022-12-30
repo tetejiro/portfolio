@@ -8,16 +8,14 @@
   <body class="all">
     <?php
     $rec = null;
-    //自分のコード
-    $honnin = $_SESSION['code'];
-    //相手のコード
-    isset($_GET['code']) == true ? $code = $_GET['code'] : $code = 0;
+    // member_code
+    isset($_GET['code']) == true ? $code = $_GET['code'] : $code = $_SESSION['code'];
 
     // 自分のマイページ：自分フラグTRUE
     // 他の人のマイページ：自分フラグFALSE
     empty($_GET['code']) == false ?
       // メンバーリストからマイページ
-      $_GET['code'] == $honnin ? $zibunflg = true : $zibunflg = false :
+      $_GET['code'] == $_SESSION['code'] ? $zibunflg = true : $zibunflg = false :
       // ログイン・登録からマイページ
       $zibunflg = true;
 
@@ -26,7 +24,7 @@
       $DbQuery = new DbQuery();
 
       // マイページの記入欄のレコード取得
-      $zibunflg ? $condition = 'where whose =\'' . $honnin . '\'' : $condition = 'where whose =\'' . $code . '\'';
+      $condition = 'where whose =\'' . $code . '\'';
       $othere = 'order by nitizi DESC limit 1';
       $latestNowRec = $DbQuery->dbQuery('select', 'now', '*', $condition, $othere);
       !empty($latestNowRec) ? $rec = $latestNowRec[0] : '';
@@ -89,7 +87,7 @@
         print '<a href="../mypage/record.php">記録</a>';
       }
       ?>
-      <a href="../mypage/mylist.php">質問リスト</a>
+      <a href="../mypage/mylist.php<?php $code != $_SESSION['code'] ? print '?code='.$code : ''; ?>">質問リスト</a>
       <a href="member-list.php">メンバーリスト</a>
 
       <?php
@@ -207,8 +205,10 @@
           if ($zibunflg) {
             print '<p><input id="kousin" type="submit" value="更新"></p>';
             print '<p><a href="../mypage/record.php">記録</a></p>';
+            print '<p><a href="../mypage/mylist.php">質問リスト</a></p>';
+          } else {
+            print '<p><a href="../mypage/mylist.php?code=<?php print $code; ?>">質問リスト</a></p>';
           }
-          print '<p><a href="../mypage/mylist.php">質問リスト</a></p>';
           print '<p><a href="member-list.php">メンバーリスト</a></p>';
           !$zibunflg ? print '<p><a id="shitu" href="select.php?code=<?php print $code; ?>">しつもんする</a></p>' : '';
           ?>

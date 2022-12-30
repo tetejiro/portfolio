@@ -40,12 +40,10 @@ try {
 
     <body>
   <?php
-    print '<div class="mi">';
     print '<form action="login.html" method="post">';
-    print '<p>登録されていないものです。</p><br>';
+    print '<p style="text-align: center;margin-top: 25%;">登録されていないものです。</p><br>';
     print '<input type="submit" value="もどる">';
     print '</form>';
-    print '</div>';
   }
 } catch (Exception $e) {
   exit('障害発生中');

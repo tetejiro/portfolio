@@ -91,7 +91,7 @@ input[type="number"] {
   height: 75vh;
   position: fixed;
   margin-left: 20%;
-  margin-top: -5%;
+  margin-top: -10%;
   text-align: center;
   padding: 5%;
   line-height: 200%;
@@ -429,6 +429,7 @@ nav>p:hover {
   /* モーダル */
   .button-info {
     width: 80vw;
+    margin-top: -5%;
     margin-left: 5.5%;
     top: 15%;
     height: 80%;

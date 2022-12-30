@@ -16,6 +16,12 @@
       $condition = 'where whose = \'' . $honnin . '\'';
       $rec = $DbQuery->dbQuery('select', 'now', '*', $condition, '');
       $count = count($rec);
+      if (empty($rec)) {
+        print '<div class=center>';
+        print 'まだしつもん・ほうれんそうをしていません。';
+        print '<p><a href="../mypage/mypage.php?code=' . $_SESSION['code'] . '">もどる</a></p>';
+        print '</div>';
+      } else {
       for ($i = $count - 1; 0 <= $i; $i--) {
       ?>
         <div class="zentai">
@@ -61,6 +67,7 @@
   <?php
       }
       print '<input type="button" onclick="history.back()" value="もどる">';
+    }
   ?>
   </div>
   <!--zentai-->

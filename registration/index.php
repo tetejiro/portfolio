@@ -38,8 +38,8 @@
       try {
         require_once '../new-db/new-select.php';
         $DbQuery = new DbQuery();
-        $selectField = 'data, content';
-        $sortTx = 'ORDER BY data DESC LIMIT 3';
+        $selectField = 'date, content';
+        $sortTx = 'ORDER BY date DESC LIMIT 3';
         $rec = $DbQuery->dbQuery('select', 'announce', $selectField, '', $sortTx);
       } catch (Exception $e) {
         print '周知事項が読み取れません。';
@@ -52,7 +52,7 @@
           <div class="content">
             <?php foreach ($rec as $key => $value) : ?>
               <ul>
-                <li><?php print $value['data'] ?></li>
+                <li><?php print $value['date'] ?></li>
                 <li><?php print $value['content'] ?></li>
               </ul>
             <?php endforeach; ?>
