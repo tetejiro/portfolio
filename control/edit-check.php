@@ -55,7 +55,7 @@
     }
 
     //名前・学年かぶりがないか。
-    require_once '../new-db/new-select.php';
+    require_once '../new-db/execute-Query.php';
     $DbQuery = new DbQuery();
     $condition = 'where name =\'' .$name .'\' AND year = \''.$year.'\'';
     $sameName = $DbQuery->dbQuery('select', 'member', 'name, year', $condition, '');

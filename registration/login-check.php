@@ -10,7 +10,7 @@ $pass = $post['pass'];
 $pass = md5($pass);
 
 try {
-  require_once '../new-db/new-select.php';
+  require_once '../new-db/execute-Query.php';
   $DbQuery = new DbQuery();
   $condition = 'where name = \''.$name .'\' AND pass = \''.$pass. '\'';
   $rec = $DbQuery->dbQuery('select', 'member', 'name, code', $condition, '');

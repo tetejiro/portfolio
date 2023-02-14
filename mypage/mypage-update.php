@@ -5,7 +5,7 @@ if (isset($_SESSION['login']) == false) {
   print 'ログインしていません。';
   print '<a href="../registration/login.php">ログインへ</a>';
 } else {
-  require_once '../new-db/new-const.php';
+  require_once '../new-db/definition.php';
   $ConstDb = new ConstDb();
   //自分のコード
   $whose = $_SESSION['code'];
@@ -27,7 +27,7 @@ if (isset($_SESSION['login']) == false) {
   $strong3 = $_SESSION[ConstDb::strong3];
 
   try {
-    require_once '../new-db/new-select.php';
+    require_once '../new-db/execute-Query.php';
     $DbQuery = new DbQuery();
     $insertField = 'whose,task,bytime1_1,bytime1_2,bytime2_1,bytime2_2,emotion,time1_1,time1_2,time2_1,time2_2,attention,strong1,strong2,strong3';
     $val = $whose.'\',\''. trim($task).'\',\''. $bytime1_1.'\',\''. $bytime1_2.'\',\''. $bytime2_1.'\',\''. $bytime2_2.'\',\''. $emotion.'\',\''. $time1_1.'\',\''. $time1_2.'\',\''. $time2_1.'\',\''. $time2_2.'\',\''. trim($attention).'\',\''. trim($strong1).'\',\''. trim($strong2).'\',\''. trim($strong3);

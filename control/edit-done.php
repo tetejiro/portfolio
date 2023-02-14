@@ -25,7 +25,7 @@ try {
       $pass=$post['pass'];
       $year=$post['year'];
 
-      require_once '../new-db/new-select.php';
+      require_once '../new-db/execute-Query.php';
       $DbQuery = new DbQuery();
       $fieldName = 'name =\''.$name.'\',year =\''.$year.'\',pass=\''.$pass.'\',mail=\''.$mail.'\'';
       $condition = 'where code = \''.$code.'\'';

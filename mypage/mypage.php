@@ -20,7 +20,7 @@
       $zibunflg = true;
 
     try {
-      require_once '../new-db/new-select.php';
+      require_once '../new-db/execute-Query.php';
       $DbQuery = new DbQuery();
 
       // マイページの記入欄のレコード取得

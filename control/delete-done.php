@@ -20,7 +20,7 @@ try
 {
     $code = $_POST['code'];
 
-    require_once '../new-db/new-select.php';
+    require_once '../new-db/execute-Query.php';
     $DbQuery = new DbQuery();
     $condition = 'WHERE code = \''.$code.'\'';
     $DbQuery->dbQuery('delete', 'member', '', $condition, '');

@@ -9,13 +9,13 @@ try
       $pass = $post['pass'];
       $mail = $post['mail'];
 
-      require_once '../new-db/new-select.php';
+      require_once '../new-db/execute-Query.php';
       $DbQuery = new DbQuery();
       $fieldName = 'name, year, pass, mail';
       $val = $name.'\',\''.$year.'\',\''.$pass.'\',\''.$mail;
       $DbQuery->DbQuery('insert', 'member', $fieldName, $val, '');
 
-      require_once '../new-db/new-select.php';
+      require_once '../new-db/execute-Query.php';
       $DbQuery = new DbQuery();
       $rec = $DbQuery->dbQuery('select', 'member', 'max(code)', '', '');
 

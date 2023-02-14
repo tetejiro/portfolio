@@ -16,7 +16,7 @@ if (isset($_SESSION['login']) == false) {
   $why = $_SESSION['why'];
   $url = $_SESSION['url'];
 
-  require_once '../new-db/new-select.php';
+  require_once '../new-db/execute-Query.php';
   $DbQuery = new DbQuery();
   $condition = 'WHERE code =\''.$code.'\'';
   $rec = $DbQuery->dbQuery('select', 'member', 'name, mail', $condition, '');
