@@ -13,11 +13,16 @@ try
       $DbQuery = new DbQuery();
       $fieldName = 'name, year, pass, mail';
       $val = $name.'\',\''.$year.'\',\''.$pass.'\',\''.$mail;
-      $DbQuery->DbQuery('insert', 'member', $fieldName, $val, '');
+      $DbQuery->DbQuery('
+            INSERT INTO member
+                  (name, year, pass, mail)
+            VALUES
+                  ('.$name.'\',\''.$year.'\',\''.$pass.'\',\''.$mail.'\'
+      ');
 
       require_once '../new-db/new-select.php';
       $DbQuery = new DbQuery();
-      $rec = $DbQuery->dbQuery('select', 'member', 'max(code)', '', '');
+      $rec = $DbQuery->dbQuery('SELECT max(code) FROM member');
 
       $_SESSION['login'] = 1;
       $_SESSION['name'] = $name;

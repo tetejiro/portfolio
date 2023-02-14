@@ -22,8 +22,7 @@
       $code = $_GET['code'];
       require_once '../new-db/new-select.php';
       $DbQuery = new DbQuery();
-      $condition = 'where code = \''.$code.'\'';
-      $rec = $DbQuery->dbQuery('select', 'member', 'name', $condition, '');
+      $rec = $DbQuery->dbQuery('SELECT name FROM member WHERE code = \''.$code.'\'');
       $name = $rec[0]['name'];
     } catch (Exception $e) {
       exit('ただいま障害により大変ご迷惑をおかけしております。');

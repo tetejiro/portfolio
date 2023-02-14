@@ -12,8 +12,10 @@
       <h3><img src="../favicon/p-favicon.png"> 過去のほうれんそう・質問リスト</h3>
       <?php
         if(!empty($_GET['code'])) {
-          $condition = 'where code = \'' . $_GET['code'] . '\'';
-          $opponent = $DbQuery->dbQuery('select', 'member', 'name', $condition, '')[0];
+          $opponent = $DbQuery->dbQuery('
+            SELECT name FROM member
+            WHERE code = \'' . $_GET['code'] . '\'
+          ')[0];
 
           print '<p class="center">'.$opponent['name'].' さんへの質問一覧</p>';
         }
@@ -24,7 +26,11 @@
           $condition = 'WHERE whose =\'' . $_SESSION['code'] . '\'';
           // 他の人のマイリストの場合、自分から他の人への質問のみを表示する。
           $other = !empty($_GET['code']) ? 'AND whom = \''.$_GET['code'].'\'' : '';
-          $selectedQuestion = $DbQuery->dbQuery('select', 'question', $selectField, $condition, $other);
+          $selectedQuestion = $DbQuery->dbQuery('
+            SELECT nitizi, whose, whom, situation, goal, what, why, try0
+            FROM question
+            WHERE whose =\'' . $_SESSION['code'] . '\'
+          ');
 
           if (empty($selectedQuestion)) {
             print '<div class=center>';
@@ -47,8 +53,10 @@
                   <td><?php print $selectedQuestion[$i]['nitizi']; ?></td>
                 </tr>
                 <?php
-                $condition = 'where code = \'' . $selectedQuestion[$i]['whom'] . '\'';
-                $aite = $DbQuery->dbQuery('select', 'member', 'name', $condition, '');
+                $aite = $DbQuery->dbQuery('
+                  SELECT name FROM member
+                  WHERE code = \'' . $selectedQuestion[$i]['whom'] . '\'
+                ');
                 // 退会済みユーザ
                 empty($aite) == true ? $aite = '退会済みユーザ' : ''; ?>
                 <tr>

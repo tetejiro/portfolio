@@ -57,8 +57,11 @@
     //名前・学年かぶりがないか。
     require_once '../new-db/new-select.php';
     $DbQuery = new DbQuery();
-    $condition = 'where name =\'' .$name .'\' AND year = \''.$year.'\'';
-    $sameName = $DbQuery->dbQuery('select', 'member', 'name, year', $condition, '');
+    $sameName = $DbQuery->dbQuery('
+      SELECT name, year
+      FROM member
+      WHERE name =\'' .$name .'\' AND year = \''.$year.'\'
+    ');
     if (count($sameName) > 1) {
       $okflag = false;
       print '同期に同じ名前で登録している人がいます。<br>';
@@ -66,9 +69,8 @@
       print 'ご協力よろしくお願いします。<br>';
     }
 
-    //パスワードかぶり
-    $condition = 'where pass = \''.md5($pass).'\'';
-    $samePass = $DbQuery->dbQuery('select', 'member', 'name', $condition , '');
+    //パスワードかぶりがないか
+    $samePass = $DbQuery->dbQuery('SELECT name FROM member where pass = \''.md5($pass).'\'');
     if (count($samePass) > 1) {
       $okflg = false;
       print 'パスワード「'.$pass.'」は使用されています。<br>';

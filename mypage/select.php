@@ -1,10 +1,9 @@
 <?php
 {
-  $code=$_GET['code'];
+  $code = $_GET['code'];
   require_once '../new-db/new-select.php';
-  $DbQuery = new DbQuery();
-  $condition = 'where code = \''.$code.'\'';
-  $rec = $DbQuery->dbQuery('select', 'member', 'name', $condition, '');
+  $DbQuery = new DbQuery();//\''.$code.'\'');
+  $rec = $DbQuery->dbQuery('SELECT name FROM member WHERE code = '.$code);
   $name = $rec[0]['name'];
 
   // headの記載

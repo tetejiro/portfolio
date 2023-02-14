@@ -22,8 +22,7 @@
 
     require_once '../new-db/new-select.php';
     $DbQuery = new DbQuery();
-    $condition = 'WHERE code = \'' .$code.'\'';
-    $rec = $DbQuery->dbQuery('select', 'member', 'name, mail, year', $condition, '');
+    $rec = $DbQuery->dbQuery('SELECT name, mail, year FROM member WHERE code = \'' .$code.'\'');
     $name = $rec[0]['name'];
     $mail = $rec[0]['mail'];
     $year = $rec[0]['year'];

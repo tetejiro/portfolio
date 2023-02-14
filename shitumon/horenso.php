@@ -14,8 +14,7 @@ if (isset($_SESSION['login']) == false) {
 
         require_once '../new-db/new-select.php';
         $DbQuery = new DbQuery();
-        $condition = 'WHERE code = \''.$code.'\'';
-        $rec = $DbQuery->dbQuery('select', 'member', 'name', $condition, '');
+        $rec = $DbQuery->dbQuery('SELECT name FROM member WHERE code = \''.$code.'\'');
         $name = $rec[0]['name'];
 ?>
         <!DOCTYPE html>

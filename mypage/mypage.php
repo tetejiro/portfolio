@@ -24,14 +24,17 @@
       $DbQuery = new DbQuery();
 
       // マイページの記入欄のレコード取得
-      $condition = 'where whose =\'' . $code . '\'';
+      $condition = '';
       $othere = 'order by nitizi DESC limit 1';
-      $latestNowRec = $DbQuery->dbQuery('select', 'now', '*', $condition, $othere);
+      $latestNowRec = $DbQuery->dbQuery('
+        SELECT * FROM now
+        WHERE whose =\'' . $code . '\'
+        order by nitizi DESC limit 1
+      ');
       !empty($latestNowRec) ? $rec = $latestNowRec[0] : '';
 
       // マイページの所有者名の取得
-      $condition = 'WHERE code = \'' . $code . '\'';
-      $name = $DbQuery->dbQuery('select', 'member', 'name', $condition, '');
+      $name = $DbQuery->dbQuery('SELECT name FROM member WHERE code = \'' . $code . '\'');
 
       require_once './hozyo.php';
     } catch (Exception $e) {

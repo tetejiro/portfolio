@@ -1,6 +1,6 @@
 <?php
 
-$content=$_POST['content'];
+$content = $_POST['content'];
 if(mb_strlen($content)<5)
 {
     print '5文字以上は記載してください。';
@@ -12,7 +12,7 @@ else
     {
         require_once '../new-db/new-select.php';
         $DbQuery = new DbQuery();
-        $DbQuery->dbQuery('insert', 'announce', 'content', $content, '');
+        $DbQuery->dbQuery('INSERT INTO announce (content) VALUES (\''.$content.'\')');
         header('Location:announce.php');
     }
     catch(Exception $e)

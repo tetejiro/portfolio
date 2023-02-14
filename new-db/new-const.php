@@ -12,7 +12,6 @@ class ConstDb
     public const user = 'yuki';
     public const password = 'hy1733505';
 
-
     const task = 'task';
     const bytime1 = 'bytime1';
     const bytime2 = 'bytime2';
