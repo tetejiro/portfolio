@@ -78,7 +78,7 @@ if (isset($_SESSION['login']) == false) {
                         <div class="menu">
                                 <input type="submit" value="保存してメールを送る">
                 </form>
-                <a href="../mypage/select.php?code=<?php print $code; ?>">もどる</a>
+                <a href="../mypage/select-report-or-question.php?code=<?php print $code; ?>">もどる</a>
                 </div>
         </body>
 <?php

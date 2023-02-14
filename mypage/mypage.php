@@ -92,7 +92,7 @@
 
       <?php
       // 他の人のページ
-      !$zibunflg ? print '<a href="select.php?code=' . $code . '">しつもんする</a>' : '';
+      !$zibunflg ? print '<a href="select-report-or-question.php?code=' . $code . '">しつもんする</a>' : '';
       ?>
     </nav>
     <!-- モーダル -->
@@ -210,7 +210,7 @@
             print '<p><a href="../mypage/mylist.php?code=<?php print $code; ?>">質問リスト</a></p>';
           }
           print '<p><a href="member-list.php">メンバーリスト</a></p>';
-          !$zibunflg ? print '<p><a id="shitu" href="select.php?code=<?php print $code; ?>">しつもんする</a></p>' : '';
+          !$zibunflg ? print '<p><a id="shitu" href="select-report-or-question.php?code=<?php print $code; ?>">しつもんする</a></p>' : '';
           ?>
         </div>
       </div>
