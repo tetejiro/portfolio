@@ -36,7 +36,7 @@ catch (Exception $e)
 <div class="mi">
   削除しました。<br>
 <br>
-<a href="./control.php">戻る</a>
+<a href="./alter-user-list.php">戻る</a>
 </div>
 </body>
 </html>

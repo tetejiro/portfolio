@@ -15,7 +15,7 @@
 <div class="mi">
 
 スタッフが選択されていません。<br>
-<a href="./control.php">戻る</a>
+<a href="./alter-user-list.php">戻る</a>
 
 </div>
 </body>
