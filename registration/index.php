@@ -36,7 +36,7 @@
       <h1>しつもんしよう</h1>
       <?php
       try {
-        require_once '../new-db/new-select.php';
+        require_once '../new-db/execute-Query.php';
         $DbQuery = new DbQuery();
         $selectField = 'date, content';
         $sortTx = 'ORDER BY date DESC LIMIT 3';

@@ -18,7 +18,7 @@
         </div>
       </div>
       <?php
-      require_once '../new-db/new-select.php';
+      require_once '../new-db/execute-Query.php';
       $DbQuery = new DbQuery();
       $selectField = 'year, code, name';
       $rec = $DbQuery->selectFetchAll('member', $selectField, '', '');

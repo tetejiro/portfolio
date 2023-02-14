@@ -86,7 +86,7 @@ if (isset($_SESSION['login']) == false) {
     print '</div>';
   }
 
-  require_once '../new-db/new-const.php';
+  require_once '../new-db/definition.php';
   $ConstDb = new ConstDb();
   $_SESSION[ConstDb::task] = $task;
   $_SESSION[ConstDb::bytime1] = $bytime1_1;

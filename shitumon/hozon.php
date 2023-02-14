@@ -70,7 +70,7 @@ if(empty($_POST['why'])==true)
             print '<form><input type="button" onclick="history.back()" value="戻る"></form>';
         }
         try {
-            require_once '../new-db/new-select.php';
+            require_once '../new-db/execute-Query.php';
             $DBQuery = new DBQuery();
             $fieldName = 'whose, whom, situation, goal, what, why, try0, return1';
             $val = $honnin.'\',\''.$code.'\',\''.$situation.'\',\''.$goal.'\',\''.$what.'\',\''.$why.'\',\''.$try.'\',\''.$return1;

@@ -10,7 +10,7 @@ else
 {
     try
     {
-        require_once '../new-db/new-select.php';
+        require_once '../new-db/execute-Query.php';
         $DbQuery = new DbQuery();
         $DbQuery->dbQuery('insert', 'announce', 'content', $content, '');
         header('Location:announce.php');
