@@ -67,7 +67,7 @@
   }
 
   //パスワードかぶり
-  $condition = 'where pass =\''.md5($pass).'\'';
+  $condition = 'where pass =\''.hash('sha512', $pass).'\'';
   $rec = $DbQuery->dbQuery('select', 'member', 'name', $condition, '');
   if (empty($rec) == false) {
     print 'そのパスワードは使用されています。<br>';
@@ -113,7 +113,7 @@
           <form>
             <input type="button" onclick="history.back();" value="修正する"><br><br>
           </form>
-          <?php $pass = md5($pass); ?>
+          <?php $pass = hash('sha512', $pass); ?>
           <form action="reg-done.php" method="post">
             <input type="hidden" name="name" value="<?php print $name; ?>">
             <input type="hidden" name="year" value="<?php print $year; ?>">

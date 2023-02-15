@@ -6,8 +6,7 @@ $name = $post['name'];
 $name = str_replace(" ", "", $name);
 $name = str_replace("　", "", $name);
 $pass = $post['pass'];
-//次からはhash()を使う。
-$pass = md5($pass);
+$pass = hash('sha512', $pass);
 
 try {
   require_once '../new-db/execute-Query.php';
