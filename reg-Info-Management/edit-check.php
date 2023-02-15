@@ -67,7 +67,7 @@
     }
 
     //パスワードかぶり
-    $condition = 'where pass = \''.md5($pass).'\'';
+    $condition = 'where pass = \''.hash('sha512', $pass).'\'';
     $samePass = $DbQuery->dbQuery('select', 'member', 'name', $condition , '');
     if (count($samePass) > 1) {
       $okflg = false;
@@ -83,7 +83,7 @@
       print $pass;
       print '<br>';
 
-      $pass = md5($pass);
+      $pass = hash('sha512', $pass);
       print '<form method="post" action="edit-done.php">';
       print '<input type="hidden" name="code" value="' . $code . '">';
       print '<input type="hidden" name="name" value="' . $name . '">';
