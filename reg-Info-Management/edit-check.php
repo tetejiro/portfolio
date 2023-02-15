@@ -12,6 +12,10 @@
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
   <link rel="stylesheet" href="../css/control.css">
   <link rel="icon" type="image/png" href="../favicon/p-favicon.png">
+  <style>
+    .mi{text-align: center; margin-top: 5%;}
+    input[type=submit]{margin-right: 0;}
+  </style>
 </head>
 
 <body>
