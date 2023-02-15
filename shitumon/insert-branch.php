@@ -75,7 +75,6 @@ if(empty($_POST['why'])==true)
             $fieldName = 'whose, whom, situation, goal, what, why, try0, return1';
             $val = $honnin.'\',\''.$code.'\',\''.$situation.'\',\''.$goal.'\',\''.$what.'\',\''.$why.'\',\''.$try.'\',\''.$return1;
             $DBQuery->dbQuery('insert', 'question', $fieldName, $val, '');
-            //セッションはconstでしなきゃいけないのかも。
             $_SESSION['whose'] = $honnin;
             $_SESSION['whom'] = $code;
             $_SESSION['situation'] = $situation;
