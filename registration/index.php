@@ -38,9 +38,10 @@
       try {
         require_once '../new-db/execute-Query.php';
         $DbQuery = new DbQuery();
-        $selectField = 'date, content';
-        $sortTx = 'ORDER BY date DESC LIMIT 3';
-        $rec = $DbQuery->dbQuery('select', 'announce', $selectField, '', $sortTx);
+        $rec = $DbQuery->dbQuery('
+          SELECT date, content
+          FROM announce ORDER BY date DESC LIMIT 3
+        ');
       } catch (Exception $e) {
         print '周知事項が読み取れません。';
         var_dump($e);

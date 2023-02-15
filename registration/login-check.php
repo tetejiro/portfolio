@@ -11,8 +11,11 @@ $pass = hash('sha512', $pass);
 try {
   require_once '../new-db/execute-Query.php';
   $DbQuery = new DbQuery();
-  $condition = 'where name = \''.$name .'\' AND pass = \''.$pass. '\'';
-  $rec = $DbQuery->dbQuery('select', 'member', 'name, code', $condition, '');
+  $rec = $DbQuery->dbQuery('
+    SELECT name, code
+    FROM member
+    WHERE name = \''.$name .'\' AND pass = \''.$pass. '\'
+  ');
 
   if ($rec == true) {
     session_start();

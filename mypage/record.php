@@ -13,8 +13,7 @@
       $honnin = $_SESSION['code'];
       require_once '../new-db/execute-Query.php';
       $DbQuery = new DbQuery();
-      $condition = 'where whose = \'' . $honnin . '\'';
-      $rec = $DbQuery->dbQuery('select', 'now', '*', $condition, '');
+      $rec = $DbQuery->dbQuery('SELECT * FROM now WHERE whose = \'' . $honnin . '\'');
       $count = count($rec);
       if (empty($rec)) {
         print '<div class=center>';

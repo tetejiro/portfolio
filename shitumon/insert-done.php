@@ -18,8 +18,9 @@ if (isset($_SESSION['login']) == false) {
 
   require_once '../new-db/execute-Query.php';
   $DbQuery = new DbQuery();
-  $condition = 'WHERE code =\''.$code.'\'';
-  $rec = $DbQuery->dbQuery('select', 'member', 'name, mail', $condition, '');
+  $rec = $DbQuery->dbQuery('
+    SELECT name, mail FROM member WHERE code =\''.$code.'\'
+  ');
 
   $name = $rec[0]['name'];
   $mail = $rec[0]['mail'];

@@ -24,14 +24,15 @@
       $DbQuery = new DbQuery();
 
       // マイページの記入欄のレコード取得
-      $condition = 'where whose =\'' . $code . '\'';
-      $othere = 'order by nitizi DESC limit 1';
-      $latestNowRec = $DbQuery->dbQuery('select', 'now', '*', $condition, $othere);
+      $latestNowRec = $DbQuery->dbQuery('
+        SELECT * FROM now
+        WHERE whose =\'' . $code . '\'
+        order by nitizi DESC limit 1
+      ');
       !empty($latestNowRec) ? $rec = $latestNowRec[0] : '';
 
       // マイページの所有者名の取得
-      $condition = 'WHERE code = \'' . $code . '\'';
-      $name = $DbQuery->dbQuery('select', 'member', 'name', $condition, '');
+      $name = $DbQuery->dbQuery('SELECT name FROM member WHERE code = \'' . $code . '\'');
 
       require_once './hozyo.php';
     } catch (Exception $e) {
@@ -87,7 +88,7 @@
         print '<a href="../mypage/record.php">記録</a>';
       }
       ?>
-      <a href="../mypage/mylist.php<?php $code != $_SESSION['code'] ? print '?code='.$code : ''; ?>">質問リスト</a>
+      <a href="../mypage/shitsumon-list.php<?php $code != $_SESSION['code'] ? print '?code='.$code : ''; ?>">質問リスト</a>
       <a href="member-list.php">メンバーリスト</a>
 
       <?php
@@ -205,12 +206,11 @@
           if ($zibunflg) {
             print '<p><input id="kousin" type="submit" value="更新"></p>';
             print '<p><a href="../mypage/record.php">記録</a></p>';
-            print '<p><a href="../mypage/mylist.php">質問リスト</a></p>';
-          } else {
-            print '<p><a href="../mypage/mylist.php?code=<?php print $code; ?>">質問リスト</a></p>';
-          }
+          } ?>
+          <a href="../mypage/shitsumon-list.php<?php $code != $_SESSION['code'] ? print '?code='.$code : ''; ?>">質問リスト</a>
+          <?php
           print '<p><a href="member-list.php">メンバーリスト</a></p>';
-          !$zibunflg ? print '<p><a id="shitu" href="select-report-or-question.php?code=<?php print $code; ?>">しつもんする</a></p>' : '';
+          !$zibunflg ? print '<p><a id="shitu" href="select-report-or-question.php?code='.$code.'">しつもんする</a></p>' : '';
           ?>
         </div>
       </div>

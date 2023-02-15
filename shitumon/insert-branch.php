@@ -72,9 +72,12 @@ if(empty($_POST['why'])==true)
         try {
             require_once '../new-db/execute-Query.php';
             $DBQuery = new DBQuery();
-            $fieldName = 'whose, whom, situation, goal, what, why, try0, return1';
-            $val = $honnin.'\',\''.$code.'\',\''.$situation.'\',\''.$goal.'\',\''.$what.'\',\''.$why.'\',\''.$try.'\',\''.$return1;
-            $DBQuery->dbQuery('insert', 'question', $fieldName, $val, '');
+            $DBQuery->dbQuery('
+                INSERT INTO question
+                    (whose, whom, situation, goal, what, why, try0, return1)
+                VALUES
+                    (\''.$honnin.'\',\''.$code.'\',\''.$situation.'\',\''.$goal.'\',\''.$what.'\',\''.$why.'\',\''.$try.'\',\''.$return1.'\')
+            ');
             $_SESSION['whose'] = $honnin;
             $_SESSION['whom'] = $code;
             $_SESSION['situation'] = $situation;
