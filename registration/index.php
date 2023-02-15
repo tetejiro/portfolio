@@ -30,7 +30,7 @@
         <ul>
           <li><a href="login.html">ログイン</a></li>
           <li><a href="registration.html">登録</a></li>
-          <li><a href="../reg-Info-Management/alter-user-list.php">登録情報管理</a></li>
+          <li><a href="../reg-Info-Management/user-list.php">登録情報管理</a></li>
         </ul>
       </nav>
       <h1>しつもんしよう</h1>

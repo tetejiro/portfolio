@@ -53,7 +53,7 @@ else
             </ul>
         </div><!--ue2-->
     </div><!--ue-->
-    <form action="hozon.php" method="post">
+    <form action="insert-branch.php" method="post">
         <div class="shitumon">
             <div class="goal">
                 件名（必須）<br>

@@ -1,10 +1,6 @@
 <?php
 require_once 'definition.php';
 
-//ここにconst書いてもだめだった。
-//クラス内に記述しなきゃって書いてあったけど、メソッド内ということであってるのかな。
-//ここはstaticの方がいいのかな？
-
 class DbQuery {
 
     // FETCH_ASSOCモード

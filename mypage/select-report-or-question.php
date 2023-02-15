@@ -16,7 +16,7 @@
 <main>
 <div class="bun">
   <p><?php print $name.'さんに'; ?></p><br>
-  <a href="../shitumon/horenso.php?code=<?php print $code ?>">報告する</a><br>
+  <a href="../shitumon/hokoku.php?code=<?php print $code ?>">報告する</a><br>
   <a href="../shitumon/shitumon.php?code=<?php print $code ?>">質問を予約する</a><br>
   <a href="../mypage/member-list.php">メンバーリストへもどる</a>
 </div>

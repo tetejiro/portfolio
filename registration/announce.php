@@ -38,7 +38,7 @@
       </script>
       <p>　周知内容</p>
     </div>
-    <form action="announce-in.php" method="post">
+    <form action="insert-announce.php" method="post">
       <textarea name="content" rows="8" cols="50" placeholder="周知事項を記載してください。" required></textarea><br>
       <div class="button">
         <input type="submit" value="登  録">
@@ -49,6 +49,3 @@
 </body>
 
 </html>
-<!--
-              date_default_timezone_set('Asia/Tokyo');
-              $date=date("Y n/j G:i",time());
