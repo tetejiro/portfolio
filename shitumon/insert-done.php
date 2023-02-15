@@ -46,14 +46,14 @@ if (isset($_SESSION['login']) == false) {
       switch ($_SESSION['url']) {
           // 直近の $URL になんの値が入っているかで場合分け。
         case $_SESSION['shitumon']:
-          print '<a href="../mypage/mylist.php">質問リスト</a>に保存しました。<br>';
+          print '<a href="../mypage/shitsumon-list.php">質問リスト</a>に保存しました。<br>';
           require_once('shitsumon-mail.php');
           print 'mailでしつもんの通知をしました。<br>';
           print '<a href="../registration/index.php">もどる</a>';
           break;
 
         case $_SESSION['horenso']:
-          print '<a href="../mypage/mylist.php">質問リスト</a>に保存されました。<br>';
+          print '<a href="../mypage/shitsumon-list.php">質問リスト</a>に保存されました。<br>';
           require_once('hokoku-mail.php');
           print 'mailでほうれんそうをしました。<br>';
           print '<a href="../registration/index.php">もどる</a>';
