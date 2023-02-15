@@ -1,5 +1,4 @@
 <?php
-//require_once('libs/consts/AppConstants.php');
 session_start();
 session_regenerate_id(true);
 if (isset($_SESSION['login']) == false) {
@@ -86,23 +85,20 @@ if (isset($_SESSION['login']) == false) {
     print '</div>';
   }
 
-  require_once '../new-db/definition.php';
-  $ConstDb = new ConstDb();
-  $_SESSION[ConstDb::task] = $task;
-  $_SESSION[ConstDb::bytime1] = $bytime1_1;
-  $_SESSION[ConstDb::bytime2] = $bytime1_2;
-  //緊急で付け足すので、constはしてない。
+  $_SESSION['task'] = $task;
+  $_SESSION['bytime1'] = $bytime1_1;
+  $_SESSION['bytime2'] = $bytime1_2;
   $_SESSION['bytime2_1'] = $bytime2_1;
   $_SESSION['bytime2_2'] = $bytime2_2;
   $_SESSION['time1_1'] = $time1_1;
   $_SESSION['time1_2'] = $time1_2;
-  $_SESSION[ConstDb::emotion] = $emotion;
-  $_SESSION[ConstDb::time1] = $time2_1;
-  $_SESSION[ConstDb::time2] = $time2_2;
-  $_SESSION[ConstDb::attention] = $attention;
-  $_SESSION[ConstDb::strong1] = $strong1;
-  $_SESSION[ConstDb::strong2] = $strong2;
-  $_SESSION[ConstDb::strong3] = $strong3;
+  $_SESSION['emotion'] = $emotion;
+  $_SESSION['time1'] = $time2_1;
+  $_SESSION['time2'] = $time2_2;
+  $_SESSION['attention'] = $attention;
+  $_SESSION['strong1'] = $strong1;
+  $_SESSION['strong2'] = $strong2;
+  $_SESSION['strong3'] = $strong3;
   header('Location:./mypage-update.php');
   exit();
 }

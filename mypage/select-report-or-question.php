@@ -3,8 +3,7 @@
   $code=$_GET['code'];
   require_once '../new-db/execute-Query.php';
   $DbQuery = new DbQuery();
-  $condition = 'where code = \''.$code.'\'';
-  $rec = $DbQuery->dbQuery('select', 'member', 'name', $condition, '');
+  $rec = $DbQuery->dbQuery('SELECT name FROM member WHERE code = \''.$code.'\'');
   $name = $rec[0]['name'];
 
   // headの記載

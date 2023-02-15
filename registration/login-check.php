@@ -6,14 +6,16 @@ $name = $post['name'];
 $name = str_replace(" ", "", $name);
 $name = str_replace("　", "", $name);
 $pass = $post['pass'];
-//次からはhash()を使う。
-$pass = md5($pass);
+$pass = hash('sha512', $pass);
 
 try {
   require_once '../new-db/execute-Query.php';
   $DbQuery = new DbQuery();
-  $condition = 'where name = \''.$name .'\' AND pass = \''.$pass. '\'';
-  $rec = $DbQuery->dbQuery('select', 'member', 'name, code', $condition, '');
+  $rec = $DbQuery->dbQuery('
+    SELECT name, code
+    FROM member
+    WHERE name = \''.$name .'\' AND pass = \''.$pass. '\'
+  ');
 
   if ($rec == true) {
     session_start();

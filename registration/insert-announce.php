@@ -12,7 +12,7 @@ else
     {
         require_once '../new-db/execute-Query.php';
         $DbQuery = new DbQuery();
-        $DbQuery->dbQuery('insert', 'announce', 'content', $content, '');
+        $DbQuery->dbQuery('INSERT INTO announce (content) VALUES (\''.$content.'\')');
         header('Location:announce.php');
     }
     catch(Exception $e)

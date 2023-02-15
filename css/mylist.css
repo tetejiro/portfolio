@@ -40,8 +40,8 @@ img {
 th {
   text-align: left;
   padding-right: 3rem;
-  width: auto;
   display: inline-block;
+  width: 100%;
 }
 
 td {

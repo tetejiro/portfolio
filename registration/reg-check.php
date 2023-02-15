@@ -57,8 +57,11 @@
   //名前・学年かぶりがないか。
   require_once '../new-db/execute-Query.php';
   $DbQuery = new DbQuery();
-  $condition = 'WHERE name = \''.$name.'\'AND year =\''.$year.'\'';
-  $rec = $DbQuery->dbQuery('select','member', 'name, year', $condition, '');
+  $rec = $DbQuery->dbQuery('
+    SELECT name, year
+    FROM member
+    WHERE name = \''.$name.'\'AND year =\''.$year.'\'
+  ');
   if (empty($rec) == false) {
     print '同期に同じ名前で登録している人がいます。<br>';
     print '他の人が分からなくなってしまうので、区別できる名前に変更してください。<br>';
@@ -67,8 +70,10 @@
   }
 
   //パスワードかぶり
-  $condition = 'where pass =\''.md5($pass).'\'';
-  $rec = $DbQuery->dbQuery('select', 'member', 'name', $condition, '');
+  $rec = $DbQuery->dbQuery('
+    SELECT name FROM member
+    WHERE pass =\''.hash('sha512', $pass).'\'
+  ');
   if (empty($rec) == false) {
     print 'そのパスワードは使用されています。<br>';
     print '別のパスワードに変更してください。<br>';
@@ -76,8 +81,9 @@
   }
 
   //メールアドレスかぶり
-  $condition = 'where mail = \''.$mail.'\'';
-  $mailQuery = $DbQuery->dbQuery('select', 'member', 'mail', $condition, '');
+  $mailQuery = $DbQuery->dbQuery('
+    SELECT mail FROM member WHERE mail = \''.$mail.'\'
+  ');
   if(count($mailQuery) >= 1) {
     print 'メールアドレスは既に使用されています。';
     print '他のメールアドレスに変更してください。';
@@ -113,7 +119,7 @@
           <form>
             <input type="button" onclick="history.back();" value="修正する"><br><br>
           </form>
-          <?php $pass = md5($pass); ?>
+          <?php $pass = hash('sha512', $pass); ?>
           <form action="reg-done.php" method="post">
             <input type="hidden" name="name" value="<?php print $name; ?>">
             <input type="hidden" name="year" value="<?php print $year; ?>">

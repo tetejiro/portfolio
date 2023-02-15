@@ -4,49 +4,34 @@ require_once 'definition.php';
 class DbQuery {
 
     // FETCH_ASSOCモード
-    function dbQuery($queryKind, $targetObject, $targetField, $condition, $othere) {
+    function dbQuery($query) {
 
-        switch ($queryKind) {
-            case 'select':
-                $sql = 'select '.$targetField.' FROM ' .$targetObject.' '.$condition. ' '.$othere;
-                break;
-            case 'insert':
-                $sql = 'insert into '.$targetObject.' ('.$targetField.') values (\''.$condition.'\')';
-                break;
-            case 'update':
-                $sql = 'update '.$targetObject.' set '.$targetField.' '.$condition;
-                break;
-            case 'delete':
-                $sql = 'delete from '.$targetObject.' '.$condition;
-                break;
-        }
         try {
             $ConstDb = new ConstDb();
             $dbh = $ConstDb->ConnectDb();
-            $stmt = $dbh->prepare($sql);
+            $stmt = $dbh->prepare($query);
             $stmt->execute();
             $rec = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $dbh = null;
         } catch (Exception $e) {
             var_dump($e);
-            exit($sql); //'セレクトできませんでした。<a href="../registration/index.php">もどる</a>'
+            exit('セレクトできませんでした。<a href="../registration/index.php">もどる</a>');
         }
         return $rec;
     }
 
     // fetch_groupモード
-    function selectFetchAll($selectObject, $selectField, $condition, $sortTx) {
+    function selectFetchAll($query) {
         try {
             $ConstDb = new ConstDb();
             $dbh = $ConstDb->ConnectDb();
-            $sql = 'SELECT ' . $selectField . ' FROM ' . $selectObject . ' ' . $condition . ' ' . $sortTx;
-            $stmt = $dbh->prepare($sql);
+            $stmt = $dbh->prepare($query);
             $stmt->execute();
             $rec = $stmt->fetchAll(PDO::FETCH_ASSOC | PDO::FETCH_GROUP);
             $dbh = null;
         } catch (Exception $e) {
             var_dump($e);
-            exit($sql); //'セレクトできませんでした。<a href="../registration/index.php">もどる</a>'
+            exit('セレクトできませんでした。<a href="../registration/index.php">もどる</a>');
         }
         return $rec;
     }
