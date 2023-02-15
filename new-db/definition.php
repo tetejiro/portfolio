@@ -19,17 +19,6 @@ class ConstDb
         }
     }
 
-    const task = 'task';
-    const bytime1 = 'bytime1';
-    const bytime2 = 'bytime2';
-    const emotion = 'emotion';
-    const time1 = 'time1';
-    const time2 = 'time2';
-    const attention = 'attention';
-    const strong1 = 'strong1';
-    const strong2 = 'strong2';
-    const strong3 = 'strong3';
-
     //あとで別のファイル作る。
     function ConnectDb()
     {
