@@ -17,7 +17,7 @@ try
             INSERT INTO member
                   (name, year, pass, mail)
             VALUES
-                  ('.$name.'\',\''.$year.'\',\''.$pass.'\',\''.$mail.'\'
+                  (\''.$name.'\',\''.$year.'\',\''.$pass.'\',\''.$mail.'\')
       ');
 
       require_once '../new-db/new-select.php';
