@@ -52,7 +52,7 @@
               <table>
                 <tr>
                   <th>時間</th>
-                  <td><?php print $selectedQuestion[$i]['created_at']; ?></td>
+                  <td><?php print mb_substr($selectedQuestion[$i]['created_at'], 0, 16); ?></td>
                 </tr>
                 <?php
                 $target_member_codes = $selectedQuestion[$i]['target_member_code'];

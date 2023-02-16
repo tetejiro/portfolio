@@ -30,7 +30,7 @@
               <table>
                 <tr>
                   <th>記録時間</th>
-                  <td><?php print $rec[$i]['created_at']; ?></td>
+                  <td><?php print mb_substr($rec[$i]['created_at'], 0, 16); ?></td>
                 </tr>
                 <tr>
                   <th>内容</th>
