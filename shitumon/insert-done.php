@@ -19,7 +19,7 @@ if (isset($_SESSION['login']) == false) {
   require_once '../new-db/execute-Query.php';
   $DbQuery = new DbQuery();
   $rec = $DbQuery->dbQuery('
-    SELECT name, mail FROM member WHERE code =\''.$code.'\'
+    SELECT name, mail FROM members WHERE code =\''.$code.'\'
   ');
 
   $name = $rec[0]['name'];

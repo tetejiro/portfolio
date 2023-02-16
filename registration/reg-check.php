@@ -59,7 +59,7 @@
   $DbQuery = new DbQuery();
   $rec = $DbQuery->dbQuery('
     SELECT name, year
-    FROM member
+    FROM members
     WHERE name = \''.$name.'\'AND year =\''.$year.'\'
   ');
   if (empty($rec) == false) {
@@ -71,7 +71,7 @@
 
   //パスワードかぶり
   $rec = $DbQuery->dbQuery('
-    SELECT name FROM member
+    SELECT name FROM members
     WHERE pass =\''.hash('sha512', $pass).'\'
   ');
   if (empty($rec) == false) {
@@ -82,7 +82,7 @@
 
   //メールアドレスかぶり
   $mailQuery = $DbQuery->dbQuery('
-    SELECT mail FROM member WHERE mail = \''.$mail.'\'
+    SELECT mail FROM members WHERE mail = \''.$mail.'\'
   ');
   if(count($mailQuery) >= 1) {
     print 'メールアドレスは既に使用されています。';

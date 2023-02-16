@@ -40,7 +40,7 @@
         $DbQuery = new DbQuery();
         $rec = $DbQuery->dbQuery('
           SELECT date, content
-          FROM announce ORDER BY date DESC LIMIT 3
+          FROM notices ORDER BY date DESC LIMIT 3
         ');
       } catch (Exception $e) {
         print '周知事項が読み取れません。';

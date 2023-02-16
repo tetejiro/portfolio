@@ -28,14 +28,14 @@
 
       // マイページの記入欄のレコード取得
       $latestNowRec = $DbQuery->dbQuery('
-        SELECT * FROM now
+        SELECT * FROM mypage_infos
         WHERE whose =\'' . $code . '\'
         order by nitizi DESC limit 1
       ');
       !empty($latestNowRec) ? $rec = $latestNowRec[0] : '';
 
       // マイページの所有者名の取得
-      $name = $DbQuery->dbQuery('SELECT name FROM member WHERE code = \'' . $code . '\'');
+      $name = $DbQuery->dbQuery('SELECT name FROM members WHERE code = \'' . $code . '\'');
 
       require_once './hozyo.php';
     } catch (Exception $e) {

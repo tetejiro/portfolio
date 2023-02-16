@@ -20,7 +20,7 @@
       <?php
       require_once '../new-db/execute-Query.php';
       $DbQuery = new DbQuery();
-      $rec = $DbQuery->selectFetchAll('SELECT year, code, name FROM member');
+      $rec = $DbQuery->selectFetchAll('SELECT year, code, name FROM members');
 
       ksort($rec);
       // ↑ https://kinocolog.com/pdo_fetch_pattern/ の下の方参照

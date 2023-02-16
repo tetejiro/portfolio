@@ -12,14 +12,14 @@ try
       require_once '../new-db/execute-Query.php';
       $DbQuery = new DbQuery();
       $DbQuery->dbQuery('
-            INSERT INTO member
+            INSERT INTO members
                   (name, year, pass, mail)
             VALUES
                   (\''.$name.'\',\''.$year.'\',\''.$pass.'\',\''.$mail.'\')
       ');
 
       $rec = $DbQuery->dbQuery('
-            SELECT max(code) FROM member
+            SELECT max(code) FROM members
       ');
 
       $_SESSION['login'] = 1;

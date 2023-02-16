@@ -22,7 +22,7 @@ try
 
     require_once '../new-db/execute-Query.php';
     $DbQuery = new DbQuery();
-    $DbQuery->dbQuery('DELETE FROM member WHERE code = \''.$code.'\'');
+    $DbQuery->dbQuery('DELETE FROM members WHERE code = \''.$code.'\'');
 }
 catch (Exception $e)
 {

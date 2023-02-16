@@ -63,7 +63,7 @@
     $DbQuery = new DbQuery();
     $sameName = $DbQuery->dbQuery('
       SELECT name, year
-      FROM member
+      FROM members
       WHERE name =\'' .$name .'\' AND year = \''.$year.'\'
     ');
     if (count($sameName) > 1) {
@@ -75,7 +75,7 @@
 
     //パスワードかぶり
     $samePass = $DbQuery->dbQuery('
-      SELECT name FROM member where pass = \''.hash('sha512', $pass).'\'
+      SELECT name FROM members where pass = \''.hash('sha512', $pass).'\'
     ');
     if (count($samePass) > 1) {
       $okflg = false;

@@ -22,7 +22,7 @@
 
     require_once '../new-db/execute-Query.php';
     $DbQuery = new DbQuery();
-    $rec = $DbQuery->dbQuery('SELECT name, mail, year FROM member WHERE code = \'' .$code.'\'');
+    $rec = $DbQuery->dbQuery('SELECT name, mail, year FROM members WHERE code = \'' .$code.'\'');
     $name = $rec[0]['name'];
     $mail = $rec[0]['mail'];
     $year = $rec[0]['year'];

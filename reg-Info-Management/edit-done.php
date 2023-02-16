@@ -28,7 +28,7 @@ try {
       require_once '../new-db/execute-Query.php';
       $DbQuery = new DbQuery();
       $DbQuery->dbQuery('
-            UPDATE member
+            UPDATE members
             SET name =\''.$name.'\', year =\''.$year.'\', pass=\''.$pass.'\', mail=\''.$mail.'\'
             WHERE code = \''.$code.'\'
       ');

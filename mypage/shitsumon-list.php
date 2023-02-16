@@ -13,7 +13,7 @@
       <?php
         if(!empty($_GET['code'])) {
           $opponent = $DbQuery->dbQuery('
-            SELECT name FROM member WHERE code = \'' . $_GET['code'] . '\'
+            SELECT name FROM members WHERE code = \'' . $_GET['code'] . '\'
           ')[0];
 
           print '<p class="center">'.$opponent['name'].' さんへの質問一覧</p>';
@@ -28,7 +28,7 @@
             SELECT
               nitizi, whose, whom, situation, goal, what, why, try0
             FROM
-              question
+              horenso_infos
             WHERE
               whose =\'' . $_SESSION['code'] . '\'
             '.$terms
@@ -57,7 +57,7 @@
                 <?php
                 $whoms = $selectedQuestion[$i]['whom'];
                 $aite = $DbQuery->dbQuery('
-                  SELECT name FROM member
+                  SELECT name FROM members
                   WHERE code = '.$whoms
                 );
                 // 退会済みユーザ

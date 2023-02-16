@@ -73,7 +73,7 @@ if(empty($_POST['why'])==true)
             require_once '../new-db/execute-Query.php';
             $DBQuery = new DBQuery();
             $DBQuery->dbQuery('
-                INSERT INTO question
+                INSERT INTO horenso_infos
                     (whose, whom, situation, goal, what, why, try0, return1)
                 VALUES
                     (\''.$honnin.'\',\''.$code.'\',\''.$situation.'\',\''.$goal.'\',\''.$what.'\',\''.$why.'\',\''.$try.'\',\''.$return1.'\')

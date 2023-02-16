@@ -13,7 +13,7 @@ try {
   $DbQuery = new DbQuery();
   $rec = $DbQuery->dbQuery('
     SELECT name, code
-    FROM member
+    FROM members
     WHERE name = \''.$name .'\' AND pass = \''.$pass. '\'
   ');
 

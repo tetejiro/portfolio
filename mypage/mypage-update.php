@@ -26,7 +26,7 @@ if (isset($_SESSION['login']) == false) {
     require_once '../new-db/execute-Query.php';
     $DbQuery = new DbQuery();
     $DbQuery->dbQuery('
-      INSERT INTO now
+      INSERT INTO mypage_infos
         (whose,task,bytime1_1,bytime1_2,bytime2_1,bytime2_2,emotion,time1_1,time1_2,time2_1,time2_2,attention,strong1,strong2,strong3)
       VALUES
       (\''.$whose.'\',\''. trim($task).'\',\''. $bytime1_1.'\',\''. $bytime1_2.'\',\''. $bytime2_1.'\',\''. $bytime2_2.'\',\''. $emotion.'\',\''. $time1_1.'\',\''. $time1_2.'\',\''. $time2_1.'\',\''. $time2_2.'\',\''. trim($attention).'\',\''. trim($strong1).'\',\''. trim($strong2).'\',\''. trim($strong3).'\')
