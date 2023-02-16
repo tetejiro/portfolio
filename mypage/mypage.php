@@ -30,8 +30,8 @@
       $latestNowRec = $DbQuery->dbQuery('
         SELECT * FROM mypage_infos
         WHERE member_code =\'' . $code . '\'
-        limit 1
-      ');//order by created_at DESC 
+        order by created_at DESC limit 1
+      ');
       !empty($latestNowRec) ? $rec = $latestNowRec[0] : '';
 
       // マイページの所有者名の取得

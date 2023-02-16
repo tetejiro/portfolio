@@ -61,10 +61,10 @@
                   WHERE code = '.$target_member_codes
                 );
                 // 退会済みユーザ
-                empty($aite) ? $aite[0]['name'] = '退会済みユーザ ' : ''; ?>
+                empty($aite) ? $aite[0]['name'] = '退会済みユーザ' : ''; ?>
                 <tr>
                   <th>質問相手</th>
-                  <td><?php print $aite[0]['name']; ?>さん</td>
+                  <td><?php print $aite[0]['name']; ?> さん</td>
                 </tr>
                 <tr>
                   <th>件名</th>
