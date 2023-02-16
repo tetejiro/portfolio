@@ -29,9 +29,9 @@
       // マイページの記入欄のレコード取得
       $latestNowRec = $DbQuery->dbQuery('
         SELECT * FROM mypage_infos
-        WHERE whose =\'' . $code . '\'
-        order by nitizi DESC limit 1
-      ');
+        WHERE member_code =\'' . $code . '\'
+        limit 1
+      ');//order by created_at DESC 
       !empty($latestNowRec) ? $rec = $latestNowRec[0] : '';
 
       // マイページの所有者名の取得

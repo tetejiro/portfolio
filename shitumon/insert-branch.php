@@ -7,22 +7,22 @@ if (isset($_SESSION) == false) {
 } else {
     //内容チェック（空がないか）
     $okflg = true;
-    if (empty($_POST['situation']) == true) {
+    if (empty($_POST['title']) == true) {
         $okflg = false;
     }
 /*
-if (empty($_POST['goal']) == true) {
+if (empty($_POST['purpose']) == true) {
     $okflg = false;
 }
 if(empty($_POST['return'])==true)
 {
     $okflg=false;
 }
-if(empty($_POST['what'])==true)
+if(empty($_POST['detail'])==true)
 {
     $okflg=false;
 }
-if(empty($_POST['why'])==true)
+if(empty($_POST['cause'])==true)
 {
     $okflg=false;
 }
@@ -38,34 +38,34 @@ if(empty($_POST['why'])==true)
 
         require_once '../sanitize.php';
         $post = sanitize($_POST);
-        $situation = $post['situation'];
-        if (empty($post['goal']) == false) {
-            $goal = $post['goal'];
+        $title = $post['title'];
+        if (empty($post['purpose']) == false) {
+            $purpose = $post['purpose'];
         } else {
-            $goal = null;
+            $purpose = null;
         }
         if (empty($post['try']) == false){
             $try = $post['try'];
         } else {
             $try = null;
         }
-        if (empty($post['return1']) == false) {
-            $return1 = $post['return1'];
+        if (empty($post['rsvp']) == false) {
+            $rsvp = $post['rsvp'];
         } else {
-            $return1 = null;
+            $rsvp = null;
         }
-        if(empty($post['what']) == false){
-            $what = $post['what'];
+        if(empty($post['detail']) == false){
+            $detail = $post['detail'];
         } else {
-            $what = null;
+            $detail = null;
         }
-        if(empty($post['why']) == false){
-            $why = $post['why'];
+        if(empty($post['cause']) == false){
+            $cause = $post['cause'];
         } else {
-            $why = null;
+            $cause = null;
         }
-        if(mb_strlen($situation, 'UTF-8')>500 || mb_strlen($goal, 'UTF-8')>500 || mb_strlen($what, 'UTF-8')>500 ||
-                mb_strlen($why, 'UTF-8')>500 || mb_strlen($try, 'UTF-8')>500){
+        if(mb_strlen($title, 'UTF-8')>500 || mb_strlen($purpose, 'UTF-8')>500 || mb_strlen($detail, 'UTF-8')>500 ||
+                mb_strlen($cause, 'UTF-8')>500 || mb_strlen($try, 'UTF-8')>500){
             print '全て500文字以内で記入してください。<br>';
             print '<form><input type="button" onclick="history.back()" value="戻る"></form>';
         }
@@ -74,38 +74,38 @@ if(empty($_POST['why'])==true)
             $DBQuery = new DBQuery();
             $DBQuery->dbQuery('
                 INSERT INTO horenso_infos
-                    (whose, whom, situation, goal, what, why, try0, return1)
+                    (member_code, target_member_code, title, purpose, detail, cause, other, rsvp)
                 VALUES
-                    (\''.$honnin.'\',\''.$code.'\',\''.$situation.'\',\''.$goal.'\',\''.$what.'\',\''.$why.'\',\''.$try.'\',\''.$return1.'\')
+                    (\''.$honnin.'\',\''.$code.'\',\''.$title.'\',\''.$purpose.'\',\''.$detail.'\',\''.$cause.'\',\''.$try.'\',\''.$rsvp.'\')
             ');
-            $_SESSION['whose'] = $honnin;
-            $_SESSION['whom'] = $code;
-            $_SESSION['situation'] = $situation;
-            if (isset($goal) == true){
-                $_SESSION['goal'] = $goal;
+            $_SESSION['member_code'] = $honnin;
+            $_SESSION['target_member_code'] = $code;
+            $_SESSION['title'] = $title;
+            if (isset($purpose) == true){
+                $_SESSION['purpose'] = $purpose;
             } else {
-                $_SESSION['goal'] = null;
+                $_SESSION['purpose'] = null;
             }
             if (isset($try) == true){
                 $_SESSION['try'] = $try;
             } else {
                 $_SESSION['try'] = null;
             }
-            if (isset($return1) == true) {
-                $_SESSION['return'] = $return1;
+            if (isset($rsvp) == true) {
+                $_SESSION['return'] = $rsvp;
             } else {
                 $_SESSION['return'] = null;
             }
-            if(isset($what)==true){
-                $_SESSION['what'] = $what;
+            if(isset($detail)==true){
+                $_SESSION['detail'] = $detail;
             } else {
-                $_SESSION['what'] = null;
+                $_SESSION['detail'] = null;
             }
             //質問のみの項目
-            if(isset($why)==true){
-                $_SESSION['why'] = $why;
+            if(isset($cause)==true){
+                $_SESSION['cause'] = $cause;
             } else {
-                $_SESSION['why'] = null;
+                $_SESSION['cause'] = null;
             }
             header('Location:insert-done.php');
         } catch (Exception $e) {

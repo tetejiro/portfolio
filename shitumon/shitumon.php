@@ -58,19 +58,19 @@ else
         <div class="shitumon">
             <div class="goal">
                 件名（必須）<br>
-                <textarea name="situation" rows="10" cols="35" placeholder="※～について" required></textarea>
+                <textarea name="title" rows="10" cols="35" placeholder="※～について" required></textarea>
             </div>
             <div class="situation">
                 依頼したいこと（必須）<br>
-                <textarea name="goal" rows="10" cols="35" placeholder="※～について解決策が知りたいです。" required></textarea>
+                <textarea name="purpose" rows="10" cols="35" placeholder="※～について解決策が知りたいです。" required></textarea>
             </div>
             <div class="what">
                 詳細<br>
-                <textarea name="what" rows="10" cols="35" placeholder="※～が表示できません。"></textarea>
+                <textarea name="detail" rows="10" cols="35" placeholder="※～が表示できません。"></textarea>
             </div>
             <div class="why">
                 考えられる原因<br>
-                <textarea name="why" rows="10" cols="35" placeholder="※データベースにデータを挿入できていないこと。"></textarea>
+                <textarea name="cause" rows="10" cols="35" placeholder="※データベースにデータを挿入できていないこと。"></textarea>
             </div>
             <div class="sonota">
                 試してみたこと・その他<br>

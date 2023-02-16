@@ -5,15 +5,15 @@ if (isset($_SESSION['login']) == false) {
   print 'ログインしてください。';
   print '<a href="../registration/login.html">ログインページへ</a>';
 } else {
-  $whosename = $_SESSION['name'];
-  $whose = $_SESSION['whose'];
-  $code = $_SESSION['whom'];
-  $situation = $_SESSION['situation'];
-  $goal = $_SESSION['goal'];
+  $member_codename = $_SESSION['name'];
+  $member_code = $_SESSION['member_code'];
+  $code = $_SESSION['target_member_code'];
+  $title = $_SESSION['title'];
+  $purpose = $_SESSION['purpose'];
   $return = $_SESSION['return'];
   $try = $_SESSION['try'];
-  $what = $_SESSION['what'];
-  $why = $_SESSION['why'];
+  $detail = $_SESSION['detail'];
+  $cause = $_SESSION['cause'];
   $url = $_SESSION['url'];
 
   require_once '../new-db/execute-Query.php';

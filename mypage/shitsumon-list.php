@@ -23,14 +23,14 @@
         <?php
 
           // 他の人のマイリストの場合、自分から他の人への質問のみを表示する。
-          $terms = !empty($_GET['code']) ? 'AND whom = \''.$_GET['code'].'\'' : '';
+          $terms = !empty($_GET['code']) ? 'AND target_member_code = \''.$_GET['code'].'\'' : '';
           $selectedQuestion = $DbQuery->dbQuery('
             SELECT
-              nitizi, whose, whom, situation, goal, what, why, try0
+              created_at, member_code, target_member_code, title, purpose, detail, cause, other
             FROM
               horenso_infos
             WHERE
-              whose =\'' . $_SESSION['code'] . '\'
+              member_code =\'' . $_SESSION['code'] . '\'
             '.$terms
           );
 
@@ -52,13 +52,13 @@
               <table>
                 <tr>
                   <th>時間</th>
-                  <td><?php print $selectedQuestion[$i]['nitizi']; ?></td>
+                  <td><?php print $selectedQuestion[$i]['created_at']; ?></td>
                 </tr>
                 <?php
-                $whoms = $selectedQuestion[$i]['whom'];
+                $target_member_codes = $selectedQuestion[$i]['target_member_code'];
                 $aite = $DbQuery->dbQuery('
                   SELECT name FROM members
-                  WHERE code = '.$whoms
+                  WHERE code = '.$target_member_codes
                 );
                 // 退会済みユーザ
                 empty($aite) ? $aite[0]['name'] = '退会済みユーザ ' : ''; ?>
@@ -68,23 +68,23 @@
                 </tr>
                 <tr>
                   <th>件名</th>
-                  <td><?php print $selectedQuestion[$i]['situation']; ?></td>
+                  <td><?php print $selectedQuestion[$i]['title']; ?></td>
                 </tr>
                 <tr>
                   <th>依頼したいこと</th>
-                  <td><?php print $selectedQuestion[$i]['goal']; ?></td>
+                  <td><?php print $selectedQuestion[$i]['purpose']; ?></td>
                 </tr>
                 <tr>
                   <th>詳細</th>
-                  <td><?php print $selectedQuestion[$i]['what']; ?></td>
+                  <td><?php print $selectedQuestion[$i]['detail']; ?></td>
                 </tr>
                 <tr>
                   <th>考えられる原因</th>
-                  <td><?php print $selectedQuestion[$i]['why']; ?></td>
+                  <td><?php print $selectedQuestion[$i]['cause']; ?></td>
                 </tr>
                 <tr>
                   <th>試したこと・その他</th>
-                  <td><?php print $selectedQuestion[$i]['try0']; ?></td>
+                  <td><?php print $selectedQuestion[$i]['other']; ?></td>
                 </tr>
               </table><br><br>
             </div>

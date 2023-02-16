@@ -1,16 +1,16 @@
 <?php
 //  mail
     $honbun='';
-    $honbun.=$whosename."さんから、\n";
+    $honbun.=$member_codename."さんから、\n";
     $honbun.=$name."さん宛てに報告・連絡が入りました。\n";
     $honbun.='返事は'.$_SESSION['return'].'だそうです。';
     $honbun.="内容は以下の通りです。\n";
     $honbun.="\n\n";
     $honbun.="----------------------------\n";
     $honbun.="〇件名\n";
-    $honbun.=$goal."\n\n";
+    $honbun.=$purpose."\n\n";
     $honbun.="〇詳細\n";
-    $honbun.=$situation."\n\n";
+    $honbun.=$title."\n\n";
     $honbun.="〇その他\n";
     $honbun.=$try."\n\n";
     $honbun.="----------------------------\n\n";

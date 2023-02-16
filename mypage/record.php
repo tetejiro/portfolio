@@ -13,7 +13,7 @@
       $honnin = $_SESSION['code'];
       require_once '../new-db/execute-Query.php';
       $DbQuery = new DbQuery();
-      $rec = $DbQuery->dbQuery('SELECT * FROM mypage_infos WHERE whose = \'' . $honnin . '\'');
+      $rec = $DbQuery->dbQuery('SELECT * FROM mypage_infos WHERE member_code = \'' . $honnin . '\'');
       $count = count($rec);
       if (empty($rec)) {
         print '<div class=center>';
@@ -30,7 +30,7 @@
               <table>
                 <tr>
                   <th>記録時間</th>
-                  <td><?php print $rec[$i]['nitizi']; ?></td>
+                  <td><?php print $rec[$i]['created_at']; ?></td>
                 </tr>
                 <tr>
                   <th>内容</th>

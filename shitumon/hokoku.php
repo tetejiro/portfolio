@@ -56,11 +56,11 @@ if (isset($_SESSION['login']) == false) {
                         <div class="shitumon">
                                 <div class="goal">
                                         件名（必須）<br>
-                                        <textarea name="situation" rows="10" cols="35" placeholder="※～に関しての報告です。" required></textarea>
+                                        <textarea name="title" rows="10" cols="35" placeholder="※～に関しての報告です。" required></textarea>
                                 </div>
                                 <div class="situation">
                                         詳細（必須）<br>
-                                        <textarea name="what" rows="10" cols="35" placeholder="※到達点とのギャップ・問題・報告事項・相談内容など" required></textarea>
+                                        <textarea name="detail" rows="10" cols="35" placeholder="※到達点とのギャップ・問題・報告事項・相談内容など" required></textarea>
                                 </div>
                                 <div class="sonota">
                                         その他 <br>
@@ -69,8 +69,8 @@ if (isset($_SESSION['login']) == false) {
                         </div>
                         <div class="henshin">
                                 返答要・不要（必須）<br><br>
-                                        <label><input type="radio" name="return1" value="必要" required>必要</label>
-                                        <label><input type="radio" name="return1" value="不要">不要</label>
+                                        <label><input type="radio" name="rsvp" value="必要" required>必要</label>
+                                        <label><input type="radio" name="rsvp" value="不要">不要</label>
                         </div>
 
                         <?php $code = $_GET['code']; ?>

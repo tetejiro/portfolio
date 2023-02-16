@@ -6,7 +6,7 @@ if (isset($_SESSION['login']) == false) {
   print '<a href="../registration/login.php">ログインへ</a>';
 } else {
   //自分のコード
-  $whose = $_SESSION['code'];
+  $member_code = $_SESSION['code'];
   $task = $_SESSION['task'];
   $bytime1_1 = $_SESSION['bytime1'];
   $bytime1_2 = $_SESSION['bytime2'];
@@ -27,9 +27,9 @@ if (isset($_SESSION['login']) == false) {
     $DbQuery = new DbQuery();
     $DbQuery->dbQuery('
       INSERT INTO mypage_infos
-        (whose,task,bytime1_1,bytime1_2,bytime2_1,bytime2_2,emotion,time1_1,time1_2,time2_1,time2_2,attention,strong1,strong2,strong3)
+        (member_code,task,bytime1_1,bytime1_2,bytime2_1,bytime2_2,emotion,time1_1,time1_2,time2_1,time2_2,attention,strong1,strong2,strong3)
       VALUES
-      (\''.$whose.'\',\''. trim($task).'\',\''. $bytime1_1.'\',\''. $bytime1_2.'\',\''. $bytime2_1.'\',\''. $bytime2_2.'\',\''. $emotion.'\',\''. $time1_1.'\',\''. $time1_2.'\',\''. $time2_1.'\',\''. $time2_2.'\',\''. trim($attention).'\',\''. trim($strong1).'\',\''. trim($strong2).'\',\''. trim($strong3).'\')
+      (\''.$member_code.'\',\''. trim($task).'\',\''. $bytime1_1.'\',\''. $bytime1_2.'\',\''. $bytime2_1.'\',\''. $bytime2_2.'\',\''. $emotion.'\',\''. $time1_1.'\',\''. $time1_2.'\',\''. $time2_1.'\',\''. $time2_2.'\',\''. trim($attention).'\',\''. trim($strong1).'\',\''. trim($strong2).'\',\''. trim($strong3).'\')
     ');
     header('Location:mypage.php');
     exit();

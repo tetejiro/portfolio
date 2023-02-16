@@ -2,19 +2,19 @@
 
 //  mail
     $honbun='';
-    $honbun.=$whosename."さんから、\n";
+    $honbun.=$member_codename."さんから、\n";
     $honbun.=$name."さんに質問したいことがあります。\n";
     $honbun.="内容は以下の通りです。\n";
     $honbun.="\n\n";
     $honbun.="----------------------------\n";
     $honbun.="〇件名\n";
-    $honbun.=$situation."\n\n";
+    $honbun.=$title."\n\n";
     $honbun.="〇依頼したいこと\n";
-    $honbun.="$goal\n\n";
+    $honbun.="$purpose\n\n";
     $honbun.="〇詳細\n";
-    $honbun.=$what."\n\n";
+    $honbun.=$detail."\n\n";
     $honbun.="〇考えられる原因\n";
-    $honbun.="$why\n\n";
+    $honbun.="$cause\n\n";
     $honbun.="〇試してみたこと・その他\n";
     $honbun.=$try."\n\n";
     $honbun.="----------------------------\n";
