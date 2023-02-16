@@ -9,15 +9,18 @@
     <?php
     $rec = null;
     // member_code
-    isset($_GET['code']) == true ? $code = $_GET['code'] : $code = $_SESSION['code'];
+    isset($_GET['code']) == 1 ? $code = $_GET['code'] : $code = $_SESSION['code'];
 
-    // 自分のマイページ：自分フラグTRUE
-    // 他の人のマイページ：自分フラグFALSE
-    empty($_GET['code']) == false ?
-      // メンバーリストからマイページ
-      $_GET['code'] == $_SESSION['code'] ? $zibunflg = true : $zibunflg = false :
-      // ログイン・登録からマイページ
-      $zibunflg = true;
+    /*
+    *   自分のマイページ：自分フラグTRUE：$_GET['code']があり、$_SESSION['code']と同じ値 / $_GET['code']がない
+    *   他の人のマイページ：自分フラグFALSE：$_GET['code']がある場合
+    */
+
+    isset($_GET['code']) == 1 ?
+    // メンバーリストからマイページ
+    $_GET['code'] == $_SESSION['code'] ? $zibunflg = true : $zibunflg = false :
+    // ログイン・登録からマイページ
+    $zibunflg = true;
 
     try {
       require_once '../new-db/execute-Query.php';
