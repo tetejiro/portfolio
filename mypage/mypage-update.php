@@ -23,7 +23,7 @@ if (isset($_SESSION['login']) == false) {
   $strong3 = $_SESSION['strong3'];
 
   try {
-    require_once '../new-db/execute-Query.php';
+    require_once '../new-db/execute-query.php';
     $DbQuery = new DbQuery();
     $DbQuery->dbQuery('
       INSERT INTO mypage_infos

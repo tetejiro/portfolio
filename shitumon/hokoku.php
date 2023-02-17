@@ -12,7 +12,7 @@ if (isset($_SESSION['login']) == false) {
         $_SESSION['url'] = $_SESSION['horenso'];
         $code = $_GET['code'];
 
-        require_once '../new-db/execute-Query.php';
+        require_once '../new-db/execute-query.php';
         $DbQuery = new DbQuery();
         $rec = $DbQuery->dbQuery('
                 SELECT name FROM members WHERE code = \''.$code.'\'

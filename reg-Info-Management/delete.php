@@ -20,7 +20,7 @@
 
     try {
       $code = $_GET['code'];
-      require_once '../new-db/execute-Query.php';
+      require_once '../new-db/execute-query.php';
       $DbQuery = new DbQuery();
       $rec = $DbQuery->dbQuery('SELECT name FROM members WHERE code = \''.$code.'\'');
       $name = $rec[0]['name'];

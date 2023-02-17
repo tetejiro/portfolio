@@ -36,7 +36,7 @@
       <h1>しつもんしよう</h1>
       <?php
       try {
-        require_once '../new-db/execute-Query.php';
+        require_once '../new-db/execute-query.php';
         $DbQuery = new DbQuery();
         $rec = $DbQuery->dbQuery('
           SELECT date, content

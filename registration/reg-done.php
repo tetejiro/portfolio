@@ -9,7 +9,7 @@ try
       $pass = $post['pass'];
       $mail = $post['mail'];
 
-      require_once '../new-db/execute-Query.php';
+      require_once '../new-db/execute-query.php';
       $DbQuery = new DbQuery();
       $DbQuery->dbQuery('
             INSERT INTO members

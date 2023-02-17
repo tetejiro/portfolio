@@ -59,7 +59,7 @@
     }
 
     //名前・学年かぶりがないか。
-    require_once '../new-db/execute-Query.php';
+    require_once '../new-db/execute-query.php';
     $DbQuery = new DbQuery();
     $sameName = $DbQuery->dbQuery('
       SELECT name, year

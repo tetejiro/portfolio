@@ -70,7 +70,7 @@ if(empty($_POST['cause'])==true)
             print '<form><input type="button" onclick="history.back()" value="戻る"></form>';
         }
         try {
-            require_once '../new-db/execute-Query.php';
+            require_once '../new-db/execute-query.php';
             $DBQuery = new DBQuery();
             $DBQuery->dbQuery('
                 INSERT INTO horenso_infos

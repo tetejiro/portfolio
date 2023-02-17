@@ -20,7 +20,7 @@ try
 {
     $code = $_POST['code'];
 
-    require_once '../new-db/execute-Query.php';
+    require_once '../new-db/execute-query.php';
     $DbQuery = new DbQuery();
     $DbQuery->dbQuery('DELETE FROM members WHERE code = \''.$code.'\'');
 }

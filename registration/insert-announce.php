@@ -10,7 +10,7 @@ else
 {
     try
     {
-        require_once '../new-db/execute-Query.php';
+        require_once '../new-db/execute-query.php';
         $DbQuery = new DbQuery();
         $DbQuery->dbQuery('INSERT INTO notices (content) VALUES (\''.$content.'\')');
         header('Location:announce.php');

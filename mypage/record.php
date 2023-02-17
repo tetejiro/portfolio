@@ -11,7 +11,7 @@
       <?php
       //マイページからマイリスト
       $honnin = $_SESSION['code'];
-      require_once '../new-db/execute-Query.php';
+      require_once '../new-db/execute-query.php';
       $DbQuery = new DbQuery();
       $rec = $DbQuery->dbQuery('SELECT * FROM mypage_infos WHERE member_code = \'' . $honnin . '\'');
       $count = count($rec);

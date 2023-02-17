@@ -3,7 +3,7 @@
   require_once('../common.php');
   $cmn = new Common();
   $cmn->printHead('../css/mylist.css');
-  require_once '../new-db/execute-Query.php';
+  require_once '../new-db/execute-query.php';
   $DbQuery = new DbQuery();
 ?>
 
