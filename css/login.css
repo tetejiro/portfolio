@@ -10,12 +10,13 @@ main {
   display: flex;
 }
 
-.hidari {
+.left-side {
   width: 75%;
   background: #B0DEEC;
   position: relative;
 }
 
+/* ？画像 */
 .img {
   position: absolute;
   top: 50%;
@@ -24,14 +25,14 @@ main {
   transform: translate(-50%, -50%);
 }
 
-.migi {
+.right-side {
   background: white;
   width: 25%;
   height: 100vh;
   position: relative;
 }
 
-.naiyo {
+.container {
   width: 60%;
   position: absolute;
   top: 50%;
@@ -40,44 +41,40 @@ main {
   transform: translate(-50%, -50%);
 }
 
-.waku {
+/* login下 */
+.mrg-bottom {
+  margin-bottom: 10%;
+}
+
+.mrg-top {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  display: block;
+}
+
+/* 入力ボタン */
+.input-frame {
   border: solid 1px #2b2b2b;
 }
 
-.botan {
-  display: flex;
-  justify-content: space-between;
-  width: 65%;
-}
-
-.botan1,
-.botan>a {
-  display: block;
-  text-align: left;
-  width: 50%;
-  color: #2b2b2b;
-  text-decoration: none;
-  border-bottom: solid white 1px;
-}
-
-.botan1:hover,
-.botan>a:hover {
-  border-bottom: #1b6c84 1px solid;
-}
-
-.naiyo>a {
-  color: #2b2b2b;
-  text-decoration: none;
-  height: 2rem;
-}
-
-input[name="start"] {
+/* はじめるボタン */
+input[type="submit"] {
   height: 2rem;
   border-bottom: solid 3px white;
 }
 
-.naiyo>a:hover,
-input[name="start"]:hover {
+/* 戻るボタン */
+.container>a {
+  color: #2b2b2b;
+  text-decoration: none;
+  height: 2rem;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  width: fit-content;
+}
+
+.container>a:hover,
+input[type="submit"]:hover {
   border-bottom: #1b6c84 3px solid;
   height: 2rem;
 }
@@ -91,7 +88,7 @@ input[name="start"]:hover {
     position: relative !important;
   }
 
-  main>.hidari {
+  main>.left-side {
     width: 100vw;
     height: 20vh;
     order: 1;
@@ -99,33 +96,35 @@ input[name="start"]:hover {
 
   img {
     position: absolute !important;
-    top: 4.5rem !important;
-    left: 8.5rem !important;
+    top: 50% !important;
+    left: 23% !important;
   }
 
-  .hidari>img::after {
+  .left-side>img::after {
     display: block;
     width: 50vw;
     content: "しつもん。";
     color: black;
   }
 
-  main>.migi {
+  main>.right-side {
     width: 100vw;
     height: 80vh;
     order: 2;
   }
 
-  .waku {
+  .input-frame {
     height: 3rem;
     width: 80%;
   }
 
-  .naiyo>a {
-    width: 50vw;
+  .container {
+    width: 100%;
+    padding-left: 15%;
+    padding-top: 20%;
   }
 
-  .botan {
-    width: auto;
+  .container>a {
+    width: 50vw;
   }
 }
