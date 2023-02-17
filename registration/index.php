@@ -16,8 +16,8 @@
 
 <body>
   <main>
-    <div class="left">
-      <div class="hidariwaku">
+    <div class="left-side">
+      <div class="left-square">
         <p>最初はみんな
         <p>何もわからない。</p>
         <p>先輩に質問をしよう。</p>
@@ -25,7 +25,7 @@
         <p>質問力を高めよう。</p>
       </div>
     </div>
-    <div class="right" id="right">
+    <div class="right-side" id="right-side">
       <nav>
         <ul>
           <li><a href="login.html">ログイン</a></li>
