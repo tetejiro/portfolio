@@ -34,17 +34,15 @@
         }
         setInterval("countTime()", 1000);
       </script>
-      <script>
-      </script>
       <p>　周知内容</p>
     </div>
     <form action="insert-announce.php" method="post">
-      <textarea name="content" rows="8" cols="50" placeholder="周知事項を記載してください。" required></textarea><br>
+      <textarea name="content" rows="8" cols="50" placeholder="周知事項を記載してください。" required></textarea>
       <div class="button">
         <input type="submit" value="登  録">
+        <a href="index.php">もどる</a>
+      </div>
     </form>
-    <a href="index.php">もどる</a>
-  </div>
   </div>
 </body>
 
