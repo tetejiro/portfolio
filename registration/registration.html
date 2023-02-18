@@ -16,17 +16,18 @@
 
 <body>
   <main>
-    <div class="hidari">
+    <div class="left-side">
       <img class="img" src="../favicon/p-favicon2.png" alt="しつもん">
     </div>
-    <div class="migi">
-      <div class="naiyo">
+    <div class="right-side">
+      <div class="container">
         <p>登録を</p>
-        <p>完了させよう。</p>
+        <p class="mrg-bottom">完了させよう。</p>
 
-        <form action="reg-check.php" method="post"><br>
-          お名前<br>
-          <input class="waku" type="text" name="name" placeholder="質問　よしこ" required><br>※半角カタカナ・全角英字・全角数字は使用できません。<br><br>
+        <form action="reg-check.php" method="post">
+          お名前
+          <input class="input-frame mrg-top" type="text" name="name" placeholder="質問　よしこ" required>
+          <p class="attention">※半角カタカナ・全角英字・全角数字は使用できません。</p>
           第
           <select name="year">
             <option value="1">1</option>
@@ -36,17 +37,15 @@
             <option value="5">5</option>
             <option value="6">シニア</option>
           </select>
-          期 <br><br>
-          mail <br>
-          <input class="waku" type="email" name="mail" placeholder="sample@email.com" required><br><br>
-          password <br>
-          <input class="waku" type="password" name="pass" required><br><br>
-          password(確認用) <br>
-          <input class="waku" type="password" name="pass2" required><br><br>
-          <div class="botan">
-            <input class="botan1" type="submit" value="登録する">
-            <a href="index.php">Homeへ</a>
-          </div>
+          期
+          <p class="mrg-top">mail</p>
+          <input class="input-frame" type="email" name="mail" placeholder="sample@email.com" required>
+          <p class="mrg-top">password</p>
+          <input class="input-frame" type="password" name="pass" required>
+          <p class="mrg-top">password(確認用)</p>
+          <input class="input-frame mrg-bottom" type="password" name="pass2" required>
+          <input type="submit" value="登録する">
+          <a href="index.php" class="back-button">Homeへ</a>
         </form>
       </div>
     </div>

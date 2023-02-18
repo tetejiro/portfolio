@@ -29,7 +29,7 @@
   //名前
   $okflg = true;
   if ($name == '') {
-    print '名前を入力してください。 <br>';
+    print '名前を入力してください。 ';
     $okflg = false;
   }
   if (mb_strlen($name) > 15) {
@@ -38,19 +38,19 @@
   }
 
   if (preg_match('/[ｦ-ﾟ]/u', $name) == true || preg_match('/[Ａ-Ｚ]/u', $name) == true || preg_match('/[０-９]/u', $name) == true) {
-    print '※半角カタカナ・全角英字・全角数字は使用できません。<br>';
+    print '※半角カタカナ・全角英字・全角数字は使用できません。';
     $okflg = false;
   }
 
   //メール
   if ($mail == '' || preg_match('/\A([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+\z/', $mail) == 0) {
-    print 'メールアドレスを正しく入力してください。 <br>';
+    print 'メールアドレスを正しく入力してください。 ';
     $okflg = false;
   }
 
   //パスワード
   if ($pass !== $pass2) {
-    print 'パスワードを正しく入力してください。<br>';
+    print 'パスワードを正しく入力してください。';
     $okflg = false;
   }
 
@@ -63,9 +63,9 @@
     WHERE name = \''.$name.'\'AND year =\''.$year.'\'
   ');
   if (empty($rec) == false) {
-    print '同期に同じ名前で登録している人がいます。<br>';
-    print '他の人が分からなくなってしまうので、区別できる名前に変更してください。<br>';
-    print 'ご協力よろしくお願いします。<br>';
+    print '同期に同じ名前で登録している人がいます。';
+    print '他の人が分からなくなってしまうので、区別できる名前に変更してください。';
+    print 'ご協力よろしくお願いします。';
     $okflg = false;
   }
 
@@ -75,8 +75,8 @@
     WHERE pass =\''.hash('sha512', $pass).'\'
   ');
   if (empty($rec) == false) {
-    print 'そのパスワードは使用されています。<br>';
-    print '別のパスワードに変更してください。<br>';
+    print 'そのパスワードは使用されています。';
+    print '別のパスワードに変更してください。';
     $okflg = false;
   }
 
@@ -100,37 +100,34 @@
   <!--全部クリアしていれば表示-->
   <?php if ($okflg == true) { ?>
     <main>
-      <div class="hidari">
+      <div class="left-side">
         <img class="img" src="../favicon/p-favicon2.png" alt="?">
       </div>
-      <!--hidari-->
-      <div class="migi">
-        <div class="naiyo">
-          <p>入力内容確認</p><br><br>
-          <ul>お名前<br>
-            <li><?php print $name; ?></li>
-          </ul><br><br>
-          <ul>mail<br>
-            <li><?php print $mail; ?></li>
-          </ul><br><br>
-          <ul>password<br>
-            <li><?php print $pass; ?></li>
-          </ul><br><br>
-          <form>
-            <input type="button" onclick="history.back();" value="修正する"><br><br>
-          </form>
-          <?php $pass = hash('sha512', $pass); ?>
-          <form action="reg-done.php" method="post">
-            <input type="hidden" name="name" value="<?php print $name; ?>">
-            <input type="hidden" name="year" value="<?php print $year; ?>">
-            <input type="hidden" name="pass" value="<?php print $pass; ?>">
-            <input type="hidden" name="mail" value="<?php print $mail; ?>">
-            <input type="submit" value="始める">
-          </form>
+      <div class="right-side">
+        <div class="container">
+          <p class="mrg-bottom">入力内容確認</p>
+          <ul class="mrg-top">お名前
+            <li class="mrg-left"><?php print $name; ?></li>
+          </ul>
+          <ul class="mrg-top">mail
+            <li class="mrg-left"><?php print $mail; ?></li>
+          </ul>
+          <ul class="mrg-top">password
+            <li class="mrg-left"><?php print $pass; ?></li>
+          </ul>
+          <div class="btn-flex">
+            <input type="submit" onclick="history.back();" value="修正する">
+            <?php $pass = hash('sha512', $pass); ?>
+            <form action="reg-done.php" method="post">
+              <input type="hidden" name="name" value="<?php print $name; ?>">
+              <input type="hidden" name="year" value="<?php print $year; ?>">
+              <input type="hidden" name="pass" value="<?php print $pass; ?>">
+              <input type="hidden" name="mail" value="<?php print $mail; ?>">
+              <input class="scd-btn" type="submit" value="始める">
+            </form>
+          </div>
         </div>
-        <!--naiyo-->
       </div>
-      <!--migi-->
     <?php } ?>
     </main>
 </body>

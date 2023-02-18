@@ -1,4 +1,5 @@
 @charset "utf-8";
+/* login・registration・reg-checkページ共通 */
 
 body {
   font-family: "AvenirNext-Regular", "ヒラギノ丸ゴ Pro W4";
@@ -64,7 +65,7 @@ input[type="submit"] {
 }
 
 /* 戻るボタン */
-.container>a {
+.back-button {
   color: #2b2b2b;
   text-decoration: none;
   height: 2rem;
@@ -73,7 +74,7 @@ input[type="submit"] {
   width: fit-content;
 }
 
-.container>a:hover,
+.back-button:hover,
 input[type="submit"]:hover {
   border-bottom: #1b6c84 3px solid;
   height: 2rem;
@@ -121,10 +122,35 @@ input[type="submit"]:hover {
   .container {
     width: 100%;
     padding-left: 15%;
-    padding-top: 20%;
+    padding-top: 5%;
   }
 
-  .container>a {
+  .back-button {
     width: 50vw;
   }
+}
+
+/* registrationのみ */
+.attention {
+  margin-bottom: 5%;
+  color: gray;
+}
+
+select {
+  text-align: center;
+}
+
+/* reg-checkのみ */
+.mrg-left {
+  margin-left: 10%;
+}
+
+/* ボタン */
+.btn-flex {
+  display: flex;
+  margin-top: 20%;
+}
+
+.scd-btn {
+  margin-left: 20%;
 }
