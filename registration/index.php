@@ -18,11 +18,11 @@
   <main>
     <div class="left-side">
       <div class="left-square">
-        <p>最初はみんな
-        <p>何もわからない。</p>
-        <p>先輩に質問をしよう。</p>
-        <p><span>正しい質問</span>の仕方を身に着け、</p>
-        <p>質問力を高めよう。</p>
+        <p class="mrg-left">最初はみんな
+        <p class="mrg-left">何もわからない。</p>
+        <p class="mrg-left">先輩に質問をしよう。</p>
+        <p class="mrg-left"><span>正しい質問</span>の仕方を身に着け、</p>
+        <p class="mrg-left">質問力を高めよう。</p>
       </div>
     </div>
     <div class="right-side" id="right-side">

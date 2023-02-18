@@ -13,8 +13,7 @@ main {
   height: 100vh;
 }
 
-li,
-a {
+li, a {
   list-style-type: none;
   text-decoration: none;
 }
@@ -38,6 +37,10 @@ a {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.mrg-left {
+  margin-left: 5%;
 }
 
 span {
