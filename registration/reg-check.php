@@ -117,11 +117,10 @@
           </ul>
           <div class="btn-flex">
             <input type="submit" onclick="history.back();" value="修正する">
-            <?php $pass = hash('sha512', $pass); ?>
             <form action="reg-done.php" method="post">
               <input type="hidden" name="name" value="<?php print $name; ?>">
               <input type="hidden" name="year" value="<?php print $year; ?>">
-              <input type="hidden" name="pass" value="<?php print $pass; ?>">
+              <input type="hidden" name="pass" value="<?php print hash('sha512', $pass); ?>">
               <input type="hidden" name="mail" value="<?php print $mail; ?>">
               <input class="scd-btn" type="submit" value="始める">
             </form>

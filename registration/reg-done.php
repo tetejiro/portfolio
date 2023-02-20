@@ -24,7 +24,7 @@ try
 
       $_SESSION['login'] = 1;
       $_SESSION['name'] = $name;
-      $_SESSION['code'] = $rec['max(code)'];
+      $_SESSION['code'] = $rec[0]['max(code)'];
       header('Location:../mypage/mypage.php');
       exit();
 }
