@@ -12,8 +12,8 @@
     isset($_GET['code']) == 1 ? $code = $_GET['code'] : $code = $_SESSION['code'];
 
     /*
-    *   自分のマイページ：自分フラグTRUE：$_GET['code']があり、$_SESSION['code']と同じ値 / $_GET['code']がない
-    *   他の人のマイページ：自分フラグFALSE：$_GET['code']がある場合
+    *  自分のマイページ：自分フラグTRUE：$_GET['code']があり、$_SESSION['code']と同じ値 / $_GET['code']がない
+    *  他の人のマイページ：自分フラグFALSE：$_GET['code']がある場合
     */
 
     isset($_GET['code']) == 1 ?
@@ -44,19 +44,22 @@
     }
     ?>
     <div class="header">
-      <div class="hidari">
+
+      <div class="header-title">
         <a href="../registration/index.php">
           <img src="../favicon/p-favicon3.png" alt="?">
           <h1>しつもん</h1>
         </a>
       </div>
-      <!--hidari-->
-      <div class="header-right">
-        <div class="button-info-button">ボタン説明</div>
-        <!--登録orログインから。-->
+
+      <div class="annotation">
+
+        <div class="annotation-button">ボタン説明</div>
+
+        <!-- 自分のマイページ -->
         <?php
         if ($zibunflg) {
-          print '<div class="migi">';
+          print '<div class="annotation-description">';
           print '<span>' . $_SESSION['name'] . 'さん</span> のマイページ<p>今日も頑張ろう。</p>';
           print '</div>';
         ?>
@@ -64,8 +67,10 @@
             document.querySelector('span').style.borderBottom = "thick solid #B0DEEC";
           </script>
         <?php
+
+        // 他の人のマイページ
         } else {
-          print '<div class="migi">';
+          print '<div class="annotation-description">';
           print '<span>' . $name[0]['name'] . 'さん</span> のページ<p>注意書きによく目を通してしつもんしましょう。</p>';
           print '</div>';
         ?>
@@ -79,19 +84,21 @@
         }
         ?>
       </div>
-    </div>
-    <!--.header-->
 
-    <!-- 上ナビ（ボタン） -->
+    </div>
+
+    <!-- ナビボタン（上部） -->
     <nav>
+      <!-- 自分のページ -->
       <?php
-      // 自分のページ
       if ($zibunflg) {
         print '<p><label for="kousin">更新</label></p>';
         print '<a href="../mypage/record.php">記録</a>';
       }
       ?>
+
       <a href="../mypage/shitsumon-list.php<?php $code != $_SESSION['code'] ? print '?code='.$code : ''; ?>">質問リスト</a>
+
       <a href="member-list.php">メンバーリスト</a>
 
       <?php
@@ -99,10 +106,11 @@
       !$zibunflg ? print '<a href="select-report-or-question.php?code=' . $code . '">しつもんする</a>' : '';
       ?>
     </nav>
+
     <!-- モーダル -->
-    <div style="display: none;" class="button-info">
+    <div style="display: none;" class="modal">
       <p>ボタン説明内容</p>
-      <div class="content">
+      <div class="modal-content">
         <p>更新</p>
         <div>下の記入欄を更新するためのボタンです。</div>
         <p>記録</p>
@@ -114,31 +122,39 @@
       </div>
       <p class="close">とじる</p>
     </div>
+
     <!--  本文  -->
     <form action="mypage-branch.php" method="post">
-      <div class="zenhan">
-        <div class="zenhan1">
-          <div class="now">
-            <p class="title">今は何をしていますか？</p>
-            <textarea class="area" name="task" placeholder="※自分が今していることを周りの人にも共有しましょう。" required><?php
+
+      <div class="section1">
+
+        <div class="question1-2">
+
+          <div class="question-now">
+            <p class="question-title">今は何をしていますか？</p>
+            <textarea name="task" placeholder="※自分が今していることを周りの人にも共有しましょう。" required><?php
               empty($task) == false ? print $task : ''; ?></textarea>
           </div>
-          <div class="time">
-            <p class="title">どれくらいかかりそうですか？</p>
-            <input type="number" name="bytime1_1" max="24" min="0" value="<?php
-              empty($bytime1_1) == false ? print $bytime1_1 : print '00'; ?>" oninput="maxLengthLimit(this)" required>:
+
+          <div class="question-time">
+            <p class="question-title">どれくらいかかりそうですか？</p>
+            <input type="number" name="bytime1_1" max="24" min="0" required value="<?php
+              empty($bytime1_1) == false ? print $bytime1_1 : print '00'; ?>" oninput="maxLengthLimit(this)">:
             <input type="number" name="bytime1_2" max="59" min="0" value="<?php
               empty($bytime1_2) == false ? print $bytime1_2 : print '00'; ?>" oninput="maxLengthLimit(this)">～
             <input type="number" name="bytime2_1" max="24" min="0" value="<?php
-              empty($bytime2_1) == false ? print $bytime2_1 : print '00'; ?>" oninput="maxLengthLimit(this)" required>:
+              empty($bytime2_1) == false ? print $bytime2_1 : print '00'; ?>" oninput="maxLengthLimit(this)">:
             <input type="number" name="bytime2_2" max="59" min="0" value="<?php
               empty($bytime2_2) == false ? print $bytime2_2 : print '00'; ?>" oninput="maxLengthLimit(this)">
           </div>
+
         </div>
-        <!--zenhan1-->
-        <div class="emotion">
-          <p class="title">今日の気分は？</p>
-          <div class="kibun">
+
+        <div class="question-emotion">
+
+          <p class="question-title">今日の気分は？</p>
+
+          <div class="emotion-img-list">
             <label>
               <div><img src="../favicon/kao1.png"></div>
               <input type="radio" name="emotion" value="余裕" <?php $emotion == '余裕' ? print 'checked' : print '';?> required>余裕
@@ -164,78 +180,100 @@
               <input type="radio" name="emotion" value="手伝ってほしい" <?php $emotion == '手伝ってほしい' ? print 'checked' : print ''; ?>>手伝ってほしい
             </label>
           </div>
-        </div>
-      </div>
-      <div class="kouhan">
-        <div class="kohan1">
-          <div class="zikan">
-            <p class="title">都合がいい時間</p>
-            <input type="number" name="time1_1" v max="24" min="0" value="<?php
-              empty($time1_1) == false ? print $time1_1 : print '00'; ?>" oninput="maxLengthLimit(this)" required>:
-            <input type="number" name="time1_2" v max="59" min="0" value="<?php
-              empty($time1_2) == false ? print $time1_2 : print '00'; ?>" oninput="maxLengthLimit(this)">～
-            <input type="number" name="time2_1" v max="24" min="0" value="<?php
-              empty($time2_1) == false ? print $time2_1 : print '00'; ?>" oninput="maxLengthLimit(this)" required>:
-            <input type="number" name="time2_2" v max="59" min="0" value="<?php
-              empty($time2_2) == false ? print $time2_2 : print '00'; ?>" oninput="maxLengthLimit(this)">
-          </div>
-          <div class="tyui">
-            <p class="title">質問時の注意事項</p>
-            <textarea class="area" name="attention" placeholder="※質問する前に留意してほしいことを書いてください。" required><?php
-              isset($attention) == true ? print $attention : ''; ?></textarea>
-          </div>
-        </div>
-        <div class="makasete">
-          <p class="title">ここは私に任せて！</p>
-          <div class="makasete1">
-            <p>1</p>
-            <textarea class="a" type="text" name="strong1" placeholder="※あなたの得意分野を教えてください。&#13;&#10;誰に質問するべきか、分かるようになります。" required><?php
-              empty($strong1) == false ? print $strong1 : ''; ?></textarea>
-            <p>2</p>
-            <textarea class="b" type="text" name="strong2"><?php
-              empty($strong2) == false ? print $strong2 : print ''; ?></textarea>
-            <p>3</p>
-            <textarea class="c" type="text" name="strong3"><?php
-              empty($strong3) == false ? print $strong3 : print ''; ?></textarea>
-            <input type="hidden" name="code" value="<?php print $code; ?>">
-          </div>
-        </div>
-      </div>
-      <div class="navzentai">
 
-        <!--  下ナビ  -->
-        <div class="nav2">
-          <?php
-          if ($zibunflg) {
-            print '<p><input id="kousin" type="submit" value="更新"></p>';
-            print '<p><a href="../mypage/record.php">記録</a></p>';
-          } ?>
-          <a href="../mypage/shitsumon-list.php<?php $code != $_SESSION['code'] ? print '?code='.$code : ''; ?>">質問リスト</a>
-          <?php
-          print '<p><a href="member-list.php">メンバーリスト</a></p>';
-          !$zibunflg ? print '<p><a id="shitu" href="select-report-or-question.php?code='.$code.'">しつもんする</a></p>' : '';
-          ?>
         </div>
+
       </div>
+
+      <div class="section2">
+
+        <div class="question-convenient-time">
+
+          <p class="question-title">都合がいい時間</p>
+
+          <input type="number" name="time1_1" max="24" min="0" value="<?php
+            empty($time1_1) == false ? print $time1_1 : print '00'; ?>" oninput="maxLengthLimit(this)" required>:
+
+          <input type="number" name="time1_2" max="59" min="0" value="<?php
+            empty($time1_2) == false ? print $time1_2 : print '00'; ?>" oninput="maxLengthLimit(this)">～
+
+          <input type="number" name="time2_1" max="24" min="0" value="<?php
+            empty($time2_1) == false ? print $time2_1 : print '00'; ?>" oninput="maxLengthLimit(this)" required>:
+
+          <input type="number" name="time2_2" max="59" min="0" value="<?php
+            empty($time2_2) == false ? print $time2_2 : print '00'; ?>" oninput="maxLengthLimit(this)">
+
+        </div>
+
+        <div class="question-attention">
+
+          <p class="question-title">質問時の注意事項</p>
+
+          <textarea name="attention" placeholder="※質問する前に留意してほしいことを書いてください。" required><?php
+            isset($attention) == true ? print $attention : ''; ?></textarea>
+
+        </div>
+
+      </div>
+
+      <div class="section3">
+
+        <p class="question-title">ここは私に任せて！</p>
+
+        <div class="question-strong-point">
+
+          <p>1</p>
+          <textarea type="text" name="strong1" placeholder="※あなたの得意分野を教えてください。&#13;&#10;誰に質問するべきか、分かるようになります。" required><?php
+            empty($strong1) == false ? print $strong1 : ''; ?></textarea>
+
+          <p>2</p>
+          <textarea type="text" name="strong2"><?php
+            empty($strong2) == false ? print $strong2 : print ''; ?></textarea>
+
+          <p>3</p>
+          <textarea type="text" name="strong3"><?php
+            empty($strong3) == false ? print $strong3 : print ''; ?></textarea>
+          <input type="hidden" name="code" value="<?php print $code; ?>">
+
+        </div>
+
+      </div>
+
+      <!--  下ナビ  -->
+      <div class="bottom-nav">
+        <?php
+        if ($zibunflg) {
+          print '<p><input type="submit" value="更新"></p>';
+          print '<p><a href="../mypage/record.php">記録</a></p>';
+        } ?>
+        <p><a href="../mypage/shitsumon-list.php<?php $code != $_SESSION['code'] ? print '?code='.$code : ''; ?>">質問リスト</a></p>
+        <?php
+        print '<p><a href="member-list.php">メンバーリスト</a></p>';
+        !$zibunflg ? print '<p><a href="select-report-or-question.php?code='.$code.'">しつもんする</a></p>' : '';
+        ?>
+      </div>
+
     </form>
+
   </body>
+
   <script>
     // モーダル開閉処理
     document.addEventListener('click', function(event) {
-      if (event.target.classList.contains('button-info') || event.target.closest('.button-info')) {
+      if (event.target.classList.contains('modal') || event.target.closest('.modal')) {
         document.querySelector('.close').addEventListener('click', function() {
           // モーダル内・とじるボタン
-          document.querySelector('.button-info').classList.remove('block');
+          document.querySelector('.modal').classList.remove('block');
         })
-      } else if (event.target.classList.contains('button-info-button')) {
+      } else if (event.target.classList.contains('annotation-button')) {
         // 説明ボタン押下
-        document.querySelector('.button-info').classList.toggle('block');
+        document.querySelector('.modal').classList.toggle('block');
       } else {
         // モーダル外
-        document.querySelector('.button-info').classList.remove('block');
+        document.querySelector('.modal').classList.remove('block');
       }
       // 背景色
-      if (document.querySelector('.button-info').classList.contains('block')) {
+      if (document.querySelector('.modal').classList.contains('block')) {
         document.querySelector('.all').style.background = 'rgba(0,0,0,0.7)';
       } else {
         document.querySelector('.all').style.background = 'white';
@@ -244,19 +282,19 @@
 
     // 更新時記入欄NULLチェック
     document.querySelector('form').addEventListener('submit', function(event) {
-      // 値取得
-      let text1 = document.getElementsByName('task')[0].value == '' ? '0' : '1';
-      let text2 = document.getElementsByName('bytime1_1')[0].value == '' ? '0' : '1';
-      let text3 = document.getElementsByName('bytime2_1')[0].value == '' ? '0' : '1';
-      let text4;
-      document.querySelector('input[name=emotion]:checked') == null ? text4 = '0' : text4 = '1';
-      let text5 = document.getElementsByName('time1_1')[0].value == '' ? '0' : '1';
-      let text6 = document.getElementsByName('time2_1')[0].value == '' ? '0' : '1';
-      let text7 = document.getElementsByName('attention')[0].value == '' ? '0' : '1';
-      let text8 = document.getElementsByName('strong1')[0].value == '' ? '0' : '1';
-      let total = text1 + text2 + text3 + text4 + text5 + text6 + text7 + text8;
 
-      // 記入欄のvalueを全て足して、0が含まれてる⇒NULLを含む。
+      // 各項目の値がNULLであれば、0を代入
+      let text1 = document.getElementsByName('task')[0].value == '' ? '0' : '1';
+      let text2 = document.getElementsByName('bytime1_1')[0].value == 00 ? '0' : '1';
+      let text3;
+      document.querySelector('input[name=emotion]:checked') == null ? text3 = '0' : text3 = '1';
+      let text4 = document.getElementsByName('time1_1')[0].value == 00 ? 0 : '1';
+      let text5 = document.getElementsByName('time2_1')[0].value == 00 ? 0 : '1';
+      let text6 = document.getElementsByName('attention')[0].value == '' ? '' : '1';
+      let text7 = document.getElementsByName('strong1')[0].value == '' ? '' : '1';
+      let total = text1 + text2 + text3 + text4 + text5 + text6 + text7;
+
+      // 0が含まれてるときに、window.alertを出す
       if(total.includes(0)) {
         window.alert('必須項目が未記入です。\n記入してください。');
         event.preventDefault();
@@ -268,6 +306,7 @@
       $this.value = $this.value.slice(0, 2);
     }
   </script>
+
   </html>
 <?php
 }

@@ -6,18 +6,19 @@ body {
   padding: 5%;
 }
 
-.title {
+.question-title {
   margin-bottom: 2rem;
 }
 
-.area {
+textarea[name="task"],
+textarea[name="attention"] {
   border: solid 3.5px #b0deec;
   width: 40vw;
   height: 90%;
   border-radius: 10px;
 }
 
-.hidari>a {
+.header-title>a {
   display: inline-block;
   display: flex;
   justify-content: space-between;
@@ -33,13 +34,13 @@ body {
   padding-bottom: 15px;
 }
 
-.hidari>img,
-.hidari>h1 {
+.header-title>img,
+.header-title>h1 {
   display: block;
   padding-top: 10px;
 }
 
-.hidari {
+.header-title {
   display: flex;
   justify-content: space-between;
   width: 20vw;
@@ -47,19 +48,19 @@ body {
   letter-spacing: 20px;
 }
 
-.hidari>a>h1 {
+.header-title>a>h1 {
   width: 18vw;
 }
 
-.hidari>img {
+.header-title>img {
   width: 1vw;
 }
 
-.header-right {
+.annotation {
   display: flex;
 }
 
-.button-info-button {
+.annotation-button {
   font-weight: 600;
   margin-right: 5%;
   background: #b0deec;
@@ -68,7 +69,7 @@ body {
   border-radius: 5px;
 }
 
-.migi {
+.annotation-description {
   line-height: 200%;
   width: 120%;
 }
@@ -84,7 +85,7 @@ input[type="number"] {
 }
 
 /* モーダル */
-.button-info {
+.modal {
   border: #67a3b5 dashed 5px;
   background: white;
   width: 45vw;
@@ -97,22 +98,22 @@ input[type="number"] {
   line-height: 200%;
 }
 
-.button-info > .content {
+.modal > .modal-content {
   text-align: left;
 }
 
-.button-info > p {
+.modal > p {
   font-weight: 700;
   border-bottom: #158db2 solid 3px;
   width: 40%;
   margin-bottom: 10%;
 }
 
-.button-info > .content > p {
+.modal > .modal-content > p {
   font-weight: 700;
 }
 
-.button-info > p:last-child {
+.modal > p:last-child {
   border: none;
   background: gainsboro;
   margin: 5% 0 0 30%;
@@ -152,7 +153,7 @@ nav>p:hover {
 }
 
 /*1番目*/
-.kibun {
+.emotion-img-list {
   margin-left: 23%;
   width: 55%;
   display: flex;
@@ -161,42 +162,42 @@ nav>p:hover {
   border-radius: 10px;
 }
 
-.zenhan {
+.section1 {
   padding: 5%;
   border-bottom: solid 4px #2b2b2b;
 }
 
-.zenhan1 {
+.question1-2 {
   display: flex;
   justify-content: space-between;
   margin-bottom: 5vh;
 }
 
-.time {
+.question-time {
   width: 40%;
 }
 
-.emotion {
+.question-emotion {
   text-align: center;
   padding-top: 10%;
 }
 
 /*真ん中*/
-.kohan1 {
+.section2 {
   height: 50vh;
   padding: 10vh;
   display: flex;
   justify-content: space-around;
 }
 
-.zikan {
+.question-convenient-time {
   width: 40%;
 }
 
 /*一番下*/
-.a,
-.b,
-.c {
+textarea[name="strong1"],
+textarea[name="strong2"],
+textarea[name="strong3"] {
   display: inline-block;
   width: 30%;
   height: 100px;
@@ -204,7 +205,7 @@ nav>p:hover {
   border-radius: 10px;
 }
 
-.makasete {
+.section3 {
   margin-top: 5vh;
   margin-bottom: 10vh;
   border-top: solid 4px #2b2b2b;
@@ -212,31 +213,31 @@ nav>p:hover {
   padding: 13vh 0;
 }
 
-.makasete1 {
+.question-strong-point {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
 /*下のナビ*/
-.nav2 {
+.bottom-nav {
   display: flex;
   justify-content: flex-start;
 }
 
-.nav2>p>a {
+.bottom-nav>p>a {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-.nav2>p>input {
+.bottom-nav>p>input {
   display: inline-block;
   width: 100%;
 }
 
-.nav2>a,
-.nav2>p {
+.bottom-nav>a,
+.bottom-nav>p {
   display: inline-block;
   text-align: center;
   margin-top: 2.5vh;
@@ -244,7 +245,7 @@ nav>p:hover {
   width: 12%;
 }
 
-.nav2>p:hover {
+.bottom-nav>p:hover {
   vertical-align: top;
   height: 5vh;
   padding: 0.25em 0.5em;
@@ -261,7 +262,8 @@ nav>p:hover {
     margin: 0%;
   }
 
-  .area {
+  textarea[name="task"],
+  textarea[name="attention"] {
     width: 80%;
     height: 15vh;
   }
@@ -279,26 +281,26 @@ nav>p:hover {
     margin-bottom: 0%;
   }
 
-  .hidari>img {
+  .header-title>img {
     width: 1.5vw;
     margin-bottom: 0.25rem;
   }
 
-  .hidari>a>h1 {
+  .header-title>a>h1 {
     display: none;
   }
 
-  .header>.migi {
+  .header>.annotation-description {
     text-align: center;
     width: 75%;
     order: 2;
   }
 
-  .hidari {
+  .header-title {
     order: 1;
   }
 
-  .button-info-button {
+  .annotation-button {
     padding-top: 6%;
   }
 
@@ -322,52 +324,52 @@ nav>p:hover {
   }
 
   /*1ブロック目*/
-  .zenhan {
+  .section1 {
     margin-bottom: 0;
     padding: 0%;
   }
 
-  .zenhan1 {
+  .question1-2 {
     display: flex;
     flex-direction: column;
     padding-top: 10%;
   }
 
-  .now {
+  .question-now {
     order: 1;
   }
 
-  .time {
+  .question-time {
     order: 2;
     margin-bottom: 0;
     height: 10vh;
     width: 100%;
   }
 
-  .emotion {
+  .question-emotion {
     padding-bottom: 10%;
   }
 
-  .emotion>p {
+  .question-emotion>p {
     margin-left: 0%;
   }
 
-  .kibun {
+  .emotion-img-list {
     width: 100%;
     margin-left: 0vw;
   }
 
-  .zenhan>p {
+  .section1>p {
     margin-left: 0px;
     padding-left: 0px;
   }
 
-  .emotion>p:first-child {
+  .question-emotion>p:first-child {
     text-align: left;
   }
 
   /*真ん中*/
-  .zikan {
+  .question-convenient-time {
     padding-top: 14%;
     width: 100%;
   }
@@ -377,7 +379,7 @@ nav>p:hover {
     width: 90%;
   }
 
-  .kohan1 {
+  .section2 {
     width: 90vw;
     display: flex;
     flex-direction: column;
@@ -387,23 +389,23 @@ nav>p:hover {
   }
 
   /*１番下*/
-  .makasete {
+  .section3 {
     margin-bottom: 0vh;
     padding: 5vh;
     border-bottom: none;
   }
 
-  .makasete1 {
+  .question-strong-point {
     display: flex;
     flex-direction: column;
   }
 
-  .makasete1>textarea {
+  .question-strong-point>textarea {
     width: 100%;
   }
 
   /*下のナビ*/
-  .nav2 {
+  .bottom-nav {
     display: flex;
     justify-content: space-evenly;
     text-align: center;
@@ -412,14 +414,14 @@ nav>p:hover {
     margin-bottom: 10%;
   }
 
-  .nav2>p {
+  .bottom-nav>p {
     display: inline-block;
     margin-top: 2.5vh;
     width: 20%;
     height: 5vh;
   }
 
-  .nav2>p:hover {
+  .bottom-nav>p:hover {
     padding: 0.25em 0.5em;
     width: 20%;
     background-color: #f3f3f3;
@@ -427,7 +429,7 @@ nav>p:hover {
   }
 
   /* モーダル */
-  .button-info {
+  .modal {
     width: 80vw;
     margin-top: -5%;
     margin-left: 5.5%;
@@ -435,11 +437,11 @@ nav>p:hover {
     height: 80%;
   }
 
-  .button-info > p {
+  .modal > p {
     width: 100%;
   }
 
-  .button-info > p:last-child {
+  .modal > p:last-child {
     width: fit-content;
     margin-left: 40%;
     border: none;
