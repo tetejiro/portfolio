@@ -92,7 +92,7 @@
       <!-- 自分のページ -->
       <?php
       if ($zibunflg) {
-        print '<p><label for="kousin">更新</label></p>';
+        print '<p><label for="update">更新</label></p>';
         print '<a href="../mypage/record.php">記録</a>';
       }
       ?>
@@ -243,7 +243,7 @@
       <div class="bottom-nav">
         <?php
         if ($zibunflg) {
-          print '<p><input type="submit" value="更新"></p>';
+          print '<p><input type="submit" value="更新" id="update"></p>';
           print '<p><a href="../mypage/record.php">記録</a></p>';
         } ?>
         <p><a href="../mypage/shitsumon-list.php<?php $code != $_SESSION['code'] ? print '?code='.$code : ''; ?>">質問リスト</a></p>
