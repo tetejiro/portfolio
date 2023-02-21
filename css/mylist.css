@@ -35,7 +35,7 @@ img {
 
 .record>p {
   margin-right: 3rem;
-  margin-top: 10%;
+  margin-top: 7.5%;
 }
 
 th {
@@ -107,6 +107,7 @@ input:hover {
 
   .record>p {
     margin-right: 0.5rem;
+    margin-top: 22%;
   }
 
   .modoru>a {
