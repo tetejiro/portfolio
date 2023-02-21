@@ -8,93 +8,118 @@
 ?>
 
   <body>
-    <form>
-      <h3><img src="../favicon/p-favicon.png"> 過去のほうれんそう・質問リスト</h3>
+
+    <h3><img src="../favicon/p-favicon.png"> 過去のほうれんそう・質問リスト</h3>
+
+    <!-- 他の人のマイページの場合、誰のマイページか調べる -->
+    <?php
+    if (!empty($_GET['code'])) {
+      $opponent = $DbQuery->dbQuery('
+          SELECT name FROM members WHERE code = \'' . $_GET['code'] . '\'
+        ')[0];
+
+      print '<p class="subtitle">' . $opponent['name'] . ' さんへの質問一覧</p>';
+    }
+    ?>
+
+    <div class="records">
+
       <?php
-        if(!empty($_GET['code'])) {
-          $opponent = $DbQuery->dbQuery('
-            SELECT name FROM members WHERE code = \'' . $_GET['code'] . '\'
-          ')[0];
+      /*
+      *  他の人のマイページ：自分がその人へした質問を表示する。
+      *  自分のマイページ：過去の質問全てを表示する。
+      */
+      $terms = !empty($_GET['code']) ? 'AND target_member_code = \'' . $_GET['code'] . '\'' : '';
+      $selectedQuestion = $DbQuery->dbQuery(
+        '
+          SELECT
+            created_at, member_code, target_member_code, title, purpose, detail, cause, other
+          FROM
+            horenso_infos
+          WHERE
+            member_code =\'' . $_SESSION['code'] . '\'
+          ' . $terms
+      );
 
-          print '<p class="subtitle">'.$opponent['name'].' さんへの質問一覧</p>';
-        }
+      // 過去の質問がない場合
+      if (empty($selectedQuestion)) {
+        print '<div class=subtitle>';
+        print 'まだしつもん・ほうれんそうをしていません。';
+        print '<p><a href="../mypage/mypage.php?code=' . $_SESSION['code'] . '">もどる</a></p>';
+        print '</div>';
       ?>
-      <div class="records">
-        <?php
 
-          // 他の人のマイリストの場合、自分から他の人への質問のみを表示する。
-          $terms = !empty($_GET['code']) ? 'AND target_member_code = \''.$_GET['code'].'\'' : '';
-          $selectedQuestion = $DbQuery->dbQuery('
-            SELECT
-              created_at, member_code, target_member_code, title, purpose, detail, cause, other
-            FROM
-              horenso_infos
-            WHERE
-              member_code =\'' . $_SESSION['code'] . '\'
-            '.$terms
-          );
+    </div>
 
-          if (empty($selectedQuestion)) {
-            print '<div class=subtitle>';
-            print 'まだしつもん・ほうれんそうをしていません。';
-            print '<p><a href="../mypage/mypage.php?code=' . $_SESSION['code'] . '">もどる</a></p>';
-            print '</div>';
-        ?>
-      </div>
-        <?php
-          } else {
-            $count = count($selectedQuestion);
+    <!-- 過去の質問がある場合 -->
+    <?php
+    } else {
+      $count = count($selectedQuestion);
+      for ($i = $count - 1; 0 <= $i; $i--) { ?>
 
-            for ($i = $count - 1; 0 <= $i; $i--) { ?>
-          <div class="record">
-            <p><?php print $i + 1; ?></p>
-            <table>
-              <tr>
-                <th>時間</th>
-                <td><?php print mb_substr($selectedQuestion[$i]['created_at'], 0, 16); ?></td>
-              </tr>
-              <?php
-              $target_member_codes = $selectedQuestion[$i]['target_member_code'];
-              $aite = $DbQuery->dbQuery('
+        <div class="record">
+
+          <p><?php print $i + 1; ?></p>
+
+          <table>
+
+            <tr>
+              <th>時間</th>
+              <td><?php print mb_substr($selectedQuestion[$i]['created_at'], 0, 16); ?></td>
+            </tr>
+
+            <!-- 誰への質問なのか検索 -->
+            <?php
+            $target_member_codes = $selectedQuestion[$i]['target_member_code'];
+            $aite = $DbQuery->dbQuery(
+              '
                 SELECT name FROM members
-                WHERE code = '.$target_member_codes
-              );
-              // 退会済みユーザ
-              empty($aite) ? $aite[0]['name'] = '退会済みユーザ' : ''; ?>
-              <tr>
-                <th>質問相手</th>
-                <td><?php print $aite[0]['name']; ?> さん</td>
-              </tr>
-              <tr>
-                <th>件名</th>
-                <td><?php print $selectedQuestion[$i]['title']; ?></td>
-              </tr>
-              <tr>
-                <th>依頼したいこと</th>
-                <td><?php print $selectedQuestion[$i]['purpose']; ?></td>
-              </tr>
-              <tr>
-                <th>詳細</th>
-                <td><?php print $selectedQuestion[$i]['detail']; ?></td>
-              </tr>
-              <tr>
-                <th>考えられる原因</th>
-                <td><?php print $selectedQuestion[$i]['cause']; ?></td>
-              </tr>
-              <tr>
-                <th>試したこと・その他</th>
-                <td><?php print $selectedQuestion[$i]['other']; ?></td>
-              </tr>
-            </table>
-          </div>
-        <?php
-            }
-            print '<input type="button" onclick="history.back()" value="もどる">';
-        ?>
-      </form>
-    </body>
+                WHERE code = ' . $target_member_codes
+            );
+            // 退会済みユーザ
+            empty($aite) ? $aite[0]['name'] = '退会済みユーザ' : ''; ?>
 
-    </html>
-  <?php
-          }
-        }
+            <tr>
+              <th>質問相手</th>
+              <td><?php print $aite[0]['name']; ?> さん</td>
+            </tr>
+
+            <tr>
+              <th>件名</th>
+              <td><?php print $selectedQuestion[$i]['title']; ?></td>
+            </tr>
+
+            <tr>
+              <th>依頼したいこと</th>
+              <td><?php print $selectedQuestion[$i]['purpose']; ?></td>
+            </tr>
+
+            <tr>
+              <th>詳細</th>
+              <td><?php print $selectedQuestion[$i]['detail']; ?></td>
+            </tr>
+
+            <tr>
+              <th>考えられる原因</th>
+              <td><?php print $selectedQuestion[$i]['cause']; ?></td>
+            </tr>
+
+            <tr>
+              <th>試したこと・その他</th>
+              <td><?php print $selectedQuestion[$i]['other']; ?></td>
+            </tr>
+
+          </table>
+
+        </div>
+
+      <?php
+      }
+      print '<input type="button" onclick="history.back()" value="もどる">'; ?>
+    <?php
+    } ?>
+
+  </body>
+  <?php } ?>
+
+  </html>
