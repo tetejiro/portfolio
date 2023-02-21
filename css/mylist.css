@@ -17,7 +17,7 @@ h3 {
   border-bottom: #b0deec solid 4px;
 }
 
-.center {
+.subtitle {
   text-align: center;
   text-shadow: 0 0 black;
   margin-bottom: 1rem;
@@ -27,12 +27,13 @@ img {
   vertical-align: bottom;
 }
 
-.zentai2 {
+.record {
   display: flex;
   justify-content: center;
+  margin-bottom: 3%;
 }
 
-.zentai2>p {
+.record>p {
   margin-right: 3rem;
   margin-top: 5%;
 }
@@ -49,7 +50,7 @@ td {
   text-align: left;
 }
 
-.zentai {
+.records {
   text-align: center;
 }
 
@@ -104,7 +105,7 @@ input:hover {
     padding-right: 0%;
   }
 
-  .zentai2>p {
+  .record>p {
     margin-right: 0.5rem;
   }
 
