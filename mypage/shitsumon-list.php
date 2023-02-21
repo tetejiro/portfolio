@@ -86,7 +86,7 @@
                   <th>試したこと・その他</th>
                   <td><?php print $selectedQuestion[$i]['other']; ?></td>
                 </tr>
-              </table><br><br>
+              </table>
             </div>
             <!--zentai3-->
           </div>

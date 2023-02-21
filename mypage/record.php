@@ -57,7 +57,7 @@
                   <th>当時の気分</th>
                   <td><?php print $rec[$i]['emotion']; ?></td>
                 </tr>
-              </table><br><br>
+              </table>
     </form>
     </div>
     <!--zentai3-->
