@@ -25,7 +25,7 @@ try {
     header('Location:../mypage/mypage.php');
     exit();
   } else {
-?>
+  ?>
     <!DOCTYPE html>
     <html lang="ja">
 

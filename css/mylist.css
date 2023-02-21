@@ -35,7 +35,7 @@ img {
 
 .record>p {
   margin-right: 3rem;
-  margin-top: 7.5%;
+  margin-top: 6.5%;
 }
 
 th {
@@ -74,28 +74,11 @@ input:hover {
   background: #a2bcc4;
 }
 
-/* 未入力の場合 */
-.mi {
-  width: 20%;
-  height: 10%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.mi>p {
-  height: 5rem;
-}
-
 @media (max-width: 600px) {
   h3 {
     width: 60vw;
   }
 
-  /*打消し*/
   body {
     width: 100vw;
     padding: 0%;
