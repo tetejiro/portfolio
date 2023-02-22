@@ -43,7 +43,7 @@ try {
     <body>
   <?php
     print '<form action="login.html" method="post">';
-    print '<p style="text-align: center;margin-top: 25%;">登録されていないものです。</p><br>';
+    print '<p style="text-align: center;margin-top: 25%;">登録されていないものです。</p>';
     print '<input type="submit" value="もどる">';
     print '</form>';
   }
