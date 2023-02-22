@@ -3,7 +3,8 @@
 main {
   font-family: "AvenirNext-Regular", "ヒラギノ丸ゴ Pro W4";
   padding-top: 10vh;
-  padding-left: 10vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
 }
 
 .header {
@@ -12,17 +13,15 @@ main {
   margin-bottom: 7%;
 }
 
-.waku {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  height: 50%;
-  width: 85%;
+.header > a {
+  display: block;
 }
 
-.name {
-  color: #2b2b2b;
-  text-decoration: none;
+.classes {
+  display: flex;
+  height: 50%;
+  width: 90%;
+  margin-left: 5%;
 }
 
 fieldset {
@@ -32,22 +31,13 @@ fieldset {
   border: none;
 }
 
-.kotoba {
-  width: 40%;
-  position: relative;
+.title {
+  margin-left: 2.5%;
+  margin-top: 2rem;
 }
 
-.kotoba1 {
-  width: 75%;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  margin-right: 0px;
-  margin-left: 7%;
-  padding-right: 0px;
-}
-
-.namae {
+/* user-listのみ */
+.name {
   color: #2b2b2b;
 }
 
@@ -56,14 +46,41 @@ a {
   color: #2b2b2b;
 }
 
+.menu {
+  height: 2.5rem;
+  margin-top: 5rem;
+  display: flex;
+  justify-content: space-around;
+  font-weight: 600;
+}
+
+.menu>input,
+.menu>a {
+  display: inline-block;
+  text-align: center;
+  width: 20%;
+}
+
+.menu>a {
+  padding: 0.5rem;
+}
+
+.menu>input:hover,
+.menu>a:hover {
+  background: #dee8eb;
+  border-radius: 15px;
+  display: inline-block;
+  text-align: center;
+  width: 20%;
+  height: 2.5rem;
+  margin-top: 1%;
+}
+
+
 @media (max-width: 600px) {
 
-  /*全体*/
   main {
-    width: 100vw;
-    padding-left: 5vw;
-    padding-bottom: 10vh;
-    height: auto;
+    padding-right: 0.5vw;
   }
 
   /*ヘッダー*/
@@ -72,24 +89,21 @@ a {
     margin-bottom: 0%;
   }
 
-  .kotoba {
-    width: 50%;
+  .header > .title {
+    margin-top: 0.75rem;
   }
 
   /*リスト*/
-  .waku {
+  .classes {
     display: flex;
     flex-wrap: wrap;
     width: 90vw;
-  }
-
-  legend {
-    color: #38b9e0;
-    padding-top: 5.25vh;
+    margin-left: 0.25%;
   }
 
   fieldset {
     width: 30vw;
+    padding-top: 5.25vh;
   }
 
   fieldset>a {

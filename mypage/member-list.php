@@ -7,58 +7,60 @@
 ?>
 
   <body>
+
     <main>
+
       <div class="header">
+
         <a href="./mypage.php"><img src="../favicon/p-favicon4.png" alt="?"></a>
-        <div class="kotoba">
-          <div class="kotoba1">
-            <h3>質問したい人を選択して、</h3>
-            <h3>質問する際の注意事項などを確認しましょう。</h3>
-          </div>
+
+        <div class="title">
+
+          <h3>質問したい人を選択して、</h3>
+          <h3>質問する際の注意事項などを確認しましょう。</h3>
+
         </div>
+
       </div>
+
       <?php
       require_once '../new-db/execute-query.php';
       $DbQuery = new DbQuery();
+      // 先頭カラムをグループ化したレコード
       $rec = $DbQuery->selectFetchAll('SELECT year, code, name FROM members');
-
       ksort($rec);
-      // ↑ https://kinocolog.com/pdo_fetch_pattern/ の下の方参照
-
-      //登録がない場合はrecがないからIF。
       ?>
-      <div class="waku">
+
+      <div class="classes">
+
         <?php
         if (isset($rec) == true) {
-          foreach ($rec as $key => $hito) {
-            print '<fieldset>';
-            print '<legend>';
-            if ($key === 6) {
-              print 'シニア';
-            } else {
-              print $key . '期';
-            }
-            print '</legend>';
 
-            foreach ($hito as $year_member) {
-              $code = $year_member['code'];
-              $name = $year_member['name'];
-              print '<a class="name" href="mypage.php?code=' . $code . '">';
+          foreach ($rec as $class => $members) {
+
+            print '<fieldset>';
+            $class === 6 ? print 'シニア' : print $class . '期';
+
+            foreach ($members as $member) {
+              $code = $member['code'];
+              $name = $member['name'];
+              print '<div><a class="name" href="mypage.php?code=' . $code . '">';
               print $name . 'さん';
               print '</a>';
-              print '<br>';
+              print '</div>';
             }
 
             print '</fieldset>';
           }
-        ?></div>
-  <?php
         } else {
           print 'まだ登録がありません。';
         }
-      }
-  ?>
+      } ?>
+
+      </div>
+
     </main>
+
   </body>
 
-  </html>
+</html>
