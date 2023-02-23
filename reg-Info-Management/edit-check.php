@@ -66,7 +66,7 @@
       FROM members
       WHERE name =\'' .$name .'\' AND year = \''.$year.'\'
     ');
-    if (count($sameName) > 1) {
+    if (count($sameName) >= 1) {
       $okflag = false;
       print '同期に同じ名前で登録している人がいます。<br>';
       print '他の人が分からなくなってしまうので、区別できる名前に変更してください。<br>';
@@ -77,7 +77,7 @@
     $samePass = $DbQuery->dbQuery('
       SELECT name FROM members where pass = \''.hash('sha512', $pass).'\'
     ');
-    if (count($samePass) > 1) {
+    if (count($samePass) >= 1) {
       $okflg = false;
       print 'パスワード「'.$pass.'」は使用されています。<br>';
       print '別のパスワードに変更してください。<br>';

@@ -49,6 +49,11 @@
   }
 
   //パスワード
+  if (mb_strlen($pass) > 20) {
+    print 'パスワードは20文字以内にしてください。';
+    $okflg = false;
+  }
+
   if ($pass !== $pass2) {
     print 'パスワードを正しく入力してください。';
     $okflg = false;
