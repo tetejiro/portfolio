@@ -60,25 +60,26 @@
         <?php
         if ($zibunflg) {
           print '<div class="annotation-description">';
-          print '<span>' . $_SESSION['name'] . 'さん</span> のマイページ<p>今日も頑張ろう。</p>';
+          print '<font>' . $_SESSION['name'] . 'さん</font> のマイページ<p>今日も頑張ろう。</p>';
           print '</div>';
         ?>
           <script>
-            document.querySelector('span').style.borderBottom = "thick solid #B0DEEC";
+            document.querySelector('font').style.borderBottom = "thick solid #B0DEEC";
           </script>
         <?php
 
         // 他の人のマイページ
         } else {
           print '<div class="annotation-description">';
-          print '<span>' . $name[0]['name'] . 'さん</span> のページ<p>注意書きによく目を通してしつもんしましょう。</p>';
+          print '<font>' . $name[0]['name'] . 'さん</font> のページ<p class="txt">注意書きによく目を通してしつもんしましょう。</p>';
           print '</div>';
         ?>
           <script>
             let names = '<?php print $name[0]['name'] ?>';
             let message = names + 'さんのページ。\nよく読んで質問しましょう。';
             window.alert(message);
-            document.querySelector('span').style.borderBottom = "thick solid #5fa5ba";
+            document.querySelector('font').style.borderBottom = "thick solid #5fa5ba";
+            document.querySelector('.txt').style.lineHeight = "155%";
           </script>
         <?php
         }
@@ -109,10 +110,12 @@
 
     <!-- モーダル -->
     <div style="display: none;" class="modal">
-      <p>ボタン説明内容</p>
+
+      <p class="modal-title">ボタン説明内容</p>
       <div class="modal-content">
         <p>更新</p>
         <div>下の記入欄を更新するためのボタンです。</div>
+        <div>※ <span></span> は必須項目</div>
         <p>記録</p>
         <div>記入した内容を記録した一覧を見られます。</div>
         <p>質問リスト</p>
@@ -121,6 +124,7 @@
         <div>他の人の記録を見に行くことができます。</div>
       </div>
       <p class="close">とじる</p>
+
     </div>
 
     <!--  本文  -->
@@ -131,7 +135,7 @@
         <div class="question1-2">
 
           <div class="question-now">
-            <p class="question-title">今は何をしていますか？</p>
+            <p class="question-title">今は何をしていますか？<span></span></p>
             <textarea name="task" placeholder="※自分が今していることを周りの人にも共有しましょう。" required><?php
               empty($task) == false ? print $task : ''; ?></textarea>
           </div>
@@ -139,7 +143,7 @@
           <div class="question-time">
             <p class="question-title">どれくらいかかりそうですか？</p>
             <input type="number" name="bytime1_1" max="24" min="0" required value="<?php
-              empty($bytime1_1) == false ? print $bytime1_1 : print '00'; ?>" oninput="maxLengthLimit(this)">:
+              empty($bytime1_1) == false ? print $bytime1_1 : print '00'; ?>" oninput="maxLengthLimit(this)"><span></span>:
             <input type="number" name="bytime1_2" max="59" min="0" value="<?php
               empty($bytime1_2) == false ? print $bytime1_2 : print '00'; ?>" oninput="maxLengthLimit(this)">～
             <input type="number" name="bytime2_1" max="24" min="0" value="<?php
@@ -152,7 +156,7 @@
 
         <div class="question-emotion">
 
-          <p class="question-title">今日の気分は？</p>
+          <p class="question-title">今日の気分は？<span></span></p>
 
           <div class="emotion-img-list">
             <label>
@@ -192,13 +196,13 @@
           <p class="question-title">都合がいい時間</p>
 
           <input type="number" name="time1_1" max="24" min="0" value="<?php
-            empty($time1_1) == false ? print $time1_1 : print '00'; ?>" oninput="maxLengthLimit(this)" required>:
+            empty($time1_1) == false ? print $time1_1 : print '00'; ?>" oninput="maxLengthLimit(this)" required><span></span>:
 
           <input type="number" name="time1_2" max="59" min="0" value="<?php
             empty($time1_2) == false ? print $time1_2 : print '00'; ?>" oninput="maxLengthLimit(this)">～
 
           <input type="number" name="time2_1" max="24" min="0" value="<?php
-            empty($time2_1) == false ? print $time2_1 : print '00'; ?>" oninput="maxLengthLimit(this)" required>:
+            empty($time2_1) == false ? print $time2_1 : print '00'; ?>" oninput="maxLengthLimit(this)" required><span></span>:
 
           <input type="number" name="time2_2" max="59" min="0" value="<?php
             empty($time2_2) == false ? print $time2_2 : print '00'; ?>" oninput="maxLengthLimit(this)">
@@ -207,7 +211,7 @@
 
         <div class="question-attention">
 
-          <p class="question-title">質問時の注意事項</p>
+          <p class="question-title">質問時の注意事項<span></span></p>
 
           <textarea name="attention" placeholder="※質問する前に留意してほしいことを書いてください。" required><?php
             isset($attention) == true ? print $attention : ''; ?></textarea>
@@ -222,7 +226,7 @@
 
         <div class="question-strong-point">
 
-          <p>1</p>
+          <p>1<span></span></p>
           <textarea type="text" name="strong1" placeholder="※あなたの得意分野を教えてください。&#13;&#10;誰に質問するべきか、分かるようになります。" required><?php
             empty($strong1) == false ? print $strong1 : ''; ?></textarea>
 
@@ -305,6 +309,16 @@
     function maxLengthLimit($this) {
       $this.value = $this.value.slice(0, 2);
     }
+
+    // モーダル内にカーソルがある時、スクロールバーを表示。
+    document.querySelector('.modal').addEventListener('mouseover', function() {
+      this.style.overflow = 'auto'
+    });
+
+    // モーダル内にカーソルがない時、スクロールバーを非表示。
+    document.querySelector('.modal').addEventListener('mouseout', function() {
+      this.style.overflow = 'hidden'
+    });
   </script>
 
   </html>
