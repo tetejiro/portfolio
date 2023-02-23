@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2023-02-16 13:18:24
+-- 生成日時: 2023-02-23 14:48:33
 -- サーバのバージョン： 10.4.27-MariaDB
 -- PHP のバージョン: 8.2.0
 
@@ -37,7 +37,7 @@ CREATE TABLE `horenso_infos` (
   `detail` varchar(1000) DEFAULT NULL COMMENT '詳細',
   `cause` varchar(1000) DEFAULT NULL COMMENT '原因',
   `other` varchar(1000) DEFAULT NULL COMMENT 'その他',
-  `rsvp` tinytext DEFAULT NULL COMMENT '要返信'
+  `rsvp` varchar(2) DEFAULT NULL COMMENT '要返信'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -74,10 +74,10 @@ INSERT INTO `horenso_infos` (`code`, `member_code`, `target_member_code`, `creat
 
 CREATE TABLE `members` (
   `code` tinyint(3) NOT NULL,
-  `name` tinytext NOT NULL,
+  `name` varchar(20) NOT NULL,
   `year` tinyint(2) NOT NULL,
-  `pass` tinytext NOT NULL,
-  `mail` tinytext NOT NULL
+  `pass` varchar(150) NOT NULL,
+  `mail` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -88,9 +88,7 @@ INSERT INTO `members` (`code`, `name`, `year`, `pass`, `mail`) VALUES
 (1, '質問次郎', 2, '3627909a29c31381a071ec27f7c9ca97726182aed29a7ddd2e54353322cfb30abb9e3a6df2ac2c20fe23436311d678564d0c8d305930575f60e2d3d048184d79', 'sample@gmail.com'),
 (3, '使用例', 6, '39a5e04aaff7455d9850c605364f514c11324ce64016960d23d5dc57d3ffd8f49a739468ab8049bf18eef820cdb1ad6c9015f838556bc7fad4138b23fdf986c7', 'sample@gmial.com'),
 (4, '質問一太', 1, '22e7e9d85b7fe6004f7b9f3aa592ea9ec9ce098682e8192fa83785f1784c768d1d1ac3b8afcae88666f66aec24739ac133e9d4adc7506f1a5f1f6078cb27c674', 'ichita@gamil.com'),
-(5, '質問三郎', 3, 'a73ae84199edd6790cfc5497e7d8fe7b600c71542c6b9fc77e3f43834564905dea73a533858cd0ddad1702074f32f0d9a44545c28ac17b4138204a746df393e1', '333@gmalc.com'),
-(6, '質問史郎', 4, 'cf7a4a223c276be3c60ce48185fdd7af2c1714fa5df35b179bda731c2eb70c7e664d84ca3c62de788ecf0504f05f5676486bdb38141c664d1b7532d9b70990c3', '4rou@gmial.com');
-
+(5, '質問三郎', 3, 'a73ae84199edd6790cfc5497e7d8fe7b600c71542c6b9fc77e3f43834564905dea73a533858cd0ddad1702074f32f0d9a44545c28ac17b4138204a746df393e1', '333@gmalc.com')
 -- --------------------------------------------------------
 
 --
@@ -106,15 +104,15 @@ CREATE TABLE `mypage_infos` (
   `bytime1_2` tinyint(2) NOT NULL,
   `bytime2_1` tinyint(2) DEFAULT NULL,
   `bytime2_2` tinyint(2) DEFAULT NULL,
-  `emotion` tinytext NOT NULL,
+  `emotion` varchar(8) NOT NULL,
   `time1_1` tinyint(10) NOT NULL,
   `time1_2` tinyint(10) NOT NULL,
   `time2_1` tinyint(10) NOT NULL,
   `time2_2` tinyint(10) NOT NULL,
-  `attention` tinytext NOT NULL,
-  `strong1` tinytext NOT NULL,
-  `strong2` tinytext DEFAULT NULL,
-  `strong3` tinytext DEFAULT NULL
+  `attention` varchar(500) NOT NULL,
+  `strong1` varchar(50) NOT NULL,
+  `strong2` varchar(50) DEFAULT NULL,
+  `strong3` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -124,7 +122,12 @@ CREATE TABLE `mypage_infos` (
 INSERT INTO `mypage_infos` (`code`, `created_at`, `member_code`, `task`, `bytime1_1`, `bytime1_2`, `bytime2_1`, `bytime2_2`, `emotion`, `time1_1`, `time1_2`, `time2_1`, `time2_2`, `attention`, `strong1`, `strong2`, `strong3`) VALUES
 (1, '2023-02-15 16:18:00', 3, '追加機能作成', 13, 0, 20, 0, '忙しい', 9, 0, 9, 50, '基本的に木曜日に質問をしてもらえると助かります。\r\n月曜日は緊急の質問のみにしてほしいです。', 'JavaScript', '', ''),
 (2, '2023-02-15 16:32:00', 3, '追加機能作成', 13, 0, 20, 0, '忙しい', 9, 0, 9, 50, '基本的に木曜日に質問をしてもらえると助かります。\r\n月曜日は緊急の質問のみにしてほしいです。', 'TypeScript', '', ''),
-(3, '2023-02-16 05:07:00', 1, '今は何をしていますか？', 10, 0, 0, 0, '余裕', 15, 0, 17, 0, '質問時の注意事項', 'ここは私に任せて！', '', '');
+(3, '2023-02-16 05:07:00', 1, '今は何をしていますか？', 10, 0, 0, 0, '余裕', 15, 0, 17, 0, '質問時の注意事項', 'ここは私に任せて！', '', ''),
+(4, '2023-02-20 12:02:14', 0, 'タスク', 15, 0, 16, 0, '余裕', 16, 0, 17, 0, 'attention', 'strong1', '', ''),
+(20, '2023-02-20 13:49:27', 18, 'a', 1, 0, 0, 0, '余裕', 1, 0, 2, 0, 'a', 'a', '', ''),
+(21, '2023-02-21 14:47:04', 1, '今は何をしていますか？', 10, 0, 0, 0, '余裕', 15, 0, 17, 0, '質問時の注意事項', 'ここは私に任せて！', '', ''),
+(22, '2023-02-21 15:04:14', 1, '今は何をしていますか？', 10, 0, 0, 0, '余裕', 15, 0, 17, 0, '質問時の注意事項', 'ここは私に任せて！', '', ''),
+(23, '2023-02-21 15:06:48', 1, '今は何をしていますか？', 10, 0, 0, 0, '余裕', 15, 0, 17, 0, '質問時の注意事項', 'ここは私に任せて！', '', '');
 
 -- --------------------------------------------------------
 
@@ -135,7 +138,7 @@ INSERT INTO `mypage_infos` (`code`, `created_at`, `member_code`, `task`, `bytime
 CREATE TABLE `notices` (
   `code` tinyint(3) NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
-  `content` tinytext NOT NULL
+  `content` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -145,8 +148,9 @@ CREATE TABLE `notices` (
 INSERT INTO `notices` (`code`, `date`, `content`) VALUES
 (1, '2023-02-15 16:06:18', 'テストです。'),
 (2, '2023-02-15 19:28:10', 'ねむいねむい'),
-(3, '2023-02-16 05:27:31', 'テーブル名変更後テスト');
-
+(3, '2023-02-16 05:27:31', 'テーブル名変更後テスト'),
+(4, '2023-02-17 11:19:10', '修正中テスト'),
+(5, '2023-02-17 11:23:23', '修正中テスト')
 --
 -- ダンプしたテーブルのインデックス
 --
@@ -189,19 +193,19 @@ ALTER TABLE `horenso_infos`
 -- テーブルの AUTO_INCREMENT `members`
 --
 ALTER TABLE `members`
-  MODIFY `code` tinyint(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `code` tinyint(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- テーブルの AUTO_INCREMENT `mypage_infos`
 --
 ALTER TABLE `mypage_infos`
-  MODIFY `code` tinyint(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `code` tinyint(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- テーブルの AUTO_INCREMENT `notices`
 --
 ALTER TABLE `notices`
-  MODIFY `code` tinyint(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `code` tinyint(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
