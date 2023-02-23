@@ -7,7 +7,7 @@ main {
   position: relative;
 }
 
-.bun {
+.select-list {
   width: 25%;
   height: 25%;
   position: absolute;
@@ -39,7 +39,7 @@ p {
 }
 
 @media (max-width: 600px) {
-  .bun {
+  .select-list {
     width: 80vw;
     position: relative;
     top: 40vh;
