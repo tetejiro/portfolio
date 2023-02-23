@@ -16,6 +16,7 @@ main {
 li, a {
   list-style-type: none;
   text-decoration: none;
+  word-break: break-all;
 }
 
 a {
