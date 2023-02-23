@@ -143,13 +143,13 @@
           <div class="question-time">
             <p class="question-title">どれくらいかかりそうですか？</p>
             <input type="number" name="bytime1_1" max="24" min="0" required value="<?php
-              empty($bytime1_1) == false ? print $bytime1_1 : print '00'; ?>" oninput="maxLengthLimit(this)"><span></span>:
+              empty($bytime1_1) == false ? print $bytime1_1 : print '00'; ?>" oninput="maxLengthLimit(this, 2)"><span></span>:
             <input type="number" name="bytime1_2" max="59" min="0" value="<?php
-              empty($bytime1_2) == false ? print $bytime1_2 : print '00'; ?>" oninput="maxLengthLimit(this)">～
+              empty($bytime1_2) == false ? print $bytime1_2 : print '00'; ?>" oninput="maxLengthLimit(this, 2)">～
             <input type="number" name="bytime2_1" max="24" min="0" value="<?php
-              empty($bytime2_1) == false ? print $bytime2_1 : print '00'; ?>" oninput="maxLengthLimit(this)">:
+              empty($bytime2_1) == false ? print $bytime2_1 : print '00'; ?>" oninput="maxLengthLimit(this, 2)">:
             <input type="number" name="bytime2_2" max="59" min="0" value="<?php
-              empty($bytime2_2) == false ? print $bytime2_2 : print '00'; ?>" oninput="maxLengthLimit(this)">
+              empty($bytime2_2) == false ? print $bytime2_2 : print '00'; ?>" oninput="maxLengthLimit(this, 2)">
           </div>
 
         </div>
@@ -196,16 +196,16 @@
           <p class="question-title">都合がいい時間</p>
 
           <input type="number" name="time1_1" max="24" min="0" value="<?php
-            empty($time1_1) == false ? print $time1_1 : print '00'; ?>" oninput="maxLengthLimit(this)" required><span></span>:
+            empty($time1_1) == false ? print $time1_1 : print '00'; ?>"oninput="maxLengthLimit(this, 2)" required><span></span>:
 
           <input type="number" name="time1_2" max="59" min="0" value="<?php
-            empty($time1_2) == false ? print $time1_2 : print '00'; ?>" oninput="maxLengthLimit(this)">～
+            empty($time1_2) == false ? print $time1_2 : print '00'; ?>" oninput="maxLengthLimit(this, 2)">～
 
           <input type="number" name="time2_1" max="24" min="0" value="<?php
-            empty($time2_1) == false ? print $time2_1 : print '00'; ?>" oninput="maxLengthLimit(this)" required><span></span>:
+            empty($time2_1) == false ? print $time2_1 : print '00'; ?>" oninput="maxLengthLimit(this, 2)" required><span></span>:
 
           <input type="number" name="time2_2" max="59" min="0" value="<?php
-            empty($time2_2) == false ? print $time2_2 : print '00'; ?>" oninput="maxLengthLimit(this)">
+            empty($time2_2) == false ? print $time2_2 : print '00'; ?>" oninput="maxLengthLimit(this, 2)">
 
         </div>
 
@@ -213,8 +213,11 @@
 
           <p class="question-title">質問時の注意事項<span></span></p>
 
-          <textarea name="attention" placeholder="※質問する前に留意してほしいことを書いてください。" required><?php
-            isset($attention) == true ? print $attention : ''; ?></textarea>
+          <textarea name="attention"
+            placeholder="※質問する前に留意してほしいことを書いてください。"
+            required oninput="maxLengthLimit(this, 500)"><?php
+            isset($attention) == true ? print $attention : ''; ?>
+          </textarea>
 
         </div>
 
@@ -227,15 +230,17 @@
         <div class="question-strong-point">
 
           <p>1<span></span></p>
-          <textarea type="text" name="strong1" placeholder="※あなたの得意分野を教えてください。&#13;&#10;誰に質問するべきか、分かるようになります。" required><?php
+          <textarea type="text" name="strong1"
+            placeholder="※あなたの得意分野を教えてください。&#13;&#10;誰に質問するべきか、分かるようになります。"
+            required oninput="maxLengthLimit(this, 50)"><?php
             empty($strong1) == false ? print $strong1 : ''; ?></textarea>
 
           <p>2</p>
-          <textarea type="text" name="strong2"><?php
+          <textarea type="text" name="strong2" oninput="maxLengthLimit(this, 50)"><?php
             empty($strong2) == false ? print $strong2 : print ''; ?></textarea>
 
           <p>3</p>
-          <textarea type="text" name="strong3"><?php
+          <textarea type="text" name="strong3" oninput="maxLengthLimit(this, 50)"><?php
             empty($strong3) == false ? print $strong3 : print ''; ?></textarea>
           <input type="hidden" name="code" value="<?php print $code; ?>">
 
@@ -306,8 +311,8 @@
     })
 
     //文字数制限
-    function maxLengthLimit($this) {
-      $this.value = $this.value.slice(0, 2);
+    function maxLengthLimit($this, $num) {
+      $this.value = $this.value.slice(0, $num);
     }
 
     // モーダル内にカーソルがある時、スクロールバーを表示。
