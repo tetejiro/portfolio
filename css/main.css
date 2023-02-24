@@ -11,14 +11,11 @@ a {
   color: black;
 }
 
-.ue {
-  width: 90%;
-  height: 100%;
-  margin-bottom: 5rem;
-  margin-left: 2%;
+form {
+  margin-top: 6%;
 }
 
-.ue1 {
+.title-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -26,7 +23,7 @@ a {
   margin-bottom: 6%;
 }
 
-.ue1>p {
+.title-container>p {
   border-bottom: 3.5px solid #B0DEEC;
 }
 
@@ -35,21 +32,16 @@ h2 {
   text-align: center;
 }
 
-.ue2>ul {
-  height: 25rem;
-}
-
 ul>li {
   display: block;
-  height: 4vh;
 }
 
-.ue2>ul>li {
+.attention>ul>li {
   display: block;
-  height: 5rem;
+  margin-bottom: 1.25rem;
 }
 
-.shitumon {
+.textarea-container {
   display: grid;
   grid-gap: 5vw;
   grid-template-columns: repeat(3, 1fr);
@@ -61,14 +53,14 @@ textarea {
   border-radius: 10px;
 }
 
-.shitumon {
+.textarea-container {
   text-align: center;
 }
 
 .menu {
   display: flex;
   justify-content: space-evenly;
-  padding-top: 3%;
+  padding-top: 3rem;
 }
 
 .menu>input,
@@ -86,7 +78,7 @@ textarea {
 }
 
 /*報告の返信要・不要*/
-.henshin {
+.rsvp {
   width: 100%;
   text-align: center;
 }
@@ -99,29 +91,29 @@ textarea {
   }
 
   /*ヘッダー*/
-  .ue1 {
+  .title-container {
     display: flex;
     justify-content: center;
-    height: 15vh;
     line-height: 2;
+    margin-bottom: 0;
   }
 
   h2 {
     width: 18vw;
   }
 
-  .ue1>p {
-    width: 55vw;
+  .title-container>p {
+    width: -webkit-fill-available;
     text-align: center;
-    margin-bottom: 5vh;
+    margin-bottom: 0;
   }
 
-  .ue2 {
+  .attention {
     padding: 1.5vh 2.5vh 1.5vh 2vh;
     height: auto;
   }
 
-  .ue2>ul {
+  .attention>ul {
     height: auto;
   }
 
@@ -140,7 +132,7 @@ textarea {
     list-style-position: outside;
   }
 
-  .shitumon {
+  .textarea-container {
     display: flex;
     flex-direction: column;
     margin-bottom: 5vh;
@@ -153,7 +145,7 @@ textarea {
 
   .menu {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     padding-left: 1rem;
     width: 100%;
     margin-bottom: 2rem;
