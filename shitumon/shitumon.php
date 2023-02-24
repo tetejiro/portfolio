@@ -43,38 +43,45 @@ $rec = $DbQuery->dbQuery('
 
             <div>
                 <p>件名（必須）</p>
-                <textarea name="title" rows="10" cols="35" placeholder="※～について" required></textarea>
+                <textarea name="title" rows="10" cols="35" oninput="maxLengthLimit(this, 1000)" placeholder="※～について" required></textarea>
             </div>
 
             <div>
                 <p>依頼したいこと（必須）</p>
-                <textarea name="purpose" rows="10" cols="35" placeholder="※～について解決策が知りたいです。" required></textarea>
+                <textarea name="purpose" rows="10" cols="35" oninput="maxLengthLimit(this, 1000)" placeholder="※～について解決策が知りたいです。" required></textarea>
             </div>
 
             <div>
                 <p>詳細</p>
-                <textarea name="detail" rows="10" cols="35" placeholder="※～が表示できません。"></textarea>
+                <textarea name="detail" rows="10" cols="35" oninput="maxLengthLimit(this, 1000)" placeholder="※～が表示できません。"></textarea>
             </div>
 
             <div>
                 <p>考えられる原因</p>
-                <textarea name="cause" rows="10" cols="35" placeholder="※データベースにデータを挿入できていないこと。"></textarea>
+                <textarea name="cause" rows="10" cols="35" oninput="maxLengthLimit(this, 1000)" placeholder="※データベースにデータを挿入できていないこと。"></textarea>
             </div>
 
             <div>
                 <p>試してみたこと・その他</p>
-                <textarea name="other" rows="10" cols="35" placeholder="※inputの属性をtimeからnumberに変更しました。"></textarea>
+                <textarea name="other" rows="10" cols="35" oninput="maxLengthLimit(this, 1000)" placeholder="※inputの属性をtimeからnumberに変更しました。"></textarea>
             </div>
 
         </div>
 
-        <input type="hidden" name="code" value="<?php print $code; ?>">
+        <input type="hidden" name="aite_code" value="<?php print $code; ?>">
 
         <div class="menu">
-            <input type="submit" value="メールを送信する">
+            <input type="submit" value="メールを送信する" onclick="nullCheck()">
             <a href="../mypage/select-report-or-question.php?code=<?php print $code; ?>">もどる</a>
         </div>
 
     </form>
 
 </body>
+
+<script>
+// 文字数制限
+function maxLengthLimit($this, $num) {
+        $this.value = $this.value.slice(0, $num);
+}
+</script>
