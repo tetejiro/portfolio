@@ -115,8 +115,16 @@
 
       <?php
       }
-      print '<input type="button" onclick="history.back()" value="もどる">'; ?>
-    <?php
+
+      /*
+      * 遷移前のURL：mypage.phpを含む場合はhistory.back
+      * 遷移前のURL：mypage.phpを含まない場合はmypage.phpリンク
+      */
+      if(preg_match("/mypage.php/", $_SERVER['HTTP_REFERER'])) {
+        print '<input type="button" onclick="history.back()" value="もどる">';
+      } else {
+        print '<a href="../mypage/mypage.php"><input value="もどる"></input></a>';
+      }
     } ?>
 
   </body>
