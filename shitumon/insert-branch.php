@@ -12,7 +12,7 @@
         require_once '../new-db/execute-query.php';
         $DBQuery = new DBQuery();
 
-        // 質問のレコードインサート
+        // 質問レコードインサート
         if($_SESSION['url'] == $_SESSION['shitumon']) {
             $DBQuery->dbQuery('
                 INSERT INTO horenso_infos
@@ -22,7 +22,7 @@
             ');
         }
 
-        // 報告のレコードインサート
+        // 報告レコードインサート
         if($_SESSION['url'] == $_SESSION['horenso']) {
             $DBQuery->dbQuery('
                 INSERT INTO horenso_infos
@@ -39,7 +39,7 @@
             SELECT name, mail FROM members WHERE code =\''.$post['aite_code'].'\'
         ');
 
-        // 送り元：名前
+        // 送り元：名前検索
         $member_info = $DbQuery->dbQuery('
                 SELECT name FROM members WHERE code = \'' . $_SESSION['code'] . '\'
         ');
@@ -51,26 +51,32 @@
     }
 
     ?>
+
+    <!-- DB処理後の表示内容 -->
+
     <body>
-    <div class="zentai">
-    <?php
+        <div class="container">
+        <?php
 
-    // 直近の $URL になんの値が入っているかで場合分け。
-    switch ($_SESSION['url']) {
-        case $_SESSION['shitumon']:
-            print '<a href="../mypage/shitsumon-list.php">質問リスト</a>に保存しました。<br>';
-            require_once('shitsumon-mail.php');
-            print 'mailでしつもんの通知をしました。<br>';
-            print '<a href="../registration/index.php">もどる</a>';
-            break;
+        // 直近の $URL になんの値が入っているかで場合分け。
+        switch ($_SESSION['url']) {
 
-        case $_SESSION['horenso']:
-            print '<a href="../mypage/shitsumon-list.php">質問リスト</a>に保存されました。<br>';
-            require_once('hokoku-mail.php');
-            print 'mailでほうれんそうをしました。<br>';
-            print '<a href="../registration/index.php">もどる</a>';
-            break;
-    } ?>
-    </div>
-</body>
+            // 質問後の表示内容
+            case $_SESSION['shitumon']:
+                print '<p><a href="../mypage/shitsumon-list.php">質問リスト</a>に保存しました。</p>';
+                require_once('shitsumon-mail.php'); // メール送信処理
+                print '<p>mailでしつもんの通知をしました。</p>';
+                print '<a href="../registration/index.php">もどる</a>';
+                break;
+
+            // 報告後の表示内容
+            case $_SESSION['horenso']:
+                print '<p><a href="../mypage/shitsumon-list.php">質問リスト</a>に保存されました。</p>';
+                require_once('hokoku-mail.php'); // メール送信処理
+                print '<p>mailでほうれんそうをしました。</p>';
+                print '<a href="../registration/index.php">もどる</a>';
+                break;
+        } ?>
+        </div>
+    </body>
 </html>

@@ -8,7 +8,7 @@ body {
   text-align: center;
 }
 
-.zentai {
+.container {
   width: 30%;
   position: absolute;
   top: 50%;
@@ -22,7 +22,7 @@ body {
     width: 100vw;
   }
 
-  .zentai {
+  .container {
     width: 100vw;
     line-height: 2;
   }
