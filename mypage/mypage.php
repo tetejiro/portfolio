@@ -136,7 +136,7 @@
 
           <div class="question-now">
             <p class="question-title">今は何をしていますか？<span></span></p>
-            <textarea name="task" placeholder="※自分が今していることを周りの人にも共有しましょう。" required><?php
+            <textarea name="task" oninput="maxLengthLimit(this, 500)" placeholder="※自分が今していることを周りの人にも共有しましょう。" required><?php
               empty($task) == false ? print $task : ''; ?></textarea>
           </div>
 
@@ -216,8 +216,7 @@
           <textarea name="attention"
             placeholder="※質問する前に留意してほしいことを書いてください。"
             required oninput="maxLengthLimit(this, 500)"><?php
-            isset($attention) == true ? print $attention : ''; ?>
-          </textarea>
+            isset($attention) == true ? print $attention : ''; ?></textarea>
 
         </div>
 
@@ -249,18 +248,20 @@
       </div>
 
       <!--  下ナビ  -->
-      <div class="bottom-nav">
-        <?php
+      <div class="bottom-nav"><?php
+
         if ($zibunflg) {
           print '<p><input type="submit" value="更新" id="update"></p>';
           print '<p><a href="../mypage/record.php">記録</a></p>';
         } ?>
+
         <p><a href="../mypage/shitsumon-list.php<?php $code != $_SESSION['code'] ? print '?code='.$code : ''; ?>">質問リスト</a></p>
-        <?php
-        print '<p><a href="member-list.php">メンバーリスト</a></p>';
+
+        <?php print '<p><a href="member-list.php">メンバーリスト</a></p>';
+
         !$zibunflg ? print '<p><a href="select-report-or-question.php?code='.$code.'">しつもんする</a></p>' : '';
-        ?>
-      </div>
+
+      ?></div>
 
     </form>
 
@@ -289,10 +290,13 @@
       }
     })
 
-    // 更新時記入欄NULLチェック
+    // 更新時記入欄チェック
     document.querySelector('form').addEventListener('submit', function(event) {
 
-      // 各項目の値がNULLであれば、0を代入
+      /*
+      * nullチェック:各項目の値がNULLであれば、0を代入→足して1があるかチェック
+      */
+
       let text1 = document.getElementsByName('task')[0].value == '' ? '0' : '1';
       let text2 = document.getElementsByName('bytime1_1')[0].value == 00 ? '0' : '1';
       let text3;
@@ -306,6 +310,32 @@
       // 0が含まれてるときに、window.alertを出す
       if(total.includes(0)) {
         window.alert('必須項目が未記入です。\n記入してください。');
+        event.preventDefault();
+      }
+
+      /*
+      * 時間の逆転チェック
+      */
+
+      // タスク実施時間
+      let bytime1_1 = document.getElementsByName('bytime1_1')[0].value;
+      let bytime1_2 = document.getElementsByName('bytime1_2')[0].value;
+      let bytime2_1 = document.getElementsByName('bytime2_1')[0].value;
+      let bytime2_2 = document.getElementsByName('bytime2_2')[0].value;
+
+      if(bytime1_1 == bytime2_1 && bytime1_2 >= bytime2_2) {
+        window.alert('タスク実施予定時間の記載が正しくありません。');
+        event.preventDefault();
+      }
+
+      // 都合がいい時間
+      let time1_1 = document.getElementsByName('time1_1')[0].value;
+      let time1_2 = document.getElementsByName('time1_2')[0].value;
+      let time2_1 = document.getElementsByName('time2_1')[0].value;
+      let time2_2 = document.getElementsByName('time2_2')[0].value;
+
+      if(time1_1 == time2_1 && time1_2 >= time2_2) {
+        window.alert('都合がいい時間の記載が正しくありません。');
         event.preventDefault();
       }
     })
