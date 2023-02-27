@@ -25,20 +25,11 @@ try {
     header('Location:../mypage/mypage.php');
     exit();
   } else {
+    // headの記載
+    require_once('../common.php');
+    $cmn = new Common();
+    $cmn->printNotIncludedHead('../css/mylist.css');
   ?>
-    <!DOCTYPE html>
-    <html lang="ja">
-
-    <head>
-      <meta charset="utf-8">
-      <meta title="しつもん">
-
-      <!-- css -->
-      <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-      <link rel="stylesheet" href="../css/mylist.css">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP">
-      <link rel="icon" type="image/png" href="../p-favicon.png">
-    </head>
 
     <body>
   <?php

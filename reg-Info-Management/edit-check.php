@@ -1,25 +1,17 @@
-<!DOCTYPE html>
-<html lang="ja">
+<?php
+  // headの記載
+  require_once('../common.php');
+  $cmn = new Common();
+  $cmn->printNotIncludedHead('../css/control.css');
+?>
 
-<head>
-  <meta charset="utf-8">
-  <title>しつもん</title>
-  <meta name="description" content="しつもんするための便利なツール。しつもん上手になって安心して業務に取り組もう。">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-
-  <!-- css -->
-  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
-  <link rel="stylesheet" href="../css/control.css">
-  <link rel="icon" type="image/png" href="../favicon/p-favicon.png">
-  <style>
-    .mi{text-align: center; margin-top: 5%;}
-    input[type=submit]{margin-right: 0;}
-  </style>
-</head>
+<style>
+  .container {text-align: center; margin-top: 5%;}
+  input[type=submit] {margin-right: 0;}
+</style>
 
 <body>
-  <div class="mi">
+  <div class="container">
 
     <?php
     require_once '../sanitize.php';
@@ -66,7 +58,7 @@
       FROM members
       WHERE name =\'' .$name .'\' AND year = \''.$year.'\'
     ');
-    if (count($sameName) >= 1) {
+    if (count($sameName) > 1) {
       $okflag = false;
       print '同期に同じ名前で登録している人がいます。<br>';
       print '他の人が分からなくなってしまうので、区別できる名前に変更してください。<br>';
@@ -77,19 +69,18 @@
     $samePass = $DbQuery->dbQuery('
       SELECT name FROM members where pass = \''.hash('sha512', $pass).'\'
     ');
-    if (count($samePass) >= 1) {
+    if (count($samePass) > 1) {
       $okflg = false;
       print 'パスワード「'.$pass.'」は使用されています。<br>';
       print '別のパスワードに変更してください。<br>';
     }
 
     if ($okflag == true) {
-      print '<br>変更してもよろしいですか？<br><br>';
-      print 'スタッフ名: ';
-      print $name;
-      print '<br>pass: ';
-      print $pass;
-      print '<br>';
+      print '<p>変更してもよろしいですか？</p>';
+      print '<div>スタッフ名: ';
+      print $name.'</div>';
+      print '<div>pass: ';
+      print $pass.'</div>';
 
       $pass = hash('sha512', $pass);
       print '<form method="post" action="edit-done.php">';
@@ -98,12 +89,11 @@
       print '<input type="hidden" name="pass" value="' . $pass . '">';
       print '<input type="hidden" name="mail" value="' . $mail . '">';
       print '<input type="hidden" name="year" value="' . $year . '">';
-      print '<br>';
-      print '<input type="button" onclick="history.back()" value="戻る"><br><br>';
-      print '<input type="submit" value="OK">';
+      print '<div><input type="submit" value="OK"></div>';
+      print '<div><input type="button" onclick="history.back()" value="戻る"></div>';
       print '</form>';
     } else {
-      print '<input type="button" onclick="history.back()" value="戻る">';
+      print '<div><input type="button" onclick="history.back()" value="戻る"></div>';
     }
 
     ?>

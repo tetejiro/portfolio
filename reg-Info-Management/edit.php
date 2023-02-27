@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-  <meta charset="utf-8">
-  <title>しつもん</title>
-  <meta name="description" content="しつもんするための便利なツール。しつもん上手になって安心して業務に取り組もう。">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-
-  <!-- css -->
-  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
-  <link rel="stylesheet" href="../css/control.css">
-  <link rel="icon" type="image/png" href="../favicon/p-favicon.png">
-</head>
+<?php
+  // headの記載
+  require_once('../common.php');
+  $cmn = new Common();
+  $cmn->printNotIncludedHead('../css/control.css');
+?>
 
 <body>
   <?php

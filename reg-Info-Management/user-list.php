@@ -2,7 +2,7 @@
     // headの記載
     require_once('../common.php');
     $cmn = new Common();
-    $cmn->printHead('../css/member-list.css');
+    $cmn->printNotIncludedHead('../css/member-list.css');
 ?>
 
 <body>

@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-  <meta charset="utf-8">
-  <meta title="しつもん">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-
-  <!-- css -->
-  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-  <link rel="stylesheet" href="../css/login.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+JP">
-  <link rel="icon" type="image/png" href="../favicon/p-favicon.png">
-</head>
+<?php
+  // headの記載
+  require_once('../common.php');
+  $cmn = new Common();
+  $cmn->printNotIncludedHead('../css/login.css');
+?>
 
 <body>
   <?php
@@ -67,6 +59,7 @@
     FROM members
     WHERE name = \''.$name.'\'AND year =\''.$year.'\'
   ');
+
   if (empty($rec) == false) {
     print '同期に同じ名前で登録している人がいます。';
     print '他の人が分からなくなってしまうので、区別できる名前に変更してください。';
