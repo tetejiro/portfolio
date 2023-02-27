@@ -2,9 +2,9 @@
 //データベースの定数の定義
 class ConstDb
 {
-    protected $dsnName;
-    protected $userName;
-    protected $pass;
+    private $dsnName;
+    private $userName;
+    private $pass;
 
     // DBのユーザ名・パスワードのセット（ローカル・サーバ）
     function __construct() {
