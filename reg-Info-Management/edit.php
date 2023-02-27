@@ -31,7 +31,7 @@
     <form method="post" action="edit-check.php">
       <input type="hidden" name="code" value="<?php print $code; ?>">
       <div>スタッフ名</div>
-      <input type="text" name="name" class="waku" value="<?php print $name; ?>" required>
+      <input type="text" name="name" class="container" value="<?php print $name; ?>" required>
       <div>
         第
         <select name="year">
@@ -45,11 +45,11 @@
         期
       </div>
       <div>メールアドレス</div>
-      <input type="text" name="email" class="waku" value="<?php print $mail; ?>" required>
+      <input type="text" name="email" class="container" value="<?php print $mail; ?>" required>
       <div>パスワードを入力してください。</div>
-      <input type="password" name="pass" class="waku" required>
+      <input type="password" name="pass" class="container" required>
       <div>パスワードをもう1度入力してください。</div>
-      <div class="mgn"><input type="password" name="pass2" class="waku" required></div>
+      <div class="mgn"><input type="password" name="pass2" class="container" required></div>
       <input type="submit" value="OK">
       <input type="button" onclick="history.back()" value="戻る">
     </form>

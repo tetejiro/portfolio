@@ -28,7 +28,7 @@ div:not(:last-child) {
   text-align: center;
 }
 
-.waku {
+.container {
   border-radius: 5px;
   border: solid #acb0b1 3px;
 }
