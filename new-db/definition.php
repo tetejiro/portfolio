@@ -19,7 +19,6 @@ class ConstDb
         }
     }
 
-    //あとで別のファイル作る。
     function ConnectDb()
     {
         try {
