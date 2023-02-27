@@ -6,12 +6,15 @@
 ?>
 
 <style>
-  .container {text-align: center; margin-top: 5%;}
+  .ctnr {text-align: center; margin-top: 5%;}
   input[type=submit] {margin-right: 0;}
+  form {display: flex; justify-content:center; align-items: center;}
+  div>input[type="submit"], div>input[type="button"] {width: 10vw;}
+  div>input[type="submit"] {margin-right: 1vw;}
 </style>
 
 <body>
-  <div class="container">
+  <div class="ctnr">
 
     <?php
     require_once '../sanitize.php';
@@ -77,18 +80,16 @@
 
     if ($okflag == true) {
       print '<p>変更してもよろしいですか？</p>';
-      print '<div>スタッフ名: ';
-      print $name.'</div>';
-      print '<div>pass: ';
-      print $pass.'</div>';
+      print '<div>スタッフ名: '.$name.'</div>';
+      print '<div>pass: '.$pass.'</div>';
 
-      $pass = hash('sha512', $pass);
       print '<form method="post" action="edit-done.php">';
       print '<input type="hidden" name="code" value="' . $code . '">';
       print '<input type="hidden" name="name" value="' . $name . '">';
-      print '<input type="hidden" name="pass" value="' . $pass . '">';
+      print '<input type="hidden" name="pass" value="' . hash('sha512', $pass) . '">';
       print '<input type="hidden" name="mail" value="' . $mail . '">';
       print '<input type="hidden" name="year" value="' . $year . '">';
+
       print '<div><input type="submit" value="OK"></div>';
       print '<div><input type="button" onclick="history.back()" value="戻る"></div>';
       print '</form>';
