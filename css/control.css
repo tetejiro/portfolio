@@ -2,7 +2,6 @@
 
 body {
   font-family: "AvenirNext-Regular", "ヒラギノ丸ゴ Pro W4";
-  height: 100vh;
 }
 
 h3 {
@@ -17,7 +16,6 @@ div:not(:last-child) {
 }
 
 .edit {
-  height: 100vh;
   padding: 0 25%;
   text-align: center;
 }

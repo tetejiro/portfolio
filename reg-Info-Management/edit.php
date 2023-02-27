@@ -4,6 +4,11 @@
   $cmn = new Common();
   $cmn->printNotIncludedHead('../css/control.css');
 ?>
+<style>
+  div:not(:last-child) {margin: 2% 0 !important;}
+  div:first-child {margin-top: 0 !important;}
+  input[type="submit"] {margin-top: 2.5%;}
+</style>
 
 <body>
   <?php
