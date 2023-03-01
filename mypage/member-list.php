@@ -44,7 +44,7 @@
             foreach ($members as $member) {
               $code = $member['code'];
               $name = $member['name'];
-              print '<div><a class="name" href="mypage.php?code=' . $code . '">';
+              print '<div class="name"><a href="mypage.php?code=' . $code . '">';
               print $name . 'さん';
               print '</a>';
               print '</div>';
