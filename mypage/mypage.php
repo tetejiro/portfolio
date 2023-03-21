@@ -12,8 +12,8 @@
     isset($_GET['code']) == 1 ? $code = $_GET['code'] : $code = $_SESSION['code'];
 
     /*
-    *  自分のマイページ：自分フラグTRUE：$_GET['code']があり、$_SESSION['code']と同じ値 / $_GET['code']がない
-    *  他の人のマイページ：自分フラグFALSE：$_GET['code']がある場合
+    * 自分のマイページ：自分フラグTRUE：$_GET['code']があり、$_SESSION['code']と同じ値 / $_GET['code']がない
+    * 他の人のマイページ：自分フラグFALSE：$_GET['code']がある場合
     */
 
     isset($_GET['code']) == 1 ?
@@ -270,25 +270,25 @@
   <script>
     // モーダル開閉処理
     document.addEventListener('click', function(event) {
-      if (event.target.classList.contains('modal') || event.target.closest('.modal')) {
-        document.querySelector('.close').addEventListener('click', function() {
-          // モーダル内・とじるボタン
-          document.querySelector('.modal').classList.remove('block');
-        })
-      } else if (event.target.classList.contains('annotation-button')) {
-        // 説明ボタン押下
-        document.querySelector('.modal').classList.toggle('block');
-      } else {
-        // モーダル外
-        document.querySelector('.modal').classList.remove('block');
-      }
-      // 背景色
-      if (document.querySelector('.modal').classList.contains('block')) {
-        document.querySelector('.all').style.background = 'rgba(0,0,0,0.7)';
-      } else {
+
+      // モーダル内 > とじるボタン
+      if (event.target.classList.contains('close')) {
+        document.querySelector('.modal').style.display = 'none';
         document.querySelector('.all').style.background = 'white';
       }
-    })
+
+      // 「ボタン説明」押下
+      else if (event.target.classList.contains('annotation-button')) {
+        document.querySelector('.modal').style.display = 'block';
+        document.querySelector('.all').style.background = 'rgba(0,0,0,0.7)';
+      }
+
+      // モーダル外
+      else if (!event.target.closest('.modal')) {
+        document.querySelector('.modal').style.display = 'none';
+        document.querySelector('.all').style.background = 'white';
+      }
+    });
 
     // 更新時記入欄チェック
     document.querySelector('form').addEventListener('submit', function(event) {

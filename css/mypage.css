@@ -125,10 +125,6 @@ input[type="number"] {
   margin: 5% 0 0 30%;
 }
 
-.block {
-  display: block !important;
-}
-
 /*ナビ*/
 nav {
   display: flex;
