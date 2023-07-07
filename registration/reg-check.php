@@ -11,6 +11,7 @@
   require_once '../sanitize.php';
   $post = sanitize($_POST);
   $name = $post['name'];
+  //スペースがあればなくす
   $name = str_replace(" ", "", $name);
   $name = str_replace("　", "", $name);
   $year = $post['year'];
@@ -98,9 +99,13 @@
   <!--全部クリアしていれば表示-->
   <?php if ($okflg == true) { ?>
     <main>
+
+      <!-- 左側 -->
       <div class="left-side">
         <img class="img" src="../favicon/p-favicon2.png" alt="?">
       </div>
+
+      <!-- 右側 -->
       <div class="right-side">
         <div class="container">
           <p class="mrg-bottom">入力内容確認</p>
