@@ -30,12 +30,12 @@ img {
 .record {
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-bottom: 3%;
 }
 
 .record>p {
   margin-right: 3rem;
-  margin-top: 6.5%;
 }
 
 th {
@@ -89,9 +89,14 @@ input:hover {
     padding-right: 0%;
   }
 
+  .record {
+    align-items: normal;
+  }
+
   .record>p {
     margin-right: 0.5rem;
-    margin-top: 22%;
+    margin-left: 0.25rem;
+    font-size: larger;
   }
 
   .modoru>a {
