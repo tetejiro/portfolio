@@ -8,8 +8,8 @@ $cmn->printHead('../css/main.css');
 require_once '../new-db/execute-query.php';
 $DbQuery = new DbQuery();
 $rec = $DbQuery->dbQuery('
-                SELECT name FROM members WHERE code = \'' . $_GET['code'] . '\'
-        ');
+        SELECT name FROM members WHERE code = \'' . $_GET['code'] . '\'
+');
 ?>
 
 <body style="height: 100vh;">
@@ -17,7 +17,9 @@ $rec = $DbQuery->dbQuery('
         <div class="title-container">
                 <img src="../favicon/p-favicon.png">
                 <h2>check</h2>
-                <p><?php print $rec[0]['name'] . 'さんへ報告'; ?></p>
+                <p>
+                        <?php print $rec[0]['name'] . 'さんへ報告'; ?>
+                </p>
         </div>
 
         <form action="insert-branch.php" method="post">
@@ -26,17 +28,20 @@ $rec = $DbQuery->dbQuery('
 
                         <div>
                                 <p>件名（必須）</p>
-                                <textarea name="title" rows="10" cols="35" oninput="maxLengthLimit(this, 1000)" placeholder="※～に関しての報告です。" required></textarea>
+                                <textarea name="title" rows="10" cols="35" oninput="maxLengthLimit(this, 1000)"
+                                        placeholder="※～に関しての報告です。" required></textarea>
                         </div>
 
                         <div>
                                 <p>詳細（必須）</p>
-                                <textarea name="detail" rows="10" cols="35" oninput="maxLengthLimit(this, 1000)" placeholder="※到達点とのギャップ・問題・報告事項・相談内容など" required></textarea>
+                                <textarea name="detail" rows="10" cols="35" oninput="maxLengthLimit(this, 1000)"
+                                        placeholder="※到達点とのギャップ・問題・報告事項・相談内容など" required></textarea>
                         </div>
 
                         <div>
                                 <p>その他 </p>
-                                <textarea name="other" rows="10" cols="35" oninput="maxLengthLimit(this, 1000)" placeholder="※～さんにも報告済みです。"></textarea>
+                                <textarea name="other" rows="10" cols="35" oninput="maxLengthLimit(this, 1000)"
+                                        placeholder="※～さんにも報告済みです。"></textarea>
                         </div>
 
                 </div>
@@ -56,8 +61,8 @@ $rec = $DbQuery->dbQuery('
 </body>
 
 <script>
-// 文字数制限
-function maxLengthLimit($this, $num) {
-        $this.value = $this.value.slice(0, $num);
-}
+        // 文字数制限
+        function maxLengthLimit($this, $num) {
+                $this.value = $this.value.slice(0, $num);
+        }
 </script>
