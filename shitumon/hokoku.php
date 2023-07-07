@@ -5,11 +5,6 @@ require_once('../common.php');
 $cmn = new Common();
 $cmn->printHead('../css/main.css');
 
-$_SESSION['url'] = array(); // なぜか初期化が効かない。
-$_SESSION['shitumon'] = 0;
-$_SESSION['horenso'] = 1;
-$_SESSION['url'] = $_SESSION['horenso'];
-
 require_once '../new-db/execute-query.php';
 $DbQuery = new DbQuery();
 $rec = $DbQuery->dbQuery('
@@ -53,7 +48,6 @@ $rec = $DbQuery->dbQuery('
                 </div>
 
                 <input type="hidden" name="aite_code" value="<?php print $_GET['code']; ?>">
-
                 <div class="menu">
                         <input type="submit" name="report" value="保存してメールを送る">
                         <a href="../mypage/select-report-or-question.php?code=<?php print $_GET['code']; ?>">もどる</a>

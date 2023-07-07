@@ -14,7 +14,7 @@ try {
   $rec = $DbQuery->dbQuery('
     SELECT name, code
     FROM members
-    WHERE name = \''.$name .'\' AND pass = \''.$pass. '\'
+    WHERE name = \'' . $name . '\' AND pass = \'' . $pass . '\'
   ');
 
   if ($rec == true) {
@@ -29,20 +29,20 @@ try {
     require_once('../common.php');
     $cmn = new Common();
     $cmn->printNotIncludedHead('../css/mylist.css');
-  ?>
+    ?>
 
     <body>
-  <?php
-    print '<form action="login.html" method="post">';
-    print '<p style="text-align: center;margin-top: 25%;">登録されていないものです。</p>';
-    print '<input type="submit" value="もどる">';
-    print '</form>';
+      <?php
+      print '<form action="login.html" method="post">';
+      print '<p style="text-align: center;margin-top: 25%;">登録されていないものです。</p>';
+      print '<input type="submit" value="もどる">';
+      print '</form>';
   }
 } catch (Exception $e) {
   exit('障害発生中');
   var_dump($e);
 }
-  ?>
-    </body>
+?>
+</body>
 
-    </html>
+</html>
