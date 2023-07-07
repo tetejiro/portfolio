@@ -55,7 +55,7 @@ $rec = $DbQuery->dbQuery('
                 <input type="hidden" name="aite_code" value="<?php print $_GET['code']; ?>">
 
                 <div class="menu">
-                        <input type="submit" value="保存してメールを送る">
+                        <input type="submit" name="report" value="保存してメールを送る">
                         <a href="../mypage/select-report-or-question.php?code=<?php print $_GET['code']; ?>">もどる</a>
                 </div>
         </form>

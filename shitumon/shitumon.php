@@ -71,7 +71,7 @@ $rec = $DbQuery->dbQuery('
         <input type="hidden" name="aite_code" value="<?php print $code; ?>">
 
         <div class="menu">
-            <input type="submit" value="メールを送信する" onclick="nullCheck()">
+            <input type="submit" name="question" value="メールを送信する" onclick="nullCheck()">
             <a href="../mypage/select-report-or-question.php?code=<?php print $code; ?>">もどる</a>
         </div>
 
