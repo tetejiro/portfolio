@@ -1,7 +1,7 @@
 <?php
 
 // 編集ボタン押下
-if(isset($_POST['edit']) == true)
+if(isset($_POST['edit']))
 {
   $code = $_POST['code'];
   header('Location:edit.php?code='.$code);
@@ -9,7 +9,7 @@ if(isset($_POST['edit']) == true)
 }
 
 // 削除ボタン押下
-if(isset($_POST['delete']) == true)
+if(isset($_POST['delete']))
 {
   $code = $_POST['code'];
   header('Location:delete.php?code='.$code);

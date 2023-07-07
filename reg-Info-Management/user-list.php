@@ -33,7 +33,6 @@
 
                 <?php
                 if (isset($rec) == true) {
-
                     foreach ($rec as $class => $members) {
 
                         print '<fieldset>';
@@ -54,7 +53,6 @@
                         print '</fieldset>';
 
                     }
-
                 } ?>
             </div>
 
