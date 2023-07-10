@@ -33,7 +33,7 @@
       $selectedQuestion = $DbQuery->dbQuery(
         '
           SELECT
-            created_at, member_code, target_member_code, title, purpose, detail, cause, other
+            question_or_report, created_at, member_code, target_member_code, title, purpose, detail, cause, other
           FROM
             horenso_infos
           WHERE
@@ -64,6 +64,11 @@
           <table>
 
             <tr>
+              <th>分類</th>
+              <td><?php print $selectedQuestion[$i]['question_or_report'] ?></td>
+            </tr>
+
+            <tr>
               <th>時間</th>
               <td><?php print mb_substr($selectedQuestion[$i]['created_at'], 0, 16); ?></td>
             </tr>
@@ -89,20 +94,29 @@
               <td><?php print $selectedQuestion[$i]['title']; ?></td>
             </tr>
 
-            <tr>
-              <th>依頼したいこと</th>
-              <td><?php print $selectedQuestion[$i]['purpose']; ?></td>
-            </tr>
+            <?php if($selectedQuestion[$i]['question_or_report'] == '質問') {
+              print
+              '<tr>
+                <th>依頼したいこと</th>
+                <td> '. $selectedQuestion[$i]['purpose']. '</td>'.
+              '</tr>';
+            } ?>
 
-            <tr>
-              <th>詳細</th>
-              <td><?php print $selectedQuestion[$i]['detail']; ?></td>
-            </tr>
+            <?php if($selectedQuestion[$i]['question_or_report'] == '報告') {
+              print
+                '<tr>
+                  <th>詳細</th>
+                  <td>'. $selectedQuestion[$i]['detail']. '</td>'.
+                '</tr>';
+            } ?>
 
-            <tr>
-              <th>考えられる原因</th>
-              <td><?php print $selectedQuestion[$i]['cause']; ?></td>
-            </tr>
+            <?php if($selectedQuestion[$i]['question_or_report'] == '質問') {
+              print
+                '<tr>'.
+                  '<th>考えられる原因</th>'.
+                  '<td>'. $selectedQuestion[$i]['cause']. '</td>'.
+                '</tr>';
+            } ?>
 
             <tr>
               <th>試したこと・その他</th>
