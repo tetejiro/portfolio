@@ -1,0 +1,92 @@
+@charset "utf-8";
+
+body {
+  font-family: "AvenirNext-Regular", "ヒラギノ丸ゴ Pro W4";
+}
+
+h3 {
+  background: #9ad5e8;
+  border-radius: 10px;
+  padding: 2%;
+  margin: 3%;
+}
+
+div:not(:last-child) {
+  margin: 3% 0;
+}
+
+.edit {
+  padding: 0 25%;
+  text-align: center;
+}
+
+.delete {
+  height: 100vh;
+  padding: 25vh 25%;
+  text-align: center;
+}
+
+.container {
+  border-radius: 5px;
+  border: solid #acb0b1 3px;
+}
+
+select {
+  text-align: center;
+  border: #acb0b1 solid 3px;
+  border-radius: 5px;
+}
+
+p {
+  width: 55%;
+  border-bottom: #B0DEEC 3px solid;
+  margin: 0 24%;
+}
+
+a {
+  text-decoration: none;
+  color: #2b2b2b;
+}
+
+input[type="submit"] {
+  margin-right: 10%;
+}
+
+input[type="button"],
+input[type="submit"] {
+  background: #acb0b1;
+  border-radius: 15px;
+  width: 30%;
+  height: 2rem;
+}
+
+input[type="button"]:hover,
+input[type="submit"]:hover {
+  background: #7d9ea8;
+}
+
+.mgn {
+  margin-bottom: 10%;
+}
+
+@media (max-width: 600px) {
+  body {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  p {
+    width: 100%;
+    margin: 0;
+  }
+
+  .edit {
+    padding: 0%;
+    line-height: 2;
+  }
+
+  input[type="button"],
+  input[type="submit"] {
+    width: 40%;
+  }
+}

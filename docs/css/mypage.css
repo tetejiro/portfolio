@@ -1,0 +1,456 @@
+@charset "utf-8";
+
+body {
+  font-family: "AvenirNext-Regular", "ヒラギノ丸ゴ Pro W4";
+  width: 98.5vw;
+  padding: 5%;
+}
+
+.question-title {
+  margin-bottom: 2rem;
+}
+
+textarea[name="task"],
+textarea[name="attention"] {
+  border: solid 3.5px #b0deec;
+  width: 40vw;
+  height: 90%;
+  border-radius: 10px;
+}
+
+.header-title>a {
+  display: inline-block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 4px solid;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+
+.header-title>img,
+.header-title>h1 {
+  display: block;
+  padding-top: 10px;
+}
+
+.header-title {
+  display: flex;
+  justify-content: space-between;
+  width: 20vw;
+  height: 10vh;
+  letter-spacing: 20px;
+}
+
+.header-title>a>h1 {
+  width: 18vw;
+}
+
+.header-title>img {
+  width: 1vw;
+}
+
+.annotation {
+  display: flex;
+  align-items: center;
+}
+
+.annotation-button {
+  font-weight: 600;
+  margin-right: 5%;
+  background: #b0deec;
+  text-align: center;
+  padding: 2% 0 2% 0;
+  border-radius: 5px;
+  cursor: pointer; /* マウスカーソルを手の形にする */
+}
+
+.annotation-description {
+  line-height: 200%;
+  width: 120%;
+}
+
+a {
+  text-decoration: none;
+  color: #2b2b2b;
+}
+
+input[type="number"] {
+  width: 19%;
+  text-align: center;
+}
+
+/* モーダル */
+.modal {
+  border: #67a3b5 dashed 5px;
+  background: white;
+  height: 75vh;
+  position: fixed;
+  text-align: center;
+  padding: 2.5%;
+  line-height: 200%;
+  margin-top: -10%;
+  margin-left: 26.5%;
+  overflow: hidden;
+}
+
+.modal-title {
+  margin-left: 30%;
+}
+
+.modal > .modal-content {
+  text-align: left;
+  padding: 7%;
+}
+
+.modal > p {
+  font-weight: 700;
+  border-bottom: #158db2 solid 3px;
+  width: 40%;
+  margin-bottom: 10%;
+}
+
+.modal > .modal-content > p {
+  font-weight: 700;
+}
+
+.modal > p:last-child {
+  border: none;
+  background: gainsboro;
+  margin: 5% 0 0 30%;
+  cursor: pointer; /* マウスカーソルを手の形にする */
+}
+
+/*ナビ*/
+nav {
+  display: flex;
+  justify-content: flex-end;
+  text-align: center;
+}
+
+nav>p>label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer; /* マウスカーソルを手の形にする */
+}
+
+nav>a,
+nav>p {
+  display: inline-block;
+  margin-top: 2.5vh;
+  height: 5vh;
+  width: 15%;
+}
+
+nav>a:hover,
+nav>p:hover {
+  height: 5vh;
+  padding: 0.25em 0.5em;
+  background: #f3f3f3;
+  border-radius: 15px;
+}
+
+span::after {
+  content: " *";
+  color: red;
+  vertical-align: middle;
+}
+
+.emotion-img-list {
+  margin-left: 23%;
+  width: 55%;
+  display: flex;
+  justify-content: space-around;
+  border: solid #b0deec 4px;
+  border-radius: 10px;
+}
+
+.section1 {
+  padding: 5%;
+  border-bottom: solid 4px #2b2b2b;
+}
+
+.question1-2 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5vh;
+}
+
+.question-time {
+  width: 40%;
+}
+
+.question-emotion {
+  text-align: center;
+  padding-top: 10%;
+}
+
+/*真ん中*/
+.section2 {
+  height: 50vh;
+  padding: 10vh;
+  display: flex;
+  justify-content: space-around;
+}
+
+.question-convenient-time {
+  width: 40%;
+}
+
+/*一番下*/
+textarea[name="strong1"],
+textarea[name="strong2"],
+textarea[name="strong3"] {
+  display: inline-block;
+  width: 30%;
+  height: 100px;
+  border: solid #b0deec 3.5px;
+  border-radius: 10px;
+}
+
+.section3 {
+  margin-top: 5vh;
+  margin-bottom: 10vh;
+  border-top: solid 4px #2b2b2b;
+  border-bottom: solid 4px #2b2b2b;
+  padding: 13vh 0;
+}
+
+.question-strong-point {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/*下のナビ*/
+.bottom-nav {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.bottom-nav>p>a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.bottom-nav>p>input {
+  display: inline-block;
+  width: 100%;
+}
+
+.bottom-nav>a,
+.bottom-nav>p {
+  display: inline-block;
+  text-align: center;
+  margin-top: 2.5vh;
+  height: 5vh;
+  width: 12%;
+}
+
+.bottom-nav>p:hover {
+  vertical-align: top;
+  height: 5vh;
+  padding: 0.25em 0.5em;
+  background: #f3f3f3;
+  border-radius: 15px;
+}
+
+@media (max-width: 600px) {
+
+  /*共通*/
+  body {
+    width: 100vw;
+    padding: 5%;
+    margin: 0%;
+  }
+
+  textarea[name="task"],
+  textarea[name="attention"] {
+    width: 80%;
+    height: 15vh;
+  }
+
+  input {
+    margin-top: 5%;
+  }
+
+  /*ヘッダー*/
+  .header {
+    border-bottom: none;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0%;
+  }
+
+  .header-title>img {
+    width: 1.5vw;
+    margin-bottom: 0.25rem;
+  }
+
+  .header-title>a>h1 {
+    display: none;
+  }
+
+  .header>.annotation-description {
+    text-align: center;
+    width: 75%;
+    order: 2;
+  }
+
+  .header-title {
+    order: 1;
+  }
+
+  .annotation-button {
+    padding-top: 3.5%;
+    height: fit-content;
+  }
+
+  /*ナビ*/
+  nav {
+    border-bottom: solid 3.5px #2b2b2b;
+    justify-content: space-evenly;
+    padding-bottom: 5%;
+  }
+
+  nav>a,
+  nav>p {
+    display: block;
+    width: 20%;
+  }
+
+  nav>a:hover,
+  nav>p:hover {
+    display: block;
+    background: #f3f3f3;
+  }
+
+  /*1ブロック目*/
+  .section1 {
+    margin-bottom: 0;
+    padding: 0%;
+  }
+
+  .question1-2 {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10%;
+  }
+
+  .question-now {
+    order: 1;
+  }
+
+  .question-time {
+    order: 2;
+    margin-bottom: 0;
+    height: 10vh;
+    width: 100%;
+  }
+
+  .question-emotion {
+    padding-bottom: 10%;
+  }
+
+  .question-emotion>p {
+    margin-left: 0%;
+  }
+
+  .emotion-img-list {
+    width: 100%;
+    margin-left: 0vw;
+  }
+
+  .section1>p {
+    margin-left: 0px;
+    padding-left: 0px;
+  }
+
+  .question-emotion>p:first-child {
+    text-align: left;
+  }
+
+  /*真ん中*/
+  .question-convenient-time {
+    padding-top: 14%;
+    width: 100%;
+  }
+
+  .section2 {
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    padding: 10% 0;
+    padding-bottom: 5%;
+    margin-bottom: 0%;
+  }
+
+  /*１番下*/
+  .section3 {
+    margin-bottom: 0vh;
+    padding: 5vh;
+    border-bottom: none;
+  }
+
+  .question-strong-point {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .question-strong-point>textarea {
+    width: 100%;
+  }
+
+  /*下のナビ*/
+  .bottom-nav {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    border-top: solid 3.5px #2b2b2b;
+    padding-top: 3vh;
+    margin-bottom: 10%;
+  }
+
+  .bottom-nav>p {
+    display: inline-block;
+    margin-top: 2.5vh;
+    width: 20%;
+    height: 5vh;
+  }
+
+  .bottom-nav>p:hover {
+    padding: 0.25em 0.5em;
+    width: 20%;
+    background-color: #f3f3f3;
+    height: 2rem;
+  }
+
+  /* モーダル */
+  .modal {
+    width: 80vw;
+    margin-top: -5%;
+    margin-left: 5.5%;
+    top: 15%;
+    height: 80%;
+  }
+
+  .modal > p {
+    width: 40%;
+  }
+
+  .modal > p:last-child {
+    width: fit-content;
+    margin-left: 40%;
+    border: none;
+    background: gainsboro;
+  }
+}

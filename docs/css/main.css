@@ -1,0 +1,159 @@
+@charset "utf-8";
+
+body {
+  font-family: "AvenirNext-Regular", "ヒラギノ丸ゴ Pro W4";
+  width: 100%;
+  padding: 5% 7%;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+form {
+  margin-top: 6%;
+}
+
+.title-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 6%;
+}
+
+.title-container>p {
+  border-bottom: 3.5px solid #B0DEEC;
+}
+
+h2 {
+  width: 8%;
+  text-align: center;
+}
+
+ul>li {
+  display: block;
+}
+
+.attention>ul>li {
+  display: block;
+  margin-bottom: 1.25rem;
+}
+
+.textarea-container {
+  display: grid;
+  grid-gap: 5vw;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 2.2rem;
+}
+
+textarea {
+  border: 3.5px solid #B0DEEC;
+  border-radius: 10px;
+}
+
+.textarea-container {
+  text-align: center;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 3rem;
+}
+
+.menu>input,
+.menu>a {
+  border: 3px solid white;
+}
+
+.menu>input:hover,
+.menu>a:hover {
+  border-bottom: #1b6c84 3px solid;;
+}
+
+.menu>a {
+  display: block;
+}
+
+/*報告の返信要・不要*/
+.rsvp {
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+
+  /*全体*/
+  body {
+    width: 100vw;
+  }
+
+  /*ヘッダー*/
+  .title-container {
+    display: flex;
+    justify-content: center;
+    line-height: 2;
+    margin-bottom: 0;
+  }
+
+  h2 {
+    width: 18vw;
+  }
+
+  .title-container>p {
+    width: -webkit-fill-available;
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .attention {
+    padding: 1.5vh 2.5vh 1.5vh 2vh;
+    height: auto;
+  }
+
+  .attention>ul {
+    height: auto;
+  }
+
+  li {
+    display: inline-block;
+    margin-bottom: 1rem;
+    height: 4rem;
+    width: 100%;
+    padding-top: 1rem;
+    line-height: 1.5;
+  }
+
+  ul {
+    width: 100%;
+    list-style-type: disc;
+    list-style-position: outside;
+  }
+
+  .textarea-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5vh;
+  }
+
+  textarea {
+    width: 80%;
+    height: 100px;
+  }
+
+  .menu {
+    display: flex;
+    justify-content: center;
+    padding-left: 1rem;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .menu>a {
+    display: block;
+    width: 20%;
+    margin-left: 1rem;
+  }
+}
