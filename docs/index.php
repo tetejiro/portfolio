@@ -61,7 +61,7 @@
               </ul>
             <?php endforeach; ?>
           </div>
-          <a href="announce.php"><img src="favicon/haguruma.png" alt="追加"></a>
+          <a href="registration/announce.php"><img src="favicon/haguruma.png" alt="追加"></a>
 
         </div>
 
