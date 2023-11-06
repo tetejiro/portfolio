@@ -13,8 +13,8 @@ class ConstDb
             $this->userName = 'yuki';
             $this->pass = 'hy1733505';
         } else {
-            $this->dsnName = 'mysql:host=mysql205.phy.lolipop.lan;dbname=LAA1452799-shitsumon;charset=utf8';
-            $this->userName = 'LAA1452799';
+            $this->dsnName = 'mysql:host=mysql216.phy.lolipop.lan;dbname=LAA1566226-portfolio;charset=utf8';
+            $this->userName = 'LAA1566226';
             $this->pass = 'okikami07081103';
         }
     }
